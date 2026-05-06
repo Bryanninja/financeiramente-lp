@@ -54,7 +54,7 @@ export default function Hero() {
 
             <motion.h1
               variants={fadeInUp}
-              className="text-4xl md:text-5xl lg:text-[56px] font-bold text-light leading-[1.15] tracking-tight"
+              className="text-4xl md:text-5xl font-bold text-balance text-light leading-[1.15] tracking-tight"
             >
               Empresas raramente quebram por falta de vendas.{" "}
               <br className="hidden md:block" />
