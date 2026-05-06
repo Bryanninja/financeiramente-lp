@@ -13,12 +13,12 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "px-7 py-4 rounded-md cursor-pointer font-semibold text-sm md:text-base transition-all duration-300 shadow-lg active:scale-95";
+    "px-6 py-4 rounded-md cursor-pointer font-semibold text-sm md:text-base transition-all duration-300 shadow-lg active:scale-95";
 
   const variants = {
     primary: "bg-primary-deep hover:bg-primary-vibrant text-light",
     outline:
-      "border-2 border-primary-deep text-primary-deep hover:bg-primary-deep hover:text-light shadow-none",
+      "border-2 border-dark hover:bg-primary-deep hover:text-light shadow-none",
     accent: "bg-accent-bronze hover:bg-amber-700 text-light",
   };
 
