@@ -4,6 +4,7 @@ import Hero from "./components/sections/Hero";
 import ProblemSection from "./components/sections/ProblemSection";
 import ProblemReal from "./components/sections/ProblemReal";
 import MaturityMap from "./components/sections/MaturityMap";
+import Methodology from "./components/sections/Methodology";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <ProblemSection />
       <ProblemReal />
       <MaturityMap />
+      <Methodology />
     </main>
   );
 }
