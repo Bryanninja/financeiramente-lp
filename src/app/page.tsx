@@ -8,6 +8,7 @@ import Methodology from "./components/sections/Methodology";
 import MethodSteps from "./components/sections/MethodSteps";
 import Experience from "./components/sections/Experience";
 import FinalCTA from "./components/sections/FinalCTA";
+import Footer from "./components/sections/Footer";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <MethodSteps />
       <Experience />
       <FinalCTA />
+      <Footer />
     </main>
   );
 }
