@@ -6,6 +6,7 @@ import ProblemReal from "./components/sections/ProblemReal";
 import MaturityMap from "./components/sections/MaturityMap";
 import Methodology from "./components/sections/Methodology";
 import MethodSteps from "./components/sections/MethodSteps";
+import Experience from "./components/sections/Experience";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <MaturityMap />
       <Methodology />
       <MethodSteps />
+      <Experience />
     </main>
   );
 }
