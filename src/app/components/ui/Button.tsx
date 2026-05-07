@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  variant?: "primary" | "outline" | "accent";
+  variant?: "primary" | "outline" | "accent" | "black";
 }
 
 export default function Button({
@@ -17,6 +17,8 @@ export default function Button({
 
   const variants = {
     primary: "bg-primary-deep hover:bg-primary-vibrant text-light",
+    black:
+      "bg-dark hover:bg-black text-white px-8 py-4 rounded-md font-bold text-base transition-all w-full md:w-fit",
     outline:
       "border-2 border-dark hover:bg-primary-deep hover:text-light shadow-none",
     accent: "bg-accent-bronze hover:bg-amber-700 text-light",
