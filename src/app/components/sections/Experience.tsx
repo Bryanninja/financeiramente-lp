@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Container from "../ui/Container";
-import { fadeInUp } from "@/app/lib/animations";
+import { variants, viewportConfig } from "@/app/lib/animations";
 import Image from "next/image";
 
 import MichelExperienceImg from "../../assets/img/michel-experience.webp";
@@ -34,7 +34,7 @@ const results = [
   {
     value: "Liderança",
     label:
-      "De projetos de integração e padronização financeira em operações internacionais.",
+      "De projetos de integração e padronização em operações internacionais.",
   },
 ];
 
@@ -43,7 +43,6 @@ export default function Experience() {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  // Função para verificar se ainda há conteúdo para rolar
   const checkScroll = () => {
     if (scrollRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
@@ -62,25 +61,25 @@ export default function Experience() {
     if (scrollRef.current) {
       const scrollAmount = direction === "left" ? -400 : 400;
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-      // Pequeno delay para checar o scroll após a animação
       setTimeout(checkScroll, 400);
     }
   };
 
   return (
-    <section className="bg-light py-24 md:py-32">
+    <section id="sobre" className="bg-light py-8 md:pb-32 overflow-hidden">
       <Container className="space-y-20">
         {/* Cabeçalho */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <motion.div
-            variants={fadeInUp}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-          >
+        <motion.div
+          variants={variants.staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={viewportConfig}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
+        >
+          <motion.div variants={variants.fadeInUp}>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/60 mb-6">
               <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
-              <span className="text-[10px] uppercase tracking-wider text-dark font-bold">
+              <span className="text-sm tracking-wider text-dark font-semibold">
                 Experiência
               </span>
             </div>
@@ -89,7 +88,10 @@ export default function Experience() {
             </h2>
           </motion.div>
 
-          <div className="space-y-6 text-dark/80 text-lg leading-relaxed">
+          <motion.div
+            variants={variants.fadeInUp}
+            className="space-y-6 text-dark/80 text-lg leading-relaxed"
+          >
             <p>
               Ao longo de mais de 30 anos de atuação em finanças, gestão e
               liderança empresarial, Michel Stawicki participou de projetos
@@ -102,17 +104,36 @@ export default function Experience() {
               princípios de gestão financeira utilizados em grandes organizações
               para a realidade de pequenos negócios.
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        {/* Bloco Michel 30+ */}
-        <div className=" hidden md:flex relative w-full aspect-video rounded-2xl overflow-hidden bg-dark">
-          <Image
-            src={MichelExperienceImg}
-            alt="Michel Stawicki"
-            fill
-            className="object-cover opacity-95"
-          />
+        {/* Bloco Michel 30+ (Desktop & Mobile Unificados na Lógica) */}
+        <motion.div
+          variants={variants.fadeInUp}
+          initial="initial"
+          whileInView="animate"
+          viewport={viewportConfig}
+          className="relative w-full aspect-video md:aspect-video h-[600px] md:h-auto rounded-2xl overflow-hidden bg-dark"
+        >
+          {/* Desktop Image */}
+          <div className="hidden md:block">
+            <Image
+              src={MichelExperienceImg}
+              alt="Michel Stawicki"
+              fill
+              className="object-cover opacity-95"
+            />
+          </div>
+          {/* Mobile Image */}
+          <div className="md:hidden">
+            <Image
+              src={MichelExperienceImg2}
+              alt="Michel Stawicki"
+              fill
+              className="object-cover object-top opacity-95"
+            />
+          </div>
+
           <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-16 space-y-6 max-w-xl">
             <p className="text-light/90 text-base md:text-lg leading-relaxed font-light">
               Michel Stawicki atua há mais de 30 anos em finanças, gestão e
@@ -121,7 +142,7 @@ export default function Experience() {
               liderando áreas financeiras responsáveis por operações complexas,
               projetos de transformação e decisões estratégicas de negócio.
             </p>
-            {/* SVG 30+ para Stroke perfeito */}
+
             <svg className="w-full h-32 md:h-48 overflow-visible">
               <text
                 x="0"
@@ -135,95 +156,69 @@ export default function Experience() {
               </text>
             </svg>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Bloco Michel 30+ */}
-        <div className=" md:hidden relative w-full h-[1000px] rounded-2xl overflow-hidden bg-dark">
-          <Image
-            src={MichelExperienceImg2}
-            alt="Michel Stawicki"
-            fill
-            className="object-cover object-top opacity-95"
-          />
-          <div className="relative mt-8 z-10 h-full flex flex-col justify-start items-center px-8 md:px-16 space-y-2 max-w-xl">
-            <p className="text-light/90 text-base md:text-lg leading-relaxed font-light">
-              Michel Stawicki atua há mais de 30 anos em finanças, gestão e
-              liderança empresarial. Ao longo de sua carreira ocupou posições
-              executivas em grandes organizações no Brasil e no exterior,
-              liderando áreas financeiras responsáveis por operações complexas,
-              projetos de transformação e decisões estratégicas de negócio.
-            </p>
-            {/* SVG 30+ para Stroke perfeito */}
-            <svg className="w-full h-32 md:h-48 overflow-visible">
-              <text
-                x="0"
-                y="80%"
-                className="text-8xl md:text-[12rem] font-bold"
-                fill="rgba(255,255,255,0.05)"
-                stroke="white"
-                strokeWidth="1"
-              >
-                30+
-              </text>
-            </svg>
-          </div>
-        </div>
-
-        {/* Seção de Resultados com Navegação Netflix */}
-        <div className="space-y-12">
-          <div className="max-w-2xl">
+        {/* Seção de Resultados "Estilo Netflix" */}
+        <motion.div
+          variants={variants.staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={viewportConfig}
+          className="space-y-12"
+        >
+          <motion.div variants={variants.fadeInUp} className="max-w-2xl">
             <h3 className="text-2xl md:text-3xl font-bold text-dark mb-4">
               Os resultados falam por si.
             </h3>
             <p className="text-dark/80">
-              Hoje Michel aplica essa visão para ajudar empresários a tomar
-              decisões com mais clareza.
+              Hoje Michel aplica essa visão para ajudar empresários a estruturar
+              financeiramente seus negócios e tomar decisões com mais clareza.
             </p>
-          </div>
+          </motion.div>
 
           <div className="group relative">
-            {/* Botão Voltar (Esquerda) */}
+            {/* Botões de Navegação */}
             {canScrollLeft && (
               <button
                 onClick={() => scroll("left")}
-                className="absolute -left-5 top-1/2 cursor-pointer -translate-y-1/2 z-30 bg-dark text-white p-4 rounded-full shadow-2xl hover:bg-primary-vibrant transition-all duration-300"
+                className="absolute -left-5 top-1/2 -translate-y-1/2 z-30 bg-dark text-white p-4 rounded-full shadow-2xl hover:bg-primary-vibrant transition-all duration-300"
               >
                 <ChevronLeft size={24} />
               </button>
             )}
 
-            {/* Contêiner de Cards */}
-            <div
+            <motion.div
               ref={scrollRef}
               onScroll={checkScroll}
+              variants={variants.staggerContainer}
               className="flex gap-6 overflow-hidden pb-4 snap-x snap-mandatory"
             >
               {results.map((item, i) => (
-                <div
+                <motion.div
                   key={i}
+                  variants={variants.fadeInUp}
                   className="min-w-[280px] md:min-w-[350px] bg-[#E3E2DE] p-10 rounded-lg border border-primary-deep/60 snap-start hover:shadow-xl transition-all"
                 >
-                  <div className=" text-5xl md:text-7xl text-dark mb-6 text-center tracking-tighter leading-none">
+                  <div className="text-5xl md:text-7xl text-dark mb-6 text-center tracking-tighter leading-none">
                     {item.value}
                   </div>
                   <p className="text-dark/70 tracking-wide text-center text-pretty leading-relaxed">
                     {item.label}
                   </p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
-            {/* Botão Avançar (Direita) */}
             {canScrollRight && (
               <button
                 onClick={() => scroll("right")}
-                className="absolute -right-5 cursor-pointer top-1/2 -translate-y-1/2 z-30 bg-dark text-white p-4 rounded-full shadow-2xl hover:bg-primary-deep transition-all duration-300"
+                className="absolute -right-5 top-1/2 -translate-y-1/2 z-30 bg-dark text-white p-4 rounded-full shadow-2xl hover:bg-primary-deep transition-all duration-300"
               >
                 <ChevronRight size={24} />
               </button>
             )}
           </div>
-        </div>
+        </motion.div>
       </Container>
     </section>
   );

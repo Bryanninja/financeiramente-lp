@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import ScrollToTop from "./components/ui/ScrollToTop";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,11 +38,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className="scroll-smooth">
+    <html lang="pt-BR">
       {/* O fundo padrão será o claro (#FAF9F6) e o texto escuro (#121212) */}
       <body
         className={`${inter.variable} font-sans antialiased bg-light-DEFAULT text-dark-DEFAULT`}
       >
+        <ScrollToTop />
         {children}
       </body>
     </html>

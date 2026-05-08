@@ -13,15 +13,14 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "px-6 py-4 rounded-md cursor-pointer font-semibold text-sm md:text-base transition-all duration-300 shadow-lg active:scale-95";
+    "px-6 py-4 rounded-lg cursor-pointer font-semibold text-sm md:text-base transition-all duration-300 active:scale-95";
 
   const variants = {
-    primary: "bg-primary-deep hover:bg-primary-vibrant text-light",
+    primary: "bg-primary-deep hover:bg-blue-950 text-light",
     black:
-      "bg-dark hover:bg-black text-white px-8 py-4 rounded-md font-bold text-base transition-all w-full md:w-fit",
+      "bg-dark hover:bg-black text-white rounded-md font-bold text-base transition-all w-full md:w-fit",
     white: "bg-white hover:bg-neutral-100 text-dark",
-    outline:
-      "border-2 border-dark hover:bg-primary-deep hover:text-light shadow-none",
+    outline: "border-2 border-dark hover:bg-dark hover:text-light shadow-none",
     accent: "bg-accent-bronze hover:bg-amber-700 text-light",
   };
 

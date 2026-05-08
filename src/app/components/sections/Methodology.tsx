@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Container from "../ui/Container";
-import { fadeInUp, staggerContainer } from "@/app/lib/animations";
+import { variants, viewportConfig } from "@/app/lib/animations";
 
 const pillars = [
   {
@@ -26,35 +26,38 @@ const pillars = [
 
 export default function Methodology() {
   return (
-    <section className="bg-dark py-20 overflow-hidden">
+    <section id="metodo" className="bg-dark py-8 md:pb-32 overflow-hidden">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Lado Esquerdo: Conteúdo e Cards */}
           <motion.div
-            variants={staggerContainer}
+            variants={variants.staggerContainer}
             initial="initial"
             whileInView="animate"
-            viewport={{ once: true }}
+            viewport={viewportConfig}
             className="space-y-12"
           >
             <div className="space-y-6">
               {/* Tag Superior */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-light/60 bg-primary-vibrant/5">
+              <motion.div
+                variants={variants.fadeInUp}
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-light/70 bg-primary-vibrant/5"
+              >
                 <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
-                <span className="text-[10px] uppercase tracking-wider text-light/60 font-bold">
+                <span className="text-sm  tracking-wider text-light/70 font-semibold">
                   Os 4 pilares
                 </span>
-              </div>
+              </motion.div>
 
               <motion.h2
-                variants={fadeInUp}
-                className="text-3xl md:text-5xl font-bold text-light leading-tight"
+                variants={variants.fadeInUp}
+                className="text-3xl md:text-[2.6rem] font-bold text-light leading-tight"
               >
                 O Método FinanceiraMente
               </motion.h2>
 
               <motion.p
-                variants={fadeInUp}
+                variants={variants.fadeInUp}
                 className="text-light/60 text-lg leading-relaxed max-w-xl"
               >
                 Para evoluir no mapa de maturidade financeira, o negócio precisa
@@ -63,37 +66,40 @@ export default function Methodology() {
               </motion.p>
             </div>
 
-            {/* Grid de Cards dos Pilares */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Grid de Cards dos Pilares com Stagger */}
+            <motion.div
+              variants={variants.staggerContainer}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+            >
               {pillars.map((pillar, index) => (
                 <motion.div
                   key={index}
-                  variants={fadeInUp}
+                  variants={variants.fadeInUp}
                   className="bg-[#1A1A1A] p-8 flex flex-col justify-center rounded-lg border border-white/5 hover:border-primary-vibrant/20 hover:bg-light/5 transition-all group"
                 >
-                  <h3 className="text-light text-xl font-bold mb-3 group-hover:text-primary-vibrant transition-colors">
+                  <h3 className="text-light text-xl font-semibold mb-3 group-hover:text-primary-vibrant transition-colors">
                     {pillar.title}
                   </h3>
-                  <p className="text-light/50 text-sm text-pretty leading-relaxed">
+                  <p className="text-light/60 text-base text-pretty leading-relaxed">
                     {pillar.description}
                   </p>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Lado Direito: SVG da Escada de Maturidade */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, x: 50 }}
-            whileInView={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            variants={variants.fadeInRight} // Usando a entrada lateral centralizada
+            initial="initial"
+            whileInView="animate"
+            viewport={viewportConfig}
             className="relative flex justify-center lg:justify-end"
           >
             <img
               src="/mapa.svg"
               alt="Escada de Maturidade FinanceiraMente"
-              className="w-full max-w-[550px] hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_30px_rgba(30,58,138,0.3)]"
+              className="w-full max-w-[550px] hover:scale-105 transition-transform duration-500 drop-shadow-[0_0_30px_rgba(30,58,138,0.3)]"
             />
           </motion.div>
         </div>

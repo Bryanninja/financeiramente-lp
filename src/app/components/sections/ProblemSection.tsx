@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Search, DollarSign, Wallet, HelpCircle } from "lucide-react";
 import Container from "../ui/Container";
-import { fadeInUp, staggerContainer } from "@/app/lib/animations";
+import { variants, viewportConfig } from "@/app/lib/animations";
 import Image from "next/image";
 import StressImg from "../../assets/img/stress-business.webp";
 
@@ -33,23 +33,26 @@ export default function ProblemSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Lado Esquerdo: Conteúdo Textual e Imagem */}
           <motion.div
-            variants={staggerContainer}
+            variants={variants.staggerContainer}
             initial="initial"
             whileInView="animate"
-            viewport={{ once: true }}
+            viewport={viewportConfig}
             className="space-y-10"
           >
             <div className="space-y-6">
               {/* Tag Superior */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-light/20 bg-light/5">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary-vibrant animate-pulse" />
-                <span className="text-xs uppercase tracking-wider text-light/60 font-medium">
+              <motion.div
+                variants={variants.fadeInUp}
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-light/40 bg-light/5"
+              >
+                <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
+                <span className="text-sm font-semibold text-light/70">
                   Não consegue sair do lugar?
                 </span>
-              </div>
+              </motion.div>
 
               <motion.h2
-                variants={fadeInUp}
+                variants={variants.fadeInUp}
                 className="text-3xl md:text-5xl font-bold text-light leading-tight"
               >
                 O negócio vende, trabalha, movimenta dinheiro, mas parece sempre
@@ -57,7 +60,7 @@ export default function ProblemSection() {
               </motion.h2>
 
               <motion.p
-                variants={fadeInUp}
+                variants={variants.fadeInUp}
                 className="text-light/60 text-lg leading-relaxed max-w-xl"
               >
                 Falta caixa para expandir, decisões geram insegurança, o
@@ -67,7 +70,7 @@ export default function ProblemSection() {
             </div>
 
             <motion.div
-              variants={fadeInUp}
+              variants={variants.fadeInUp}
               className="relative aspect-video rounded-xl overflow-hidden shadow-2xl border border-white/5"
             >
               <Image
@@ -78,9 +81,12 @@ export default function ProblemSection() {
               />
             </motion.div>
 
-            {/* Texto Inferior - Refatorado com motion.div para evitar erro de tags */}
-            <div className="space-y-8 pt-4">
-              <motion.div variants={fadeInUp} className="space-y-2">
+            {/* Bloco de Texto Inferior */}
+            <motion.div
+              variants={variants.staggerContainer}
+              className="space-y-8 pt-4"
+            >
+              <motion.div variants={variants.fadeInUp} className="space-y-2">
                 <h3 className="text-light text-xl font-bold leading-snug">
                   Quando essas respostas não estão claras, decisões importantes
                   acabam sendo tomadas no feeling.
@@ -92,7 +98,7 @@ export default function ProblemSection() {
                 </p>
               </motion.div>
 
-              <motion.div variants={fadeInUp} className="space-y-2">
+              <motion.div variants={variants.fadeInUp} className="space-y-2">
                 <h3 className="text-light text-xl font-bold leading-snug">
                   O Método FinanceiraMente
                 </h3>
@@ -102,22 +108,25 @@ export default function ProblemSection() {
                   decisões claras.
                 </p>
               </motion.div>
-            </div>
+            </motion.div>
           </motion.div>
 
-          {/* Lado Direito: A Coluna "Mágica" que fixa */}
-          <div className="grid grid-cols-1 gap-6 sticky top-32">
+          {/* Lado Direito: Cards Fixos com Stagger Individual */}
+          <motion.div
+            variants={variants.staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={viewportConfig}
+            className="grid grid-cols-1 gap-6 sticky top-32"
+          >
             {painCards.map((card, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                variants={variants.fadeInUp}
                 className="group bg-[#1A1A1A] p-8 rounded-xl border border-white/5 hover:border-primary-vibrant/30 transition-all shadow-lg"
               >
                 <div className="flex flex-col gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-primary-deep transition-colors text-primary-vibrant group-hover:text-light">
+                  <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-primary-deep transition-colors text-light">
                     {card.icon}
                   </div>
                   <p className="text-light text-xl font-medium leading-snug">
@@ -126,7 +135,7 @@ export default function ProblemSection() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </Container>
     </section>

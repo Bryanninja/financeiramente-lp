@@ -4,23 +4,21 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
-  TrendingUp,
-  Search,
   Users,
   Settings,
   MinusCircle,
   Layers,
   PieChart,
   Target,
-  Zap,
   Activity,
   BarChart3,
+  Search,
 } from "lucide-react";
 import Container from "../ui/Container";
 import Button from "../ui/Button";
-import { fadeInUp, staggerContainer } from "@/app/lib/animations";
+import { variants, viewportConfig } from "@/app/lib/animations";
 
-// Imagens (substitua pelos seus caminhos)
+// Imagens
 import PaymentImg from "../../assets/img/payment.webp";
 import CalcImg from "../../assets/img/calculation.webp";
 
@@ -33,65 +31,78 @@ const IconChip = ({
   text: string;
   color?: "primary" | "accent";
 }) => (
-  <div className="flex items-center gap-2 px-3 py-3 bg-[#E3E2DE] backdrop-blur-sm rounded-lg border border-black/5">
+  <motion.div
+    variants={variants.fadeInUp} // O chip agora herda a animação do stagger pai
+    className="flex items-center gap-2 px-3 py-3 bg-[#E3E2DE] backdrop-blur-sm rounded-lg border border-black/5"
+  >
     <div
       className={`p-2 rounded-lg ${color === "primary" ? "bg-primary-deep" : "bg-accent-bronze"} text-white`}
     >
       <Icon size={16} />
     </div>
     <span className="text-base font-normal text-dark/80">{text}</span>
-  </div>
+  </motion.div>
 );
 
 export default function ProblemReal() {
   return (
-    <section className="bg-light py-24 space-y-32">
+    <section className="bg-light py-24 md:py-32 space-y-32 overflow-hidden">
       <Container className="space-y-16 md:space-y-32">
         {/* PARTE 1: O Problema Real */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
-            variants={staggerContainer}
+            variants={variants.staggerContainer}
             initial="initial"
             whileInView="animate"
-            viewport={{ once: true }}
+            viewport={viewportConfig}
             className="space-y-8"
           >
             <div className="space-y-6">
-              <div className="space-y-4">
+              <motion.div variants={variants.fadeInUp} className="space-y-4">
                 <h2 className="text-3xl md:text-5xl font-bold text-dark leading-tight">
                   O problema real do <br /> pequeno empresário
                 </h2>
-                <p className="text-dark font-medium text-2xl">
+                <p className="text-dark/90 font-medium text-lg md:text-2xl">
                   A maioria dos empresários aprende a:
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="flex flex-wrap gap-6">
+              {/* Stagger nos Chips */}
+              <motion.div
+                variants={variants.staggerContainer}
+                className="flex flex-wrap gap-6"
+              >
                 <IconChip icon={ArrowUpRight} text="Vender" />
                 <IconChip icon={Users} text="Atender Clientes" />
                 <IconChip icon={Settings} text="Fazer o negócio funcionar" />
-              </div>
+              </motion.div>
             </div>
 
-            <div className="p-4 bg-accent-bronze/20 rounded-lg border-accent-bronze rounded-r-md">
-              <p className="text-accent-bronze font-bold">
+            <motion.div
+              variants={variants.fadeInUp}
+              className="p-4 bg-accent-bronze/32 rounded-lg  border-accent-bronze"
+            >
+              <p className="text-dark font-medium">
                 Mas raramente aprende a estruturar financeiramente a empresa.
               </p>
-            </div>
+            </motion.div>
 
-            <Button
-              variant="outline"
-              className="border-dark text-dark hover:bg-dark hover:text-white"
-            >
-              Agendar Sessão Estratégica FinanceiraMente
-            </Button>
+            <motion.div variants={variants.fadeInUp}>
+              <Button
+                variant="outline"
+                className="border-dark text-dark hover:bg-dark hover:text-white"
+              >
+                Agendar Sessão Estratégica FinanceiraMente
+              </Button>
+            </motion.div>
           </motion.div>
 
           <motion.div
-            variants={fadeInUp}
+            variants={variants.fadeInUp}
             initial="initial"
             whileInView="animate"
-            className="relative aspect-square rounded-2xl overflow-hidden "
+            viewport={viewportConfig}
+            className="relative aspect-square rounded-2xl overflow-hidden shadow-xl"
           >
             <Image
               src={PaymentImg}
@@ -105,10 +116,11 @@ export default function ProblemReal() {
         {/* PARTE 2: Conforme o negócio cresce */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
-            variants={fadeInUp}
+            variants={variants.fadeInUp}
             initial="initial"
             whileInView="animate"
-            className="order-2 lg:order-1 relative aspect-square rounded-2xl overflow-hidden"
+            viewport={viewportConfig}
+            className="order-2 lg:order-1 relative aspect-square rounded-2xl overflow-hidden shadow-xl"
           >
             <Image
               src={CalcImg}
@@ -119,18 +131,21 @@ export default function ProblemReal() {
           </motion.div>
 
           <motion.div
-            variants={staggerContainer}
+            variants={variants.staggerContainer}
             initial="initial"
             whileInView="animate"
-            viewport={{ once: true }}
+            viewport={viewportConfig}
             className="order-1 lg:order-2 space-y-8"
           >
-            <div className="space-y-6">
+            <motion.div variants={variants.fadeInUp} className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold text-dark leading-tight">
                 Conforme o negócio cresce, aumentam também:
               </h2>
 
-              <div className="flex flex-wrap gap-3">
+              <motion.div
+                variants={variants.staggerContainer}
+                className="flex flex-wrap gap-3"
+              >
                 <IconChip icon={MinusCircle} text="Despesas" color="accent" />
                 <IconChip icon={Layers} text="Complexidade" color="accent" />
                 <IconChip
@@ -138,26 +153,32 @@ export default function ProblemReal() {
                   text="Decisões financeiras"
                   color="accent"
                 />
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            <Button
-              variant="outline"
-              className="border-dark text-dark hover:bg-dark hover:text-white"
-            >
-              Agendar Sessão Estratégica
-            </Button>
+            <motion.div variants={variants.fadeInUp}>
+              <Button
+                variant="outline"
+                className="border-dark text-dark hover:bg-dark hover:text-white"
+              >
+                Agendar Sessão Estratégica
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
 
         {/* PARTE 3: Administrar no escuro */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className=" space-y-12"
+          variants={variants.staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={viewportConfig}
+          className="space-y-12"
         >
-          <div className="max-w-3xl space-y-4">
+          <motion.div
+            variants={variants.fadeInUp}
+            className="max-w-3xl space-y-4"
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-dark leading-tight">
               Sem uma estrutura clara de gestão financeira, o empresário passa a
               administrar o negócio no escuro.
@@ -165,28 +186,30 @@ export default function ProblemReal() {
             <p className="text-dark/80 text-xl font-medium">
               O dinheiro entra, mas não fica claro:
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div
+            variants={variants.staggerContainer}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
             {[
               { icon: Search, text: "Onde está o lucro." },
               { icon: Activity, text: "Quanto o negócio realmente gera." },
               { icon: BarChart3, text: "Se o caixa sustenta a operação." },
               { icon: Target, text: "Se as decisões estão criando valor." },
             ].map((card, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="bg-[#E3E2DE] p-8 rounded-xl border border-black/5 flex flex-col gap-6 transition-all duration-300 hover:brightness-95 hover:shadow-md cursor-default"
+                variants={variants.fadeInUp}
+                className="bg-[#E3E2DE] p-8 rounded-xl border border-[#70706E]/20 flex flex-col justify-center gap-6 transition-all duration-300 hover:brightness-95 hover:shadow-md cursor-default"
               >
-                <div className="w-12 h-12 flex items-center justify-center bg-white rounded-lg shadow-sm">
-                  <card.icon size={24} className="text-dark" />
-                </div>
+                <card.icon size={28} className="text-dark" />
                 <p className="text-dark font-bold text-xl leading-snug">
                   {card.text}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
       </Container>
     </section>
