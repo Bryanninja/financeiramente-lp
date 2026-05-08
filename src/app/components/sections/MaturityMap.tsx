@@ -81,7 +81,7 @@ export default function MaturityMap() {
 
           <motion.p
             variants={variants.fadeInUp}
-            className="text-light/50 text-lg leading-relaxed"
+            className="text-light/60 text-lg leading-relaxed"
           >
             Pequenos negócios passam por diferentes níveis de maturidade
             financeira. O Mapa de Maturidade Financeira FinanceiraMente ajuda
@@ -119,7 +119,7 @@ export default function MaturityMap() {
                 <h3 className="text-2xl font-semibold text-light">
                   {phase.title}
                 </h3>
-                <p className="text-light/50 leading-relaxed text-sm md:text-base">
+                <p className="text-light/60 leading-relaxed text-pretty text-sm md:text-base">
                   {phase.description}
                 </p>
               </div>
