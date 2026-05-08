@@ -113,7 +113,7 @@ export default function Experience() {
           initial="initial"
           whileInView="animate"
           viewport={viewportConfig}
-          className="relative w-full aspect-video md:aspect-video h-[600px] md:h-auto rounded-2xl overflow-hidden bg-dark"
+          className="relative w-full aspect-video md:aspect-video h-[780px] md:h-auto rounded-2xl overflow-hidden bg-dark"
         >
           {/* Desktop Image */}
           <div className="hidden md:block">
@@ -134,7 +134,7 @@ export default function Experience() {
             />
           </div>
 
-          <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-16 space-y-6 max-w-xl">
+          <div className="relative justify-items-start py-6 z-10 h-full flex flex-col md:justify-center px-8 md:px-16 space-y-6 max-w-xl">
             <p className="text-light/90 text-base md:text-lg leading-relaxed font-light">
               Michel Stawicki atua há mais de 30 anos em finanças, gestão e
               liderança empresarial. Ao longo de sua carreira ocupou posições
