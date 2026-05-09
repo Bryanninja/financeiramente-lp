@@ -8,6 +8,7 @@ import Button from "../ui/Button";
 import { variants } from "@/app/lib/animations";
 import BgHero from "../../assets/img/section.webp";
 import Container from "../ui/Container";
+import { getWhatsAppUrl } from "@/app/lib/whatsapp";
 
 export default function Hero() {
   return (
@@ -76,7 +77,12 @@ export default function Hero() {
             </motion.p>
 
             <motion.div variants={variants.fadeInUp}>
-              <Button>Agendar Sessão Estratégica FinanceiraMente</Button>
+              <Button
+                href={getWhatsAppUrl("sessaoEstrategica")}
+                target="_blank"
+              >
+                Agendar Sessão Estratégica FinanceiraMente
+              </Button>
             </motion.div>
           </div>
         </Container>

@@ -127,7 +127,9 @@ export default function DiagnosticInfo() {
               Que sustentam a gestão financeira da empresa:
             </motion.p>
             <motion.div variants={variants.fadeInUp}>
-              <Button className="px-10 py-4">Começar Diagnóstico Agora</Button>
+              <Button href="#diagnostic" className="px-10 py-4">
+                Começar Diagnóstico Agora
+              </Button>
             </motion.div>
           </motion.div>
         </div>

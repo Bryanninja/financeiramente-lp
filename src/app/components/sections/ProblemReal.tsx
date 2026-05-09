@@ -21,6 +21,7 @@ import { variants, viewportConfig } from "@/app/lib/animations";
 // Imagens
 import PaymentImg from "../../assets/img/payment.webp";
 import CalcImg from "../../assets/img/calculation.webp";
+import { getWhatsAppUrl } from "@/app/lib/whatsapp";
 
 const IconChip = ({
   icon: Icon,
@@ -90,7 +91,8 @@ export default function ProblemReal() {
             <motion.div variants={variants.fadeInUp}>
               <Button
                 variant="outline"
-                className="border-dark text-dark hover:bg-dark hover:text-white"
+                href={getWhatsAppUrl("sessaoEstrategica")}
+                target="_blank"
               >
                 Agendar Sessão Estratégica FinanceiraMente
               </Button>
@@ -159,9 +161,10 @@ export default function ProblemReal() {
             <motion.div variants={variants.fadeInUp}>
               <Button
                 variant="outline"
-                className="border-dark text-dark hover:bg-dark hover:text-white"
+                href={getWhatsAppUrl("sessaoEstrategica")}
+                target="_blank"
               >
-                Agendar Sessão Estratégica
+                Agendar Sessão Estratégica FinanceiraMente
               </Button>
             </motion.div>
           </motion.div>

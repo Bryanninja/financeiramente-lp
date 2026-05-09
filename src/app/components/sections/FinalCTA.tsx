@@ -6,6 +6,7 @@ import { Search, DollarSign, Calculator } from "lucide-react";
 import Container from "../ui/Container";
 import Button from "../ui/Button";
 import { variants, viewportConfig } from "@/app/lib/animations";
+import { getWhatsAppUrl } from "@/app/lib/whatsapp";
 
 // Imagem central (Michel e Cliente sorrindo)
 import FinalMeetingImg from "../../assets/img/final-meeting.webp";
@@ -125,7 +126,8 @@ export default function FinalCTA() {
         >
           <Button
             variant="white"
-            className="px-8 py-5 text-dark font-bold text-lg"
+            href={getWhatsAppUrl("sessaoEstrategica")}
+            target="_blank"
           >
             Quero minha Sessão Estratégica Gratuita
           </Button>

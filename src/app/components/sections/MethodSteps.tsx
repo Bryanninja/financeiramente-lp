@@ -6,6 +6,7 @@ import { Check } from "lucide-react";
 import Container from "../ui/Container";
 import Button from "../ui/Button";
 import { variants, viewportConfig } from "@/app/lib/animations";
+import { getWhatsAppUrl } from "@/app/lib/whatsapp";
 
 import CollaborationImg from "../../assets/img/collaboration.webp";
 
@@ -133,9 +134,15 @@ export default function MethodSteps() {
               viewport={viewportConfig}
               className="space-y-3 pt-6"
             >
-              <Button variant="black" className="w-full md:w-auto px-10">
+              <Button
+                variant="black"
+                className="w-full md:w-auto px-10"
+                href={getWhatsAppUrl("sessaoEstrategica")}
+                target="_blank"
+              >
                 Quero minha sessão estratégica gratuita
               </Button>
+
               <p className="text-sm text-dark font-medium">
                 Ganhe o Diagnóstico inicial sem custos.
               </p>

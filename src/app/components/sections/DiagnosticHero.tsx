@@ -8,7 +8,7 @@ import { variants } from "@/app/lib/animations";
 
 export default function DiagnosticHero() {
   return (
-    <section className="bg-light pt-32 pb-32 md:pt-44 md:pb-44">
+    <section id="diagnostic" className="bg-light pt-32 pb-32 md:pt-44 md:pb-44">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Lado Esquerdo: Texto */}
@@ -51,7 +51,7 @@ export default function DiagnosticHero() {
             variants={variants.fadeInUp}
             initial="initial"
             animate="animate"
-            className=" rounded-2xl space-y-8"
+            className=" rounded-2xl space-y-6"
           >
             <div className="space-y-2">
               <label className="text-sm font-semibold   text-dark">

@@ -151,7 +151,7 @@ export default function MaturityMap() {
             </motion.h3>
 
             <motion.div variants={variants.fadeInUp}>
-              <Button className="hidden md:block">
+              <Button href="/diagnostic">
                 Descobrir maturidade financeira
               </Button>
             </motion.div>
