@@ -28,14 +28,18 @@ export default function ResultNextSteps({ phase = 2 }) {
   const content = phaseContent[phase];
 
   return (
-    <section className="bg-light space-y-0">
+    <section className="bg-light">
       {/* ─── Interpretação do Diagnóstico ─── */}
-      <div className="bg-dark py-24">
+      <div className="bg-dark pb-24 md:pb-32">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             {/* Lado esquerdo: ícone/ilustração */}
             <div className="flex justify-center lg:justify-start">
-              <img src="/mapa.svg" alt="Interpretação" className="w-full " />
+              <img
+                src="/financeiramente-consciencia.svg"
+                alt="Interpretação"
+                className="w-full "
+              />
             </div>
 
             {/* Lado direito: texto */}
@@ -85,7 +89,7 @@ export default function ResultNextSteps({ phase = 2 }) {
 
               <motion.div variants={variants.fadeInUp} className="space-y-4">
                 {/* Badge de fase */}
-                <div className="flex items-center gap-2">
+                <div className="flex gap-2">
                   <div className="inline-flex items-center gap-2 px-3 py-1 w-fit rounded-full border border-dark/60 bg-transparent mb-4">
                     <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
                     <span className="text-sm  tracking-wider text-dark font-semibold">
@@ -94,8 +98,7 @@ export default function ResultNextSteps({ phase = 2 }) {
                   </div>
                   <h3 className="text-2xl">{content.title}</h3>
                 </div>
-
-                <p className="text-dark/70 leading-relaxed max-w-xl text-pretty text-sm md:text-base">
+                <p className="text-dark/70 leading-relaxed max-w-xl text-pretty text-base md:text-lg">
                   {content.nextStep} {content.nextStepDetails}
                 </p>
               </motion.div>
@@ -107,21 +110,28 @@ export default function ResultNextSteps({ phase = 2 }) {
               </motion.div>
             </motion.div>
 
-            {/* Lado direito: imagem */}
-            <motion.div
-              variants={variants.fadeIn}
-              initial="initial"
-              whileInView="animate"
-              viewport={viewportConfig}
-              className="relative aspect-[7/8] rounded-2xl overflow-hidden shadow-2xl"
-            >
-              <Image
-                src={NextStepImg}
-                alt="Próximos passos"
-                fill
-                className="object-cover"
+            <div className="relative">
+              <img
+                src="/financeiramente-arrow-growth.svg"
+                alt=""
+                className="absolute left-1/2 right-1/2 -translate-x-1/2 top-[92%] md:-translate-x-0  backdrop-blur-lg pointer-events-none w-20 rounded-full z-10 md:left-[90%] md:top-[-4%]"
               />
-            </motion.div>
+              {/* Lado direito: imagem */}
+              <motion.div
+                variants={variants.fadeIn}
+                initial="initial"
+                whileInView="animate"
+                viewport={viewportConfig}
+                className="relative aspect-[7/8] rounded-2xl overflow-hidden shadow-2xl"
+              >
+                <Image
+                  src={NextStepImg}
+                  alt="Próximos passos"
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+            </div>
           </div>
         </Container>
       </div>
