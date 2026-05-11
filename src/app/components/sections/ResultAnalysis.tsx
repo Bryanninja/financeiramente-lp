@@ -1,10 +1,10 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Container from "../ui/Container";
 import { variants, viewportConfig } from "@/app/lib/animations";
-import Image from "next/image";
-import BusinessWomanImg from "../../assets/img/fase-2.webp";
+import Image, { StaticImageData } from "next/image";
 import { phaseContent } from "@/app/data/resultContent";
 import { PieChart, BarChart3, Wallet, TrendingUp } from "lucide-react";
 import {
@@ -17,17 +17,21 @@ import {
 } from "chart.js";
 import { Radar } from "react-chartjs-2";
 
+import Fase1Img from "../../assets/img/fase-1.webp";
+import Fase2Img from "../../assets/img/fase-2.webp";
+import Fase3Img from "../../assets/img/fase-3.webp";
+import Fase4Img from "../../assets/img/fase-4.webp";
+
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip);
 
-const pillarIcons = [PieChart, BarChart3, Wallet, TrendingUp];
+const phaseImages: Record<number, StaticImageData> = {
+  1: Fase1Img,
+  2: Fase2Img,
+  3: Fase3Img,
+  4: Fase4Img,
+};
 
-// Array na ordem correta para o Radar: Cima, Direita, Baixo, Esquerda
-const pillarData = [
-  { label: "Rentabilidade", score: 7, max: 12 },
-  { label: "Resultado", score: 8, max: 12 },
-  { label: "Retorno (ROI)", score: 7, max: 12 },
-  { label: "Caixa", score: 10, max: 12 },
-];
+const pillarIcons = [PieChart, BarChart3, Wallet, TrendingUp];
 
 function RadarChart({
   data,
@@ -39,7 +43,7 @@ function RadarChart({
     datasets: [
       {
         data: data.map((d) => (d.score / d.max) * 100),
-        backgroundColor: "rgba(66, 133, 244, 0.3)", // Azul suave da referência
+        backgroundColor: "rgba(66, 133, 244, 0.3)",
         borderColor: "#4285F4",
         borderWidth: 2,
         pointBackgroundColor: "#4285F4",
@@ -61,17 +65,17 @@ function RadarChart({
           display: false,
         },
         grid: {
-          color: "rgba(0, 0, 0, 0.20)", // Linhas de grade suaves
+          color: "rgba(0, 0, 0, 0.15)",
         },
         angleLines: {
-          color: "rgba(0, 0, 0, 0.20)",
+          color: "rgba(0, 0, 0, 0.15)",
         },
         pointLabels: {
           font: {
             size: 16,
-            family: "Inter, sans-serif", // Ajuste para a fonte principal do seu site
+            family: "Inter, sans-serif",
           },
-          color: "#000000",
+          color: "#121212",
         },
       },
     },
@@ -88,44 +92,77 @@ function RadarChart({
   return <Radar data={chartData} options={options} />;
 }
 
-export default function ResultAnalysis({ phase = 2, score = 24 }) {
+export default function ResultAnalysis({
+  phase = 2,
+  score = 24,
+  pilarScores = [7, 8, 10, 7],
+}) {
   const content = phaseContent[phase];
+  const phaseImage = phaseImages[phase] ?? Fase2Img;
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const pillarData = [
+    { label: "Rentabilidade", score: pilarScores[0] ?? 7, max: 12 },
+    { label: "Resultado", score: pilarScores[1] ?? 8, max: 12 },
+    { label: "Retorno (ROI)", score: pilarScores[3] ?? 7, max: 12 },
+    { label: "Caixa", score: pilarScores[2] ?? 10, max: 12 },
+  ];
 
   return (
     <section className="bg-light space-y-0">
       {/* ─── Banner de Identificação ─── */}
       <Container className=" pt-20">
-        <div className="bg-[#E3E2DE] rounded-lg border border-primary-vibrant/40 py-14 px-8 text-center border-b border-dark/5">
-          <h2 className="text-3xl md:text-4xl font-bold text-dark leading-[1.15] mb-2">
+        <motion.div
+          variants={variants.fadeInUp}
+          initial="initial"
+          whileInView="animate"
+          viewport={viewportConfig}
+          className="bg-[#E3E2DE] rounded-lg border border-primary-vibrant/40 py-14 px-8 text-center border-b border-dark/5"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-dark leading-tight mb-2">
             Identificação do Perfil <br /> Financeiro do negócio
           </h2>
           <p className="text-dark/70 text-base ">
             Seu desempenho em resumo abaixo.
           </p>
-        </div>
+        </motion.div>
       </Container>
 
       {/* ─── Perfil e Score ─── */}
       <Container className="py-20">
         {/* Header: Fase + Pontuação */}
-        <div className=" justify-center text-center text-balance items-center flex flex-col md:flex-row md:justify-between md:items-start md:text-left border-b border-dark/10 pb-6 mb-12 gap-4">
-          <div>
+        <motion.div
+          variants={variants.staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={viewportConfig}
+          className="justify-center text-center text-balance items-center flex flex-col md:flex-row md:justify-between md:items-start md:text-left border-b border-dark/10 pb-6 mb-12 gap-4"
+        >
+          <motion.div variants={variants.fadeInUp}>
             <span className=" text-2xl md:text-4xl font-bold text-dark ">
               Perfil financeiro do negócio
             </span>
             <p className="text-lg md:text-xl mt-2 text-dark/70">
               Fase: {content.title}
             </p>
-          </div>
-          <div className="flex flex-col border border-primary-vibrant rounded-lg p-4 items-center gap-1">
+          </motion.div>
+
+          <motion.div
+            variants={variants.fadeInUp}
+            className="flex flex-col border border-primary-vibrant rounded-lg p-4 items-center gap-1"
+          >
             <span className="text-sm text-dark/70 ">
               Pontuação do diagnóstico
             </span>
             <div className=" text-dark rounded text-2xl font-semibold">
-              {23}/48 pontos
+              {score}/48 pontos
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Perfil Card + Imagem */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-24">
@@ -148,7 +185,7 @@ export default function ResultAnalysis({ phase = 2, score = 24 }) {
                 {content.title}
               </h3>
               <p className="text-dark leading-relaxed mb-4 text-base">
-                Negócio em Consciência Financeira
+                Negócio em {content.title}
               </p>
               <p className="text-dark/70 leading-relaxed text-sm md:text-base">
                 {content.description}
@@ -156,19 +193,42 @@ export default function ResultAnalysis({ phase = 2, score = 24 }) {
             </motion.div>
           </motion.div>
 
-          {/* Imagem */}
+          {/* Imagem com Overlay e Hover via Framer Motion */}
           <motion.div
             variants={variants.fadeIn}
             initial="initial"
             whileInView="animate"
+            whileHover="hover" // Ativa o estado de hover do Framer Motion
             viewport={viewportConfig}
-            className="relative aspect-[10/8] h-full col-span-12 md:col-span-7 rounded-lg overflow-hidden shadow-xl"
+            className="relative aspect-[10/8] h-full col-span-12 md:col-span-7 rounded-lg overflow-hidden shadow-xl cursor-pointer"
           >
-            <Image
-              src={BusinessWomanImg}
-              alt="Análise de perfil"
-              fill
-              className="object-cover"
+            {/* Container da Imagem que vai aumentar de tamanho */}
+            <motion.div
+              variants={{
+                initial: { scale: 1 },
+                animate: { scale: 1 },
+                hover: { scale: 1.05 }, // Dá o zoom
+              }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="absolute inset-0 w-full h-full"
+            >
+              <Image
+                src={phaseImage}
+                alt="Análise de perfil"
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+
+            {/* Overlay azul que vai alterar a opacidade */}
+            <motion.div
+              variants={{
+                initial: { opacity: 0.2 },
+                animate: { opacity: 0.2 },
+                hover: { opacity: 0.1 }, // Fica mais transparente no hover
+              }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="absolute inset-0 z-10 bg-primary-deep pointer-events-none"
             />
           </motion.div>
         </div>
@@ -207,25 +267,30 @@ export default function ResultAnalysis({ phase = 2, score = 24 }) {
           viewport={viewportConfig}
           className="w-full mx-auto mt-12"
         >
-          {/* Caixa com borda azul da referência */}
           <div className="relative flex flex-col border border-[#4285F4] rounded-lg p-6 md:p-10 bg-transparent">
             {/* Textos Topo Esquerda */}
-            <div className="text-left z-10 md:absolute md:top-8 md:left-8 mb-8 md:mb-0">
+            <motion.div
+              variants={variants.fadeInUp}
+              className="text-left z-10 md:absolute md:top-8 md:left-8 mb-8 md:mb-0"
+            >
               <h4 className="text-lg md:text-xl font-medium text-dark">
                 Avaliação dos Pilares Financeiros
               </h4>
               <p className="text-sm text-dark/50 mt-2">Pontuações</p>
-            </div>
+            </motion.div>
 
-            {/* Gráfico Centralizado */}
-            <div className="flex justify-center items-center w-full max-w-2xl mx-auto py-4 md:py-8">
-              <RadarChart data={pillarData} />
+            {/* Gráfico Centralizado protegido contra o bug de SSR */}
+            <div className="flex justify-center items-center w-full max-w-2xl mx-auto py-4 md:py-16">
+              {mounted && <RadarChart data={pillarData} />}
             </div>
 
             {/* Texto Canto Inferior Direito */}
-            <div className="text-right z-10 md:absolute md:bottom-8 md:right-8 mt-4 md:mt-0">
+            <motion.div
+              variants={variants.fadeInUp}
+              className="text-right z-10 md:absolute md:bottom-8 md:right-8 mt-4 md:mt-0"
+            >
               <p className="text-sm text-dark/50">Pilares Financeiro</p>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </Container>
@@ -265,10 +330,15 @@ export default function ResultAnalysis({ phase = 2, score = 24 }) {
                   <motion.div
                     key={i}
                     variants={variants.fadeInUp}
-                    className="flex flex-col items-center text-center space-y-3"
+                    whileHover={{ y: -4 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="group flex flex-col items-center text-center space-y-3"
                   >
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/5 border border-white/5 flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-light" strokeWidth={1.5} />
+                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/5 border border-white/5 flex items-center justify-center transition-all duration-300 group-hover:bg-primary-deep/20 group-hover:border-primary-deep/40">
+                      <Icon
+                        className="w-6 h-6 text-light transition-colors duration-300 group-hover:text-primary-vibrant"
+                        strokeWidth={1.5}
+                      />
                     </div>
                     <span className="text-light font-medium text-base">
                       {pilar.label}

@@ -7,6 +7,15 @@ import NextStepImg from "../../assets/img/bg-report.webp";
 import { phaseContent } from "@/app/data/resultContent";
 import Image from "next/image";
 import { Search, BarChart3, TrendingUp, Target } from "lucide-react";
+import { getWhatsAppUrl } from "@/app/lib/whatsapp";
+
+// 3A — Mapa de SVGs por fase declarado fora do componente [cite: 106]
+const phaseSvgs: Record<number, string> = {
+  1: "/financeiramente-escuro.svg",
+  2: "/financeiramente-consciencia.svg",
+  3: "/financeiramente-estrutura.svg",
+  4: "/financeiramente-inteligencia.svg",
+};
 
 const ctaItems = [
   {
@@ -33,16 +42,22 @@ export default function ResultNextSteps({ phase = 2 }) {
       <div className="bg-dark pb-24 md:pb-32">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            {/* Lado esquerdo: ícone/ilustração */}
-            <div className="flex justify-center lg:justify-start">
+            {/* 3B — Lado esquerdo com animação e SVG dinâmico [cite: 108, 109] */}
+            <motion.div
+              variants={variants.fadeInLeft ?? variants.fadeIn}
+              initial="initial"
+              whileInView="animate"
+              viewport={viewportConfig}
+              className="flex justify-center lg:justify-start"
+            >
               <img
-                src="/financeiramente-consciencia.svg"
+                src={phaseSvgs[phase] ?? "/financeiramente-consciencia.svg"}
                 alt="Interpretação"
-                className="w-full "
+                className="w-full"
               />
-            </div>
+            </motion.div>
 
-            {/* Lado direito: texto */}
+            {/* Lado direito: texto (já animado conforme código original) [cite: 109, 110] */}
             <motion.div
               variants={variants.staggerContainer}
               initial="initial"
@@ -52,7 +67,7 @@ export default function ResultNextSteps({ phase = 2 }) {
             >
               <motion.h3
                 variants={variants.fadeInUp}
-                className="text-3xl font-bold text-light/90 uppercase "
+                className="text-3xl font-bold text-light/90 uppercase"
               >
                 Interpretação do Diagnóstico
               </motion.h3>
@@ -71,7 +86,7 @@ export default function ResultNextSteps({ phase = 2 }) {
       <div className="bg-light py-32">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Lado esquerdo: conteúdo */}
+            {/* Lado esquerdo: conteúdo [cite: 113, 114] */}
             <motion.div
               variants={variants.staggerContainer}
               initial="initial"
@@ -88,15 +103,17 @@ export default function ResultNextSteps({ phase = 2 }) {
               </motion.div>
 
               <motion.div variants={variants.fadeInUp} className="space-y-4">
-                {/* Badge de fase */}
-                <div className="flex gap-2">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 w-fit rounded-full border border-dark/60 bg-transparent mb-4">
+                {/* 3C — Badge da fase centralizado e estilizado [cite: 115, 116] */}
+                <div className="inline-flex items-center gap-3">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 w-fit rounded-full border border-dark/60 bg-transparent">
                     <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
-                    <span className="text-sm  tracking-wider text-dark font-semibold">
+                    <span className="text-sm tracking-wider text-dark font-semibold">
                       Fase
                     </span>
                   </div>
-                  <h3 className="text-2xl">{content.title}</h3>
+                  <span className="text-2xl font-semibold text-dark">
+                    {content.title}
+                  </span>
                 </div>
                 <p className="text-dark/70 leading-relaxed max-w-xl text-pretty text-base md:text-lg">
                   {content.nextStep} {content.nextStepDetails}
@@ -104,7 +121,12 @@ export default function ResultNextSteps({ phase = 2 }) {
               </motion.div>
 
               <motion.div variants={variants.fadeInUp}>
-                <Button variant="outline">
+                <Button
+                  variant="outline"
+                  className="w-full md:w-auto px-10"
+                  href={getWhatsAppUrl("sessaoEstrategica")}
+                  target="_blank"
+                >
                   Agendar Sessão Estratégica FinanceiraMente
                 </Button>
               </motion.div>
@@ -114,13 +136,16 @@ export default function ResultNextSteps({ phase = 2 }) {
               <img
                 src="/financeiramente-arrow-growth.svg"
                 alt=""
-                className="absolute left-1/2 right-1/2 -translate-x-1/2 top-[92%] md:-translate-x-0  backdrop-blur-lg pointer-events-none w-20 rounded-full z-10 md:left-[90%] md:top-[-4%]"
+                className="absolute left-1/2 right-1/2 -translate-x-1/2 top-[92%] md:-translate-x-0 backdrop-blur-lg pointer-events-none w-20 rounded-full z-10 md:left-[90%] md:top-[-4%]"
               />
-              {/* Lado direito: imagem */}
+
+              {/* 3D — Lado direito com animação de entrada e hover [cite: 120, 121] */}
               <motion.div
                 variants={variants.fadeIn}
                 initial="initial"
                 whileInView="animate"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.4 }}
                 viewport={viewportConfig}
                 className="relative aspect-[7/8] rounded-2xl overflow-hidden shadow-2xl"
               >
@@ -138,8 +163,8 @@ export default function ResultNextSteps({ phase = 2 }) {
 
       {/* ─── CTA Final (Aprofunde a análise) ─── */}
       <div className="bg-dark py-24">
-        <Container className="space-y-16">
-          {/* Título e descrição */}
+        <Container className="space-y-8">
+          {/* Título e descrição [cite: 123, 124, 125] */}
           <motion.div
             variants={variants.staggerContainer}
             initial="initial"
@@ -177,26 +202,28 @@ export default function ResultNextSteps({ phase = 2 }) {
             initial="initial"
             whileInView="animate"
             viewport={viewportConfig}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto"
           >
             {ctaItems.map((item, i) => (
               <motion.div
                 key={i}
                 variants={variants.fadeInUp}
-                className="bg-white/5 p-6 rounded-xl border border-white/8 space-y-4 hover:border-white/15 transition-all"
+                whileHover={{ y: -4 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="bg-[#1A1A1A] p-8 rounded-xl border border-white/5 space-y-6 hover:border-primary-vibrant/20 transition-all group"
               >
                 <item.icon
-                  className="w-6 h-6 text-light/40"
+                  className="text-light group-hover:text-primary-vibrant transition-colors duration-300"
                   strokeWidth={1.5}
                 />
-                <p className="text-light/70 text-sm leading-relaxed">
+                <p className="text-light/80 text-base md:text-lg leading-snug font-medium">
                   {item.text}
                 </p>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Botão CTA */}
+          {/* Botão CTA [cite: 131, 132] */}
           <motion.div
             variants={variants.fadeInUp}
             initial="initial"
@@ -204,7 +231,12 @@ export default function ResultNextSteps({ phase = 2 }) {
             viewport={viewportConfig}
             className="flex justify-center"
           >
-            <Button variant="white" className=" text-dark font-bold text-base">
+            <Button
+              variant="white"
+              className="w-full md:w-auto px-10"
+              href={getWhatsAppUrl("sessaoEstrategica")}
+              target="_blank"
+            >
               Agendar Sessão Estratégica FinanceiraMente
             </Button>
           </motion.div>

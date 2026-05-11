@@ -44,7 +44,7 @@ export default function DiagnosticHero() {
   };
 
   return (
-    <section className="bg-light pt-32 pb-32 md:pt-44 md:pb-44">
+    <section className="bg-light flex justify-center items-center pt-32 pb-20  min-h-screen ">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Lado Esquerdo: Texto */}

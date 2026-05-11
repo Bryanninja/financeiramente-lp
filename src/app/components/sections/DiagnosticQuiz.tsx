@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import Container from "../ui/Container";
 import { variants, viewportConfig } from "@/app/lib/animations";
 import { questions } from "@/app/data/questions";
@@ -10,8 +11,31 @@ import Header from "./Header";
 
 export default function DiagnosticQuiz() {
   const [currentStep, setCurrentStep] = useState(0);
+  const [answers, setAnswers] = useState<Record<number, string>>({});
   const totalSteps = questions.length;
   const currentData = questions[currentStep];
+  const router = useRouter();
+
+  // 1. Criamos um estado para saber se ele tem permissão
+  const [isAuthorized, setIsAuthorized] = useState(false);
+
+  // 2. Checagem de segurança assim que a página monta
+  useEffect(() => {
+    const checkGuard = async () => {
+      const user = localStorage.getItem("fm_user");
+      if (!user) {
+        // Se não tem usuário salvo, manda pro início
+        router.push("/diagnostic");
+      } else {
+        // Se tem, libera a tela
+        setIsAuthorized(true);
+      }
+    };
+    checkGuard();
+  }, [router]);
+
+  // 3. Se não estiver autorizado ainda (ou estiver redirecionando), não mostra nada
+  if (!isAuthorized) return null;
 
   // IMPORTANTE: Checagem de segurança para evitar o TypeError
   if (!currentData) {
@@ -24,20 +48,52 @@ export default function DiagnosticQuiz() {
 
   const progress = ((currentStep + 1) / totalSteps) * 100;
 
-  const handleNext = () => {
+  const handleNext = (optionId: string) => {
+    const newAnswers = { ...answers, [currentStep]: optionId };
+    setAnswers(newAnswers);
+
     if (currentStep < totalSteps - 1) {
       setCurrentStep(currentStep + 1);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      // Redirecionar para página de resultado quando acabar
-      console.log("Diagnóstico concluído");
+      // Calcular pontuação
+      const scoreMap: Record<string, number> = { A: 1, B: 2, C: 3, D: 4 };
+
+      // Pilares: perguntas 0-2 = Rentabilidade, 3-5 = Resultado, 6-8 = Caixa, 9-11 = ROI
+      const pilarScores = [0, 3, 6, 9].map((start) =>
+        [0, 1, 2].reduce((sum, offset) => {
+          const ans = newAnswers[start + offset] ?? "A";
+          return sum + (scoreMap[ans] ?? 1);
+        }, 0),
+      );
+
+      const totalScore = pilarScores.reduce((a, b) => a + b, 0);
+
+      // Determinar fase (1 a 4)
+      let phase: number;
+      if (totalScore <= 18) phase = 1;
+      else if (totalScore <= 30) phase = 2;
+      else if (totalScore <= 40) phase = 3;
+      else phase = 4;
+
+      // Salvar no localStorage
+      localStorage.setItem(
+        "fm_result",
+        JSON.stringify({
+          totalScore,
+          phase,
+          pilarScores, // [rentabilidade, resultado, caixa, roi]
+        }),
+      );
+
+      router.push("/diagnostic-result");
     }
   };
 
   return (
-    <section className="bg-white min-h-screen ">
+    <section>
       <Header />
-      <Container className="pt-24 pb-24 md:pt-32 md:pb-32">
+      <Container className=" min-h-screen pt-36 md:pt-40 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start border-b border-dark/20 pb-16">
           <motion.div
             key={`text-${currentStep}`}
@@ -90,7 +146,7 @@ export default function DiagnosticQuiz() {
             <motion.button
               key={option.id}
               variants={variants.fadeInUp}
-              onClick={handleNext}
+              onClick={() => handleNext(option.id)}
               className="w-full flex items-center gap-8 py-8 group hover:bg-light/50 transition-colors text-left cursor-pointer"
             >
               <div className="w-12 h-12 shrink-0 rounded-full border border-dark/20 flex items-center justify-center text-xl font-medium group-hover:border-primary-deep group-hover:bg-primary-deep group-hover:text-white transition-all">

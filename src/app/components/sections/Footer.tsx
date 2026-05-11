@@ -8,9 +8,9 @@ import { variants, viewportConfig } from "@/app/lib/animations";
 
 const navLinks = [
   { name: "Home", href: "#home" },
-  { name: "O Mapa", href: "#mapa" },
-  { name: "O Método", href: "#metodo" },
-  { name: "Sobre", href: "#sobre" },
+  { name: "O Mapa", href: "/#mapa" },
+  { name: "O Método", href: "/#metodo" },
+  { name: "Sobre", href: "/#sobre" },
 ];
 
 const legalLinks = [
