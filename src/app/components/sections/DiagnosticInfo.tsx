@@ -35,18 +35,18 @@ export default function DiagnosticInfo() {
   return (
     <section className="bg-dark py-24 md:py-32 space-y-32">
       <Container>
-        {/* PARTE 1: Mapa de Maturidade */}
+        {/* PARTE 1: Mapa de Maturidade - Escada alinhada à esquerda */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <motion.div
             variants={variants.staggerContainer}
             initial="initial"
             whileInView="animate"
             viewport={viewportConfig}
-            className="space-y-8"
+            className="space-y-6"
           >
             <motion.h2
               variants={variants.fadeInUp}
-              className="text-3xl md:text-5xl font-bold text-light leading-tight"
+              className="text-3xl md:text-[2.6rem] font-bold text-light leading-tight"
             >
               A análise é baseada no Mapa de Maturidade Financeira -
               FinanceiraMente
@@ -64,15 +64,16 @@ export default function DiagnosticInfo() {
             initial="initial"
             whileInView="animate"
             viewport={viewportConfig}
-            className="space-y-4"
+            className="flex flex-col gap-4 items-start" // Alinhado à esquerda
           >
-            {steps.map((step) => (
+            {steps.map((step, index) => (
               <motion.div
                 key={step.id}
                 variants={variants.fadeInUp}
-                className="flex items-center gap-4 p-4 rounded-xl border border-white/5"
+                style={{ width: `${70 + index * 10}%` }}
+                className="flex items-center gap-4 p-4 rounded-lg border border-white/5 bg-white/[0.002] hover:border-primary-deep/80 hover:bg-white/5 hover:scale-105 transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary-deep flex text-2xl items-center justify-center text-light ">
+                <div className="w-12 h-12 shrink-0 rounded-lg bg-primary-deep flex text-3xl items-center justify-center text-light">
                   {step.id}
                 </div>
                 <span className="text-light/80 font-medium">{step.text}</span>
@@ -84,25 +85,29 @@ export default function DiagnosticInfo() {
         {/* Divisor sutil */}
         <div className="h-[1px] w-full bg-white/5 my-32" />
 
-        {/* PARTE 2: Pilares Financeiros */}
+        {/* PARTE 2: Pilares Financeiros - Alturas corrigidas */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <motion.div
             variants={variants.staggerContainer}
             initial="initial"
             whileInView="animate"
             viewport={viewportConfig}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 order-2 lg:order-1"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 order-2 lg:order-1 items-stretch"
           >
             {pillars.map((pillar, i) => (
               <motion.div
                 key={i}
                 variants={variants.fadeInUp}
-                className="p-6 rounded-xl transition-colors hover:bg-light/5 border flex flex-col justify-center border-white/5 bg-white/[0.02] space-y-3"
+                className="h-full flex" // Força o motion.div a ocupar a altura do grid
               >
-                <h4 className="text-light font-bold text-xl">{pillar.title}</h4>
-                <p className="text-light/50 text-pretty text-sm leading-relaxed">
-                  {pillar.desc}
-                </p>
+                <div className="p-8 * rounded-lg group hover:border-primary-deep/60 transition-colors hover:bg-light/5 border border-white/5 bg-[#1a1a1a] space-y-4 w-full flex flex-col">
+                  <h4 className="text-light group-hover:text-primary-vibrant duration-300 font-bold text-xl">
+                    {pillar.title}
+                  </h4>
+                  <p className="text-light/50 text-pretty text-sm leading-relaxed flex-1">
+                    {pillar.desc}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -112,11 +117,11 @@ export default function DiagnosticInfo() {
             initial="initial"
             whileInView="animate"
             viewport={viewportConfig}
-            className="space-y-8 order-1 lg:order-2"
+            className="space-y-6 order-1 lg:order-2"
           >
             <motion.h2
               variants={variants.fadeInUp}
-              className="text-3xl md:text-5xl font-bold text-light leading-tight"
+              className="text-3xl md:text-[2.6rem] font-bold text-light leading-tight"
             >
               O diagnóstico também avalia os quatro pilares financeiros
             </motion.h2>

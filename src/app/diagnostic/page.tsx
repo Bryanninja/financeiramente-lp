@@ -5,8 +5,7 @@ import Header from "../components/sections/Header";
 
 export default function DiagnosticPage() {
   return (
-    <main className="min-h-screen bg-light">
-      {/* Aqui você pode inserir sua Navbar se tiver ela separada */}
+    <main className="bg-light">
       <Header />
       <DiagnosticHero />
       <DiagnosticInfo />
