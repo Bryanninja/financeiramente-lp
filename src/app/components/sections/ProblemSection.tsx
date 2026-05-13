@@ -1,10 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Search, DollarSign, Wallet, HelpCircle } from "lucide-react";
 import Container from "../ui/Container";
 import { variants, viewportConfig } from "@/app/lib/animations";
-import Image from "next/image";
 import StressImg from "../../assets/img/stress-business.webp";
 
 const painCards = [
@@ -30,15 +30,15 @@ export default function ProblemSection() {
   return (
     <section className="bg-dark py-24 md:py-32">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start"
+          variants={variants.staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={viewportConfig}
+        >
           {/* Lado Esquerdo: Conteúdo Textual e Imagem */}
-          <motion.div
-            variants={variants.staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={viewportConfig}
-            className="space-y-10"
-          >
+          <div className="space-y-10">
             <div className="space-y-6">
               {/* Tag Superior */}
               <motion.div
@@ -70,7 +70,7 @@ export default function ProblemSection() {
             </div>
 
             <motion.div
-              variants={variants.fadeInUp}
+              variants={variants.fadeIn}
               className="relative aspect-video rounded-xl overflow-hidden shadow-2xl border border-white/5"
             >
               <Image
@@ -82,10 +82,7 @@ export default function ProblemSection() {
             </motion.div>
 
             {/* Bloco de Texto Inferior */}
-            <motion.div
-              variants={variants.staggerContainer}
-              className="space-y-8 pt-4"
-            >
+            <div className="space-y-8 pt-4">
               <motion.div variants={variants.fadeInUp} className="space-y-2">
                 <h3 className="text-light text-xl font-bold leading-snug">
                   Quando essas respostas não estão claras, decisões importantes
@@ -108,15 +105,12 @@ export default function ProblemSection() {
                   decisões claras.
                 </p>
               </motion.div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
-          {/* Lado Direito: Cards Fixos com Stagger Individual */}
+          {/* Lado Direito: Cards com Stagger */}
           <motion.div
             variants={variants.staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={viewportConfig}
             className="grid grid-cols-1 gap-6 sticky top-32"
           >
             {painCards.map((card, index) => (
@@ -136,7 +130,7 @@ export default function ProblemSection() {
               </motion.div>
             ))}
           </motion.div>
-        </div>
+        </motion.div>
       </Container>
     </section>
   );

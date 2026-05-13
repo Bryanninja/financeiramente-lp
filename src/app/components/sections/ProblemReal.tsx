@@ -33,7 +33,7 @@ const IconChip = ({
   color?: "primary" | "accent";
 }) => (
   <motion.div
-    variants={variants.fadeInUp} // O chip agora herda a animação do stagger pai
+    variants={variants.fadeInUp}
     className="flex items-center gap-2 px-3 py-3 bg-[#E3E2DE] backdrop-blur-sm rounded-lg border border-black/5"
   >
     <div
@@ -50,14 +50,14 @@ export default function ProblemReal() {
     <section className="bg-light py-24 md:py-32 space-y-32 overflow-hidden">
       <Container className="space-y-16 md:space-y-32">
         {/* PARTE 1: O Problema Real */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            variants={variants.staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={viewportConfig}
-            className="space-y-8"
-          >
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+          variants={variants.staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={viewportConfig}
+        >
+          <div className="space-y-8">
             <div className="space-y-6">
               <motion.div variants={variants.fadeInUp} className="space-y-4">
                 <h2 className="text-3xl md:text-5xl font-bold text-dark leading-tight">
@@ -68,7 +68,6 @@ export default function ProblemReal() {
                 </p>
               </motion.div>
 
-              {/* Stagger nos Chips */}
               <motion.div
                 variants={variants.staggerContainer}
                 className="flex flex-wrap gap-6"
@@ -81,7 +80,7 @@ export default function ProblemReal() {
 
             <motion.div
               variants={variants.fadeInUp}
-              className="p-4 bg-accent-bronze/32 rounded-lg  border-accent-bronze"
+              className="p-4 bg-accent-bronze/32 rounded-lg border-accent-bronze"
             >
               <p className="text-dark font-medium">
                 Mas raramente aprende a estruturar financeiramente a empresa.
@@ -97,13 +96,10 @@ export default function ProblemReal() {
                 Agendar Sessão Estratégica FinanceiraMente
               </Button>
             </motion.div>
-          </motion.div>
+          </div>
 
           <motion.div
             variants={variants.fadeInUp}
-            initial="initial"
-            whileInView="animate"
-            viewport={viewportConfig}
             className="relative aspect-square rounded-2xl overflow-hidden shadow-xl"
           >
             <Image
@@ -113,15 +109,18 @@ export default function ProblemReal() {
               className="object-cover"
             />
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* PARTE 2: Conforme o negócio cresce */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+          variants={variants.staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={viewportConfig}
+        >
           <motion.div
             variants={variants.fadeInUp}
-            initial="initial"
-            whileInView="animate"
-            viewport={viewportConfig}
             className="order-2 lg:order-1 relative aspect-square rounded-2xl overflow-hidden shadow-xl"
           >
             <Image
@@ -132,13 +131,7 @@ export default function ProblemReal() {
             />
           </motion.div>
 
-          <motion.div
-            variants={variants.staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={viewportConfig}
-            className="order-1 lg:order-2 space-y-8"
-          >
+          <div className="order-1 lg:order-2 space-y-8">
             <motion.div variants={variants.fadeInUp} className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold text-dark leading-tight">
                 Conforme o negócio cresce, aumentam também:
@@ -167,8 +160,8 @@ export default function ProblemReal() {
                 Agendar Sessão Estratégica FinanceiraMente
               </Button>
             </motion.div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
 
         {/* PARTE 3: Administrar no escuro */}
         <motion.div
@@ -178,18 +171,21 @@ export default function ProblemReal() {
           viewport={viewportConfig}
           className="space-y-12"
         >
-          <motion.div
-            variants={variants.fadeInUp}
-            className="max-w-3xl space-y-4"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-dark leading-tight">
+          <div className="max-w-3xl space-y-4">
+            <motion.h2
+              variants={variants.fadeInUp}
+              className="text-3xl md:text-4xl font-bold text-dark leading-tight"
+            >
               Sem uma estrutura clara de gestão financeira, o empresário passa a
               administrar o negócio no escuro.
-            </h2>
-            <p className="text-dark/80 text-xl font-medium">
+            </motion.h2>
+            <motion.p
+              variants={variants.fadeInUp}
+              className="text-dark/80 text-xl font-medium"
+            >
               O dinheiro entra, mas não fica claro:
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
 
           <motion.div
             variants={variants.staggerContainer}

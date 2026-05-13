@@ -7,22 +7,17 @@ import { Watch } from "lucide-react";
 import Container from "../ui/Container";
 import Button from "../ui/Button";
 import { variants } from "@/app/lib/animations";
-
-// Importações do Formulário e Validação
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-
-// Importações do Telefone
 import { PhoneInput } from "react-international-phone";
-import "react-international-phone/style.css"; // CSS base da biblioteca
+import "react-international-phone/style.css";
 
-// 1. Criando o Schema de Validação com Zod
 const leadSchema = z.object({
   name: z.string().min(2, "O nome é obrigatório."),
   email: z.string().email("Digite um e-mail válido."),
   company: z.string().min(2, "O nome da empresa é obrigatório."),
-  phone: z.string().min(12, "Digite um telefone válido."), // min 12 para garantir o código do país + DDD
+  phone: z.string().min(12, "Digite um telefone válido."),
 });
 
 type LeadFormData = z.infer<typeof leadSchema>;
@@ -32,7 +27,6 @@ export default function DiagnosticHero() {
   const [submitError, setSubmitError] = useState("");
   const router = useRouter();
 
-  // 2. Configurando o React Hook Form com Zod
   const {
     register,
     handleSubmit,
@@ -40,29 +34,19 @@ export default function DiagnosticHero() {
     formState: { errors },
   } = useForm<LeadFormData>({
     resolver: zodResolver(leadSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      company: "",
-      phone: "",
-    },
+    defaultValues: { name: "", email: "", company: "", phone: "" },
   });
 
-  // 3. Função de envio
   const onSubmit = async (data: LeadFormData) => {
     setSubmitError("");
     setLoading(true);
-
     try {
       const res = await fetch("/enviar.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-
       if (!res.ok) throw new Error();
-
-      // Salva no localStorage para usar na tela de resultado depois
       localStorage.setItem("fm_user", JSON.stringify(data));
       router.push("/questions");
     } catch {
@@ -77,12 +61,16 @@ export default function DiagnosticHero() {
   return (
     <section className="bg-light flex justify-center items-center pt-32 pb-20 min-h-screen">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Lado Esquerdo: Texto */}
+        {/* O PAI do grid agora controla o fluxo de ambas as colunas */}
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start"
+          variants={variants.staggerContainer}
+          initial="initial"
+          animate="animate"
+        >
+          {/* Lado Esquerdo: Texto (Inicia a cascata interna) */}
           <motion.div
             variants={variants.staggerContainer}
-            initial="initial"
-            animate="animate"
             className="space-y-8"
           >
             <motion.div
@@ -109,19 +97,16 @@ export default function DiagnosticHero() {
               Preencha o formulário para começar seu diagnóstico. Ao responder o
               diagnóstico você receberá um relatório que apresenta uma leitura
               inicial da estrutura financeira do seu negócio com base nas
-              respostas fornecidas.
+              respostas fornecidas no diagnóstico.
             </motion.p>
           </motion.div>
 
-          {/* Lado Direito: Formulário com React Hook Form */}
+          {/* Lado Direito: Formulário (Entra por último na fila do grid) */}
           <motion.form
             variants={variants.fadeInUp}
-            initial="initial"
-            animate="animate"
             onSubmit={handleSubmit(onSubmit)}
             className="rounded-2xl space-y-6"
           >
-            {/* Campo: Nome */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-dark">
                 Seu Nome
@@ -141,7 +126,6 @@ export default function DiagnosticHero() {
               )}
             </div>
 
-            {/* Campo: E-mail */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-dark">
                 E-mail Profissional
@@ -161,7 +145,6 @@ export default function DiagnosticHero() {
               )}
             </div>
 
-            {/* Campo: Telefone/WhatsApp */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-dark">
                 WhatsApp
@@ -171,8 +154,6 @@ export default function DiagnosticHero() {
                 control={control}
                 render={({ field }) => (
                   <div
-                    // 1. Removi o 'overflow-hidden' para o dropdown poder "vazar" pra fora
-                    // 2. Removi o 'bg-white' para o fundo ficar idêntico aos outros inputs
                     className={`flex mt-2 rounded-lg border transition-colors focus-within:border-primary-deep ${
                       errors.phone ? "border-red-500" : "border-dark/40"
                     }`}
@@ -198,7 +179,6 @@ export default function DiagnosticHero() {
               )}
             </div>
 
-            {/* Campo: Empresa */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-dark">
                 Nome da Empresa
@@ -218,7 +198,6 @@ export default function DiagnosticHero() {
               )}
             </div>
 
-            {/* Botão Submit */}
             <div className="pt-2">
               <Button
                 type="submit"
@@ -235,7 +214,7 @@ export default function DiagnosticHero() {
               )}
             </div>
           </motion.form>
-        </div>
+        </motion.div>
       </Container>
     </section>
   );

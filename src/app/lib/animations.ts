@@ -28,11 +28,11 @@ export const variants: NamedVariants = {
     initial: {},
     animate: {
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.2,
         delayChildren: 0.1,
       },
     },
   },
 };
 
-export const viewportConfig = { once: true, amount: 0.1 };
+export const viewportConfig = { once: true, amount: 0.3 };

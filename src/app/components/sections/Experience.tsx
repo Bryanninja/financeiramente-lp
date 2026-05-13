@@ -68,7 +68,7 @@ export default function Experience() {
   return (
     <section id="sobre" className="bg-light py-8 md:pb-32 overflow-hidden">
       <Container className="space-y-20">
-        {/* Cabeçalho */}
+        {/* Cabeçalho Unificado */}
         <motion.div
           variants={variants.staggerContainer}
           initial="initial"
@@ -76,17 +76,23 @@ export default function Experience() {
           viewport={viewportConfig}
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
         >
-          <motion.div variants={variants.fadeInUp}>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/60 mb-6">
+          <div className="space-y-6">
+            <motion.div
+              variants={variants.fadeInUp}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-dark/60 mb-6"
+            >
               <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
               <span className="text-sm tracking-wider text-dark font-semibold">
                 Experiência
               </span>
-            </div>
-            <h2 className="text-3xl md:text-5xl text-balance font-bold text-dark leading-tight">
+            </motion.div>
+            <motion.h2
+              variants={variants.fadeInUp}
+              className="text-3xl md:text-5xl text-balance font-bold text-dark leading-tight"
+            >
               O Método FinanceiraMente nasce da prática
-            </h2>
-          </motion.div>
+            </motion.h2>
+          </div>
 
           <motion.div
             variants={variants.fadeInUp}
@@ -107,7 +113,7 @@ export default function Experience() {
           </motion.div>
         </motion.div>
 
-        {/* Bloco Michel 30+ (Desktop & Mobile Unificados na Lógica) */}
+        {/* Bloco Michel 30+ */}
         <motion.div
           variants={variants.fadeInUp}
           initial="initial"
@@ -115,7 +121,6 @@ export default function Experience() {
           viewport={viewportConfig}
           className="relative w-full aspect-video md:aspect-video h-[780px] md:h-auto rounded-2xl overflow-hidden bg-dark"
         >
-          {/* Desktop Image */}
           <div className="hidden md:block">
             <Image
               src={MichelExperienceImg}
@@ -124,7 +129,6 @@ export default function Experience() {
               className="object-cover opacity-95"
             />
           </div>
-          {/* Mobile Image */}
           <div className="md:hidden">
             <Image
               src={MichelExperienceImg2}
@@ -135,30 +139,35 @@ export default function Experience() {
           </div>
 
           <div className="relative justify-items-start py-6 z-10 h-full flex flex-col md:justify-center px-8 md:px-16 space-y-6 max-w-xl">
-            <p className="text-light/90 text-base md:text-lg leading-relaxed font-light">
+            <motion.p
+              variants={variants.fadeInUp}
+              className="text-light/90 text-base md:text-lg leading-relaxed font-light"
+            >
               Michel Stawicki atua há mais de 30 anos em finanças, gestão e
               liderança empresarial. Ao longo de sua carreira ocupou posições
               executivas em grandes organizações no Brasil e no exterior,
               liderando áreas financeiras responsáveis por operações complexas,
               projetos de transformação e decisões estratégicas de negócio.
-            </p>
+            </motion.p>
 
-            <svg className="w-full h-32 md:h-48 overflow-visible">
-              <text
-                x="0"
-                y="80%"
-                className="text-8xl md:text-[12rem] font-bold"
-                fill="rgba(255,255,255,0.05)"
-                stroke="white"
-                strokeWidth="1"
-              >
-                30+
-              </text>
-            </svg>
+            <motion.div variants={variants.fadeIn}>
+              <svg className="w-full h-32 md:h-48 overflow-visible">
+                <text
+                  x="0"
+                  y="80%"
+                  className="text-8xl md:text-[12rem] font-bold"
+                  fill="rgba(255,255,255,0.05)"
+                  stroke="white"
+                  strokeWidth="1"
+                >
+                  30+
+                </text>
+              </svg>
+            </motion.div>
           </div>
         </motion.div>
 
-        {/* Seção de Resultados "Estilo Netflix" */}
+        {/* Seção de Resultados */}
         <motion.div
           variants={variants.staggerContainer}
           initial="initial"
@@ -166,18 +175,20 @@ export default function Experience() {
           viewport={viewportConfig}
           className="space-y-12"
         >
-          <motion.div variants={variants.fadeInUp} className="max-w-2xl">
-            <h3 className="text-2xl md:text-3xl font-bold text-dark mb-4">
+          <div className="max-w-2xl">
+            <motion.h3
+              variants={variants.fadeInUp}
+              className="text-2xl md:text-3xl font-bold text-dark mb-4"
+            >
               Os resultados falam por si.
-            </h3>
-            <p className="text-dark/80">
+            </motion.h3>
+            <motion.p variants={variants.fadeInUp} className="text-dark/80">
               Hoje Michel aplica essa visão para ajudar empresários a estruturar
               financeiramente seus negócios e tomar decisões com mais clareza.
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
 
           <div className="group relative">
-            {/* Botões de Navegação */}
             {canScrollLeft && (
               <button
                 onClick={() => scroll("left")}

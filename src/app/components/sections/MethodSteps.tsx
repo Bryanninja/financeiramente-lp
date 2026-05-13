@@ -40,132 +40,124 @@ const steps = [
 export default function MethodSteps() {
   return (
     <section className="bg-light py-24 md:py-32 overflow-hidden">
-      <Container className="space-y-16">
-        {/* Header Centralizado */}
+      <Container>
         <motion.div
           variants={variants.staggerContainer}
           initial="initial"
           whileInView="animate"
           viewport={viewportConfig}
-          className="text-center max-w-3xl mx-auto space-y-6"
+          className="space-y-16"
         >
-          <motion.h2
-            variants={variants.fadeInUp}
-            className="text-3xl md:text-5xl font-bold text-dark leading-tight"
-          >
-            O caminho do Método FinanceiraMente no seu negócio
-          </motion.h2>
-          <motion.p
-            variants={variants.fadeInUp}
-            className="text-dark/70 text-lg md:text-xl"
-          >
-            Comece com um diagnóstico inicial gratuito e descubra como evoluir
-            até o acompanhamento estratégico completo.
-          </motion.p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
-          {/* Lado Esquerdo: Timeline */}
-          <div className="flex flex-col space-y-8 pt-4">
-            <motion.div
-              variants={variants.staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={viewportConfig}
-              className="relative"
-            >
-              {/* Linha Vertical Animada - Ela cresce conforme o scroll */}
-              <motion.div
-                initial={{ scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                transition={{ duration: 1.5, ease: "easeInOut" }}
-                className="absolute left-[19px] top-4 bottom-4 w-[1.5px] bg-dark origin-top opacity-20"
-              />
-
-              <div className="space-y-6">
-                {steps.map((step, index) => (
-                  <motion.div
-                    key={index}
-                    variants={variants.fadeInUp}
-                    className="relative flex items-start group"
-                  >
-                    {/* Círculo da Timeline */}
-                    <div className="relative z-10 flex items-center justify-center w-10 h-10 shrink-0">
-                      <div className="w-8 h-8 rounded-full bg-dark flex items-center justify-center border border-white/10 shadow-lg">
-                        {step.status === "checked" && (
-                          <Check size={18} className="text-white" />
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Conteúdo do Passo */}
-                    <div
-                      className={`ml-6 flex-1 transition-all p-6 duration-300 
-                      ${index === 0 ? "bg-white border border-primary-vibrant rounded-2xl shadow-xl -mt-2" : "py-2"}`}
-                    >
-                      {index === 0 && (
-                        <div className="inline-flex items-center gap-2 px-3 py-1 w-fit rounded-full border border-dark/60 bg-transparent mb-4">
-                          <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
-                          <span className="text-sm  tracking-wider text-dark font-semibold">
-                            Sessão Gratuita
-                          </span>
-                        </div>
-                      )}
-
-                      <h3 className="text-xl font-medium text-dark mb-2">
-                        {step.title}
-                      </h3>
-                      <p
-                        className={`text-pretty leading-relaxed text-base ${index === 0 ? "text-dark/80" : "text-dark/70"}`}
-                      >
-                        {step.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Botão de Chamada abaixo da Timeline */}
-            <motion.div
+          {/* Header Centralizado */}
+          <div className="text-center max-w-3xl mx-auto space-y-6">
+            <motion.h2
               variants={variants.fadeInUp}
-              initial="initial"
-              whileInView="animate"
-              viewport={viewportConfig}
-              className="space-y-3 pt-6"
+              className="text-3xl md:text-5xl font-bold text-dark leading-tight"
             >
-              <Button
-                variant="black"
-                className="w-full md:w-auto px-10"
-                href={getWhatsAppUrl("sessaoEstrategica")}
-                target="_blank"
-              >
-                Quero minha sessão estratégica gratuita
-              </Button>
-
-              <p className="text-sm text-dark font-medium">
-                Ganhe o Diagnóstico inicial sem custos.
-              </p>
-            </motion.div>
+              O caminho do Método FinanceiraMente no seu negócio
+            </motion.h2>
+            <motion.p
+              variants={variants.fadeInUp}
+              className="text-dark/70 text-lg md:text-xl"
+            >
+              Comece com um diagnóstico inicial gratuito e descubra como evoluir
+              até o acompanhamento estratégico completo.
+            </motion.p>
           </div>
 
-          {/* Lado Direito: Imagem com Scale Sutil */}
-          <motion.div
-            variants={variants.fadeIn}
-            initial="initial"
-            whileInView="animate"
-            viewport={viewportConfig}
-            className="relative aspect-[16/14] lg:h-full w-full rounded-lg overflow-hidden shadow-xl"
-          >
-            <Image
-              src={CollaborationImg}
-              alt="Michel Stawicki com cliente"
-              fill
-              className="object-cover hover:scale-105 transition-transform duration-1000"
-              priority
-            />
-          </motion.div>
-        </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+            {/* Lado Esquerdo: Timeline */}
+            <div className="flex flex-col space-y-8 pt-4">
+              <motion.div
+                variants={variants.staggerContainer}
+                className="relative"
+              >
+                {/* Linha Vertical Animada */}
+                <motion.div
+                  initial={{ scaleY: 0 }}
+                  whileInView={{ scaleY: 1 }}
+                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                  className="absolute left-[19px] top-4 bottom-4 w-[1.5px] bg-dark origin-top opacity-20"
+                />
+
+                <div className="space-y-6">
+                  {steps.map((step, index) => (
+                    <motion.div
+                      key={index}
+                      variants={variants.fadeInUp}
+                      className="relative flex items-start group"
+                    >
+                      {/* Círculo da Timeline */}
+                      <div className="relative z-10 flex items-center justify-center w-10 h-10 shrink-0">
+                        <div className="w-8 h-8 rounded-full bg-dark flex items-center justify-center border border-white/10 shadow-lg">
+                          {step.status === "checked" && (
+                            <Check size={18} className="text-white" />
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Conteúdo do Passo */}
+                      <div
+                        className={`ml-6 flex-1 transition-all p-6 duration-300 
+                        ${index === 0 ? "bg-white border border-primary-vibrant rounded-2xl shadow-xl -mt-2" : "py-2"}`}
+                      >
+                        {index === 0 && (
+                          <div className="inline-flex items-center gap-2 px-3 py-1 w-fit rounded-full border border-dark/60 bg-transparent mb-4">
+                            <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
+                            <span className="text-sm tracking-wider text-dark font-semibold">
+                              Sessão Gratuita
+                            </span>
+                          </div>
+                        )}
+
+                        <h3 className="text-xl font-medium text-dark mb-2">
+                          {step.title}
+                        </h3>
+                        <p
+                          className={`text-pretty leading-relaxed text-base ${index === 0 ? "text-dark/80" : "text-dark/70"}`}
+                        >
+                          {step.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Botão de Chamada */}
+              <motion.div
+                variants={variants.fadeInUp}
+                className="space-y-3 pt-6"
+              >
+                <Button
+                  variant="black"
+                  className="w-full md:w-auto px-10"
+                  href={getWhatsAppUrl("sessaoEstrategica")}
+                  target="_blank"
+                >
+                  Quero minha sessão estratégica gratuita
+                </Button>
+                <p className="text-sm text-dark font-medium">
+                  Ganhe o Diagnóstico inicial sem custos.
+                </p>
+              </motion.div>
+            </div>
+
+            {/* Lado Direito: Imagem */}
+            <motion.div
+              variants={variants.fadeIn}
+              className="relative aspect-[16/14] lg:h-full w-full rounded-lg overflow-hidden shadow-xl"
+            >
+              <Image
+                src={CollaborationImg}
+                alt="Michel Stawicki com cliente"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-1000"
+                priority
+              />
+            </motion.div>
+          </div>
+        </motion.div>
       </Container>
     </section>
   );

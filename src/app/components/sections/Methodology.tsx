@@ -28,15 +28,15 @@ export default function Methodology() {
   return (
     <section id="metodo" className="bg-dark py-8 md:pb-32 overflow-hidden">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <motion.div
+          variants={variants.staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={viewportConfig}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+        >
           {/* Lado Esquerdo: Conteúdo e Cards */}
-          <motion.div
-            variants={variants.staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={viewportConfig}
-            className="space-y-12"
-          >
+          <div className="space-y-12">
             <div className="space-y-6">
               {/* Tag Superior */}
               <motion.div
@@ -44,7 +44,7 @@ export default function Methodology() {
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-light/70 bg-primary-vibrant/5"
               >
                 <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
-                <span className="text-sm  tracking-wider text-light/70 font-semibold">
+                <span className="text-sm tracking-wider text-light/70 font-semibold">
                   Os 4 pilares
                 </span>
               </motion.div>
@@ -86,14 +86,11 @@ export default function Methodology() {
                 </motion.div>
               ))}
             </motion.div>
-          </motion.div>
+          </div>
 
           {/* Lado Direito: SVG da Escada de Maturidade */}
           <motion.div
-            variants={variants.fadeInRight} // Usando a entrada lateral centralizada
-            initial="initial"
-            whileInView="animate"
-            viewport={viewportConfig}
+            variants={variants.fadeInRight}
             className="relative flex justify-center lg:justify-end"
           >
             <img
@@ -102,7 +99,7 @@ export default function Methodology() {
               className="w-full max-w-[550px] hover:scale-105 transition-transform duration-500 drop-shadow-[0_0_30px_rgba(30,58,138,0.3)]"
             />
           </motion.div>
-        </div>
+        </motion.div>
       </Container>
     </section>
   );

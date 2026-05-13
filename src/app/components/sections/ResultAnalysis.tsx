@@ -251,11 +251,11 @@ export default function ResultAnalysis({
             variants={variants.fadeInUp}
             className="text-dark/70 max-w-xl mx-auto text-sm md:text-base leading-relaxed"
           >
-            O diagnóstico analisa o nível de desenvolvimento dos quatro pilares
-            que sustentam a gestão financeira do negócio. Esses pilares
-            representam os principais momentos que influenciam a capacidade da
-            empresa de compreender a agir diante das suas informações com
-            clareza e conviência.
+            O diagnóstico também analisa o nível de desenvolvimento dos quatro
+            pilares financeiros que sustentam a gestão financeira do negócio.
+            Esses pilares representam os principais elementos que influenciam a
+            capacidade da empresa de compreender seus números e tomar decisões
+            financeiras com mais clareza.
           </motion.p>
         </motion.div>
 

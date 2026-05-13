@@ -128,14 +128,14 @@ export default function MaturityMap() {
         </motion.div>
 
         {/* Rodapé de Conversão */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:pt-12 items-center">
-          <motion.div
-            variants={variants.staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={viewportConfig}
-            className="space-y-8"
-          >
+        <motion.div
+          variants={variants.staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={viewportConfig}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:pt-12 items-center"
+        >
+          <div className="space-y-8">
             <motion.h3
               variants={variants.fadeInUp}
               className="text-3xl md:text-4xl text-balance font-bold text-light"
@@ -145,53 +145,53 @@ export default function MaturityMap() {
 
             <motion.h3
               variants={variants.fadeInUp}
-              className="text-base  text-light/70"
+              className="text-base text-light/70"
             >
               Ao responder o diagnóstico, você receberá
             </motion.h3>
 
             <motion.div
               variants={variants.fadeInUp}
-              className="hidden md:block" // Esconde no mobile, mostra no desktop
+              className="hidden md:block"
             >
               <Button href="/diagnostic">
-                Descobrir maturidade financeira
+                Descobrir maturidade financeira do meu negócio
               </Button>
             </motion.div>
-          </motion.div>
+          </div>
 
-          {/* Lista de Benefícios com Stagger Individual */}
-          <motion.div
-            variants={variants.staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={viewportConfig}
-            className="grid grid-cols-1 gap-4"
-          >
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={index}
-                variants={variants.fadeInUp}
-                className="flex items-center gap-4 p-5 rounded-lg border border-white/5 hover:bg-white/10 transition-colors"
-              >
-                <div className="shrink-0 w-10 h-10 md:w-12 md:h-12 rounded bg-light/5 flex items-center justify-center border-2 border-primary-deep shadow-inner">
-                  <img src="/check.svg" alt="check icon" />
-                </div>
-                <p className="text-light/80 text-sm md:text-base font-medium">
-                  {benefit}
-                </p>
-              </motion.div>
-            ))}
+          {/* Lista de Benefícios com Stagger */}
+          <div className="grid grid-cols-1 gap-4">
+            <motion.div
+              variants={variants.staggerContainer}
+              className="grid grid-cols-1 gap-4"
+            >
+              {benefits.map((benefit, index) => (
+                <motion.div
+                  key={index}
+                  variants={variants.fadeInUp}
+                  className="flex items-center gap-4 p-5 rounded-lg border border-white/5 hover:bg-white/10 transition-colors"
+                >
+                  <div className="shrink-0 w-10 h-10 md:w-12 md:h-12 rounded bg-light/5 flex items-center justify-center border-2 border-primary-deep shadow-inner">
+                    <img src="/check.svg" alt="check icon" />
+                  </div>
+                  <p className="text-light/80 text-sm md:text-base font-medium">
+                    {benefit}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+
             <motion.div
               variants={variants.fadeInUp}
-              className="block md:hidden mt-4" // Mostra no mobile, esconde no desktop
+              className="block md:hidden mt-4"
             >
               <Button href="/diagnostic" className="w-full">
                 Descobrir maturidade financeira
               </Button>
             </motion.div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </Container>
     </section>
   );
