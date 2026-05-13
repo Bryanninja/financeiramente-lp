@@ -94,7 +94,7 @@ export default function Hero() {
         </div>
         <div className="text-light text-sm md:text-[15px] leading-snug opacity-90 font-normal">
           O problema raramente é vender. <br />O problema é crescer com
-          structure.
+          estrutura.
         </div>
       </motion.div>
     </motion.section>

@@ -7,8 +7,8 @@ import { variants, viewportConfig } from "@/app/lib/animations";
 
 const steps = [
   { id: 1, text: "Negócio no Escuro" },
-  { id: 2, text: "Estrutura Financeira" },
   { id: 3, text: "Consciência Financeira" },
+  { id: 2, text: "Estrutura Financeira" },
   { id: 4, text: "Inteligência Financeira" },
 ];
 
