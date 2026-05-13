@@ -1,5 +1,15 @@
 import LegalPage from "@/app/components/ui/LegalPage";
 
+export const metadata = {
+  title: "Termos de Uso",
+  description:
+    "Termos e condições de uso da plataforma FinanceiraMente e da consultoria estratégica de Michel Stawicki.",
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 export default function TermsOfService() {
   return (
     <LegalPage title="Termos de Serviço" lastUpdated="07 de Maio de 2026">

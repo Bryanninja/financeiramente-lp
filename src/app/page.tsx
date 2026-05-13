@@ -8,6 +8,12 @@ import Experience from "./components/sections/Experience";
 import FinalCTA from "./components/sections/FinalCTA";
 import Footer from "./components/sections/Footer";
 
+export const metadata = {
+  title: "Sessão Estratégica e Mentoria Financeira",
+  description:
+    "Agende sua Sessão Estratégica. Use nosso Diagnóstico de Maturidade Financeira para identificar gargalos e estruturar o crescimento do seu negócio.",
+};
+
 export default function Home() {
   return (
     <main>

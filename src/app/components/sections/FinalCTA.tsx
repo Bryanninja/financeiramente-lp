@@ -65,7 +65,7 @@ export default function FinalCTA() {
           >
             <Image
               src={FinalMeetingImg}
-              alt="Reunião estratégica com Michel Stawicki"
+              alt="Reunião estratégica com Michel Stawicki- Michel Stawicki - Especialista em Estruturação Financeira e Mentoria "
               fill
               className="object-cover object-top hover:scale-105 transition-transform duration-1000"
             />

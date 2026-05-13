@@ -77,7 +77,7 @@ export default function Hero() {
         <div className="relative order-last w-full h-[550px] md:h-auto md:absolute md:inset-y-0 md:right-0 md:z-10 md:w-1/2 overflow-hidden flex items-end justify-center md:justify-end">
           <Image
             src={BgHeroCutout}
-            alt="Michel Stawicki analisando dados"
+            alt="Michel Stawicki - Especialista em Estruturação Financeira e Mentoria"
             className="w-full h-full md:w-auto md:h-full object-cover object-top md:object-contain md:object-right-bottom md:max-h-[96%]"
             priority
           />

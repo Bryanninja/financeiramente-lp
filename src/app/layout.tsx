@@ -1,51 +1,84 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import ScrollToTop from "./components/ui/ScrollToTop";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
 
 export const metadata: Metadata = {
-  title: "FinanceiraMente | Estruture seu Negócio e Cresça com Segurança",
-  description:
-    "Empresas raramente quebram por falta de vendas, mas por falta de estrutura financeira. Agende sua Sessão Estratégica FinanceiraMente e transforme números em decisões claras.", //
-  keywords: [
-    "Sessão Estratégica FinanceiraMente",
-    "estruturar negócio financeiramente",
-    "Michel Stawicki",
-    "lucro real da operação",
-    "consultoria financeira",
-    "crescimento de pequenas empresas",
-  ],
-  authors: [{ name: "FinanceiraMente" }],
-  openGraph: {
-    title: "FinanceiraMente | O Método para Estruturar seu Negócio",
-    description:
-      "O problema raramente é vender. O problema é crescer com estrutura. Descubra onde o seu negócio ganha dinheiro e garanta caixa para expandir.", //[cite: 3]
-    url: "https://financeiramente.com.br",
-    siteName: "FinanceiraMente",
-    locale: "pt_BR",
-    type: "website",
+  metadataBase: new URL("https://msfinanceiramente.com"),
+  title: {
+    default: "FinanceiraMente | Sessão Estratégica com Michel Stawicki",
+    template: "%s | FinanceiraMente",
   },
+  description:
+    "Mentoria financeira estratégica para empresários. Estruture seu negócio para o crescimento e tome decisões com clareza sob a orientação de Michel Stawicki.",
+  keywords: [
+    "mentoria financeira",
+    "sessão estratégica",
+    "Michel Stawicki",
+    "consultoria financeira empresarial",
+    "estratégia de negócios",
+    "gestão de caixa",
+    "lucratividade B2B",
+  ],
+  authors: [{ name: "Michel Stawicki" }],
+  creator: "Albry Studio",
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "https://msfinanceiramente.com",
+    siteName: "FinanceiraMente",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Michel Stawicki - Sessão Estratégica FinanceiraMente",
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0A0A0A",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "FinanceiraMente - Michel Stawicki",
+    image: "https://msfinanceiramente.com/og-image.jpg",
+    description:
+      "Mentoria e estruturação financeira estratégica para empresas. Transforme sua gestão com Michel Stawicki.",
+    founder: {
+      "@type": "Person",
+      name: "Michel Stawicki",
+      jobTitle: "Estrategista Financeiro",
+    },
+    url: "https://msfinanceiramente.com/",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "BR",
+    },
+  };
+
   return (
     <html lang="pt-BR">
-      {/* O fundo padrão será o claro (#FAF9F6) e o texto escuro (#121212) */}
-      <body
-        className={`${inter.variable} font-sans antialiased bg-light-DEFAULT text-dark-DEFAULT`}
-      >
-        <ScrollToTop />
-        {children}
-      </body>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }

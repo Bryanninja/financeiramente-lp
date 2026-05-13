@@ -124,7 +124,7 @@ export default function Experience() {
           <div className="hidden md:block">
             <Image
               src={MichelExperienceImg}
-              alt="Michel Stawicki"
+              alt="Michel Stawicki - Especialista em Estruturação Financeira e Mentoria"
               fill
               className="object-cover opacity-95"
             />
@@ -132,7 +132,7 @@ export default function Experience() {
           <div className="md:hidden">
             <Image
               src={MichelExperienceImg2}
-              alt="Michel Stawicki"
+              alt="Michel Stawicki - Especialista em Estruturação Financeira e Mentoria"
               fill
               className="object-cover object-top opacity-95"
             />

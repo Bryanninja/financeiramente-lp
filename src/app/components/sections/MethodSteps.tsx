@@ -150,7 +150,7 @@ export default function MethodSteps() {
             >
               <Image
                 src={CollaborationImg}
-                alt="Michel Stawicki com cliente"
+                alt="Michel Stawicki com cliente - Michel Stawicki - Especialista em Estruturação Financeira e Mentoria"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-1000"
                 priority

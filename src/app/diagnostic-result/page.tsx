@@ -5,7 +5,15 @@ import ResultHero from "../components/sections/ResultHero";
 import ResultAnalysis from "../components/sections/ResultAnalysis";
 import ResultNextSteps from "../components/sections/FinalCTARes";
 import Footer from "../components/sections/Footer";
-import { useRouter } from "next/navigation"; // 1. Adicione este import
+import { useRouter } from "next/navigation";
+
+export const metadata = {
+  title: "Seu Relatório de Maturidade",
+  robots: {
+    index: false, // Proíbe o Google de mostrar esta página na busca
+    follow: false, // Impede o robô de seguir links dentro desta página
+  },
+};
 
 export default function DiagnosticResult() {
   const router = useRouter(); // 2. Instancie o router

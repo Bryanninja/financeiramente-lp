@@ -138,7 +138,7 @@ export default function ResultNextSteps({ phase = 2 }) {
               >
                 <Image
                   src={NextStepImg}
-                  alt="Próximos passos"
+                  alt="Próximos passos - Michel Stawicki - Especialista em Estruturação Financeira e Mentoria"
                   fill
                   className="object-cover"
                 />

@@ -1,5 +1,15 @@
 import LegalPage from "@/app/components/ui/LegalPage"; // Importe o componente de estrutura que criamos
 
+export const metadata = {
+  title: "Política de Privacidade",
+  description:
+    "Entenda como protegemos os dados da sua empresa e garantimos a segurança das informações coletadas no diagnóstico FinanceiraMente.",
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 export default function PrivacyPolicy() {
   return (
     <LegalPage title="Política de Privacidade" lastUpdated="07 de Maio de 2026">
