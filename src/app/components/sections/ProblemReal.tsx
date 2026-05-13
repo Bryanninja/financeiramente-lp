@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
+  LucideIcon,
   ArrowUpRight,
   Users,
   Settings,
@@ -23,15 +24,13 @@ import PaymentImg from "../../assets/img/payment.webp";
 import CalcImg from "../../assets/img/calculation.webp";
 import { getWhatsAppUrl } from "@/app/lib/whatsapp";
 
-const IconChip = ({
-  icon: Icon,
-  text,
-  color = "primary",
-}: {
-  icon: any;
+interface IconChipProps {
+  icon: LucideIcon;
   text: string;
   color?: "primary" | "accent";
-}) => (
+}
+
+const IconChip = ({ icon: Icon, text, color = "primary" }: IconChipProps) => (
   <motion.div
     variants={variants.fadeInUp}
     className="flex items-center gap-2 px-3 py-3 bg-[#E3E2DE] backdrop-blur-sm rounded-lg border border-black/5"
