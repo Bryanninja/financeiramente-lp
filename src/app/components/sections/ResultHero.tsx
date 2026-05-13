@@ -22,12 +22,13 @@ export default function ResultHero() {
       const user = JSON.parse(localStorage.getItem("fm_user") || "{}");
       const result = JSON.parse(localStorage.getItem("fm_result") || "{}");
 
-      await fetch("/api/send-result", {
+      await fetch("/enviar.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: user.name ?? "Usuário",
           email: user.email ?? "",
+          company: user.company ?? "", // Adicionei a company aqui para enviar pro Michel
           phase: result.phase ?? 2,
           score: result.totalScore ?? 24,
           pilarScores: result.pilarScores ?? [7, 8, 10, 7],

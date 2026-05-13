@@ -150,7 +150,10 @@ export default function MaturityMap() {
               Ao responder o diagnóstico, você receberá
             </motion.h3>
 
-            <motion.div variants={variants.fadeInUp}>
+            <motion.div
+              variants={variants.fadeInUp}
+              className="hidden md:block" // Esconde no mobile, mostra no desktop
+            >
               <Button href="/diagnostic">
                 Descobrir maturidade financeira
               </Button>
@@ -172,15 +175,18 @@ export default function MaturityMap() {
                 className="flex items-center gap-4 p-5 rounded-lg border border-white/5 hover:bg-white/10 transition-colors"
               >
                 <div className="shrink-0 w-10 h-10 md:w-12 md:h-12 rounded bg-light/5 flex items-center justify-center border-2 border-primary-deep shadow-inner">
-                  <img src="/Checkfat.svg" alt="check icon" />
+                  <img src="/check.svg" alt="check icon" />
                 </div>
                 <p className="text-light/80 text-sm md:text-base font-medium">
                   {benefit}
                 </p>
               </motion.div>
             ))}
-            <motion.div variants={variants.fadeInUp} className="md:hidden">
-              <Button className="w-full">
+            <motion.div
+              variants={variants.fadeInUp}
+              className="block md:hidden mt-4" // Mostra no mobile, esconde no desktop
+            >
+              <Button href="/diagnostic" className="w-full">
                 Descobrir maturidade financeira
               </Button>
             </motion.div>

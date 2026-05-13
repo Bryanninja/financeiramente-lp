@@ -1,9 +1,11 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: "export", // Isso gera a pasta 'out' com o HTML puro
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  output: "export",
+  trailingSlash: true, // <--- ADICIONE ESTA LINHA
   images: {
-    unoptimized: true, // Necessário para exportação estática
+    unoptimized: true,
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

@@ -14,13 +14,13 @@ const steps = [
   {
     title: "Diagnóstico Inicial",
     description:
-      "Um diagnóstico inicial para identificar em qual fase do Mapa de Maturidade Financeira o seu negócio se encontra.",
+      "Um diagnóstico inicial para identificar em qual fase do Mapa de Maturidade Financeira FinanceiraMente o seu negócio se encontra.",
     status: "checked",
   },
   {
     title: "Raio-X Financeiro",
     description:
-      "Uma análise estruturada para identificar fragilidades, melhorias e prioridades de estruturação financeira.",
+      "Uma análise estruturada da situação financeira do negócio para identificar fragilidades, oportunidades de melhoria e prioridades de estruturação financeira..",
     status: "solid",
   },
   {
@@ -32,7 +32,7 @@ const steps = [
   {
     title: "Consultoria Estratégica",
     description:
-      "Acompanhamento para apoiar decisões importantes de crescimento e expansão.",
+      "Acompanhamento para estruturar financeiramente o negócio e apoiar decisões importantes de crescimento.",
     status: "solid",
   },
 ];
@@ -112,11 +112,11 @@ export default function MethodSteps() {
                         </div>
                       )}
 
-                      <h3 className="text-xl font-bold text-dark mb-2">
+                      <h3 className="text-xl font-medium text-dark mb-2">
                         {step.title}
                       </h3>
                       <p
-                        className={`text-pretty leading-relaxed text-base ${index === 0 ? "text-dark/80" : "text-dark/60"}`}
+                        className={`text-pretty leading-relaxed text-base ${index === 0 ? "text-dark/80" : "text-dark/70"}`}
                       >
                         {step.description}
                       </p>
@@ -155,7 +155,7 @@ export default function MethodSteps() {
             initial="initial"
             whileInView="animate"
             viewport={viewportConfig}
-            className="relative aspect-[16/14] lg:h-full w-full rounded-lg overflow-hidden shadow-2xl"
+            className="relative aspect-[16/14] lg:h-full w-full rounded-lg overflow-hidden shadow-xl"
           >
             <Image
               src={CollaborationImg}

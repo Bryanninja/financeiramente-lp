@@ -3,48 +3,79 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Clock, Watch } from "lucide-react";
+import { Watch } from "lucide-react";
 import Container from "../ui/Container";
 import Button from "../ui/Button";
 import { variants } from "@/app/lib/animations";
 
+// Importações do Formulário e Validação
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+
+// Importações do Telefone
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css"; // CSS base da biblioteca
+
+// 1. Criando o Schema de Validação com Zod
+const leadSchema = z.object({
+  name: z.string().min(2, "O nome é obrigatório."),
+  email: z.string().email("Digite um e-mail válido."),
+  company: z.string().min(2, "O nome da empresa é obrigatório."),
+  phone: z.string().min(12, "Digite um telefone válido."), // min 12 para garantir o código do país + DDD
+});
+
+type LeadFormData = z.infer<typeof leadSchema>;
+
 export default function DiagnosticHero() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [company, setCompany] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [submitError, setSubmitError] = useState("");
   const router = useRouter();
 
-  const handleSubmit = async () => {
-    if (!name.trim() || !email.trim() || !company.trim()) {
-      setError("Preencha todos os campos para continuar.");
-      return;
-    }
+  // 2. Configurando o React Hook Form com Zod
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<LeadFormData>({
+    resolver: zodResolver(leadSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      company: "",
+      phone: "",
+    },
+  });
 
-    setError("");
+  // 3. Função de envio
+  const onSubmit = async (data: LeadFormData) => {
+    setSubmitError("");
     setLoading(true);
 
     try {
-      const res = await fetch("/api/send-lead", {
+      const res = await fetch("/enviar.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, company }),
+        body: JSON.stringify(data),
       });
 
       if (!res.ok) throw new Error();
 
-      localStorage.setItem("fm_user", JSON.stringify({ name, email, company }));
+      // Salva no localStorage para usar na tela de resultado depois
+      localStorage.setItem("fm_user", JSON.stringify(data));
       router.push("/questions");
     } catch {
-      setError("Erro ao enviar. Tente novamente.");
+      setSubmitError(
+        "Erro ao iniciar. Verifique sua conexão e tente novamente.",
+      );
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section className="bg-light flex justify-center items-center pt-32 pb-20  min-h-screen ">
+    <section className="bg-light flex justify-center items-center pt-32 pb-20 min-h-screen">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Lado Esquerdo: Texto */}
@@ -82,26 +113,35 @@ export default function DiagnosticHero() {
             </motion.p>
           </motion.div>
 
-          {/* Lado Direito: Formulário */}
-          <motion.div
+          {/* Lado Direito: Formulário com React Hook Form */}
+          <motion.form
             variants={variants.fadeInUp}
             initial="initial"
             animate="animate"
-            className=" rounded-2xl space-y-8"
+            onSubmit={handleSubmit(onSubmit)}
+            className="rounded-2xl space-y-6"
           >
+            {/* Campo: Nome */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-dark">
                 Seu Nome
               </label>
               <input
                 type="text"
-                placeholder="Digite seu nome"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 mt-2 rounded-lg border border-dark/40 focus:border-primary-deep outline-none transition-colors"
+                placeholder="Digite seu nome completo"
+                {...register("name")}
+                className={`w-full px-4 py-3 mt-2 rounded-lg border focus:border-primary-deep outline-none transition-colors ${
+                  errors.name ? "border-red-500" : "border-dark/40"
+                }`}
               />
+              {errors.name && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.name.message}
+                </p>
+              )}
             </div>
 
+            {/* Campo: E-mail */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-dark">
                 E-mail Profissional
@@ -109,37 +149,92 @@ export default function DiagnosticHero() {
               <input
                 type="email"
                 placeholder="Digite seu e-mail"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border mt-2 border-dark/40 focus:border-primary-deep outline-none transition-colors"
+                {...register("email")}
+                className={`w-full px-4 py-3 rounded-lg border mt-2 focus:border-primary-deep outline-none transition-colors ${
+                  errors.email ? "border-red-500" : "border-dark/40"
+                }`}
               />
+              {errors.email && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
+            {/* Campo: Telefone/WhatsApp */}
             <div className="space-y-2">
-              <label className="text-sm font-semibold  text-dark">
+              <label className="text-sm font-semibold text-dark">
+                WhatsApp
+              </label>
+              <Controller
+                name="phone"
+                control={control}
+                render={({ field }) => (
+                  <div
+                    // 1. Removi o 'overflow-hidden' para o dropdown poder "vazar" pra fora
+                    // 2. Removi o 'bg-white' para o fundo ficar idêntico aos outros inputs
+                    className={`flex mt-2 rounded-lg border transition-colors focus-within:border-primary-deep ${
+                      errors.phone ? "border-red-500" : "border-dark/40"
+                    }`}
+                  >
+                    <PhoneInput
+                      defaultCountry="br"
+                      value={field.value}
+                      onChange={field.onChange}
+                      className="w-full flex items-center"
+                      inputClassName="!w-full !h-auto !border-none !bg-transparent !px-4 !py-3 !text-base !text-dark focus:!outline-none focus:!ring-0 !shadow-none"
+                      countrySelectorStyleProps={{
+                        buttonClassName:
+                          "!h-auto !py-3 !border-none !bg-transparent !pl-4 !pr-2 !shadow-none hover:!bg-transparent",
+                      }}
+                    />
+                  </div>
+                )}
+              />
+              {errors.phone && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.phone.message}
+                </p>
+              )}
+            </div>
+
+            {/* Campo: Empresa */}
+            <div className="space-y-2">
+              <label className="text-sm font-semibold text-dark">
                 Nome da Empresa
               </label>
               <input
                 type="text"
                 placeholder="Digite o nome da sua empresa"
-                value={company}
-                onChange={(e) => setCompany(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border mt-2 border-dark/40 focus:border-primary-deep outline-none transition-colors"
+                {...register("company")}
+                className={`w-full px-4 py-3 rounded-lg border mt-2 focus:border-primary-deep outline-none transition-colors ${
+                  errors.company ? "border-red-500" : "border-dark/40"
+                }`}
               />
+              {errors.company && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.company.message}
+                </p>
+              )}
             </div>
 
-            <div>
+            {/* Botão Submit */}
+            <div className="pt-2">
               <Button
+                type="submit"
                 variant="black"
                 className="w-full text-lg disabled:opacity-70 disabled:cursor-not-allowed"
-                onClick={handleSubmit}
                 disabled={loading}
               >
-                {loading ? "Enviando..." : "Começar Diagnóstico Agora"}
+                {loading ? "Iniciando..." : "Começar Diagnóstico Agora"}
               </Button>
-              {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+              {submitError && (
+                <p className="text-red-500 text-sm mt-4 text-center">
+                  {submitError}
+                </p>
+              )}
             </div>
-          </motion.div>
+          </motion.form>
         </div>
       </Container>
     </section>
