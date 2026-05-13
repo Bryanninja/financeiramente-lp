@@ -1,52 +1,16 @@
-"use client";
+import { Metadata } from "next";
+import DiagnosticResultClient from "./DiagnosticResultClient";
 
-import { useEffect, useState } from "react";
-import ResultHero from "../components/sections/ResultHero";
-import ResultAnalysis from "../components/sections/ResultAnalysis";
-import ResultNextSteps from "../components/sections/FinalCTARes";
-import Footer from "../components/sections/Footer";
-import { useRouter } from "next/navigation";
-
-export const metadata = {
-  title: "Seu Relatório de Maturidade",
+// O Next.js lê isso no servidor (SEO MONSTRO)
+export const metadata: Metadata = {
+  title: "Seu Relatório de Maturidade | FinanceiraMente",
+  description: "Análise detalhada da estrutura financeira do seu negócio.",
   robots: {
-    index: false, // Proíbe o Google de mostrar esta página na busca
-    follow: false, // Impede o robô de seguir links dentro desta página
+    index: false, // Mantemos o sigilo dos dados do cliente
+    follow: false,
   },
 };
 
-export default function DiagnosticResult() {
-  const router = useRouter(); // 2. Instancie o router
-  const [phase, setPhase] = useState(2);
-  const [score, setScore] = useState(24);
-  const [pilarScores, setPilarScores] = useState([7, 8, 10, 7]);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    const localStorageFunc = async () => {
-      const raw = localStorage.getItem("fm_result");
-      if (raw) {
-        const data = JSON.parse(raw);
-        setPhase(data.phase ?? 2);
-        setScore(data.totalScore ?? 24);
-        setPilarScores(data.pilarScores ?? [7, 8, 10, 7]);
-        setLoaded(true); // 3. Libera a tela SÓ se tiver dados
-      } else {
-        // 4. Se tentou burlar, volta pro formulário!
-        router.push("/diagnostic");
-      }
-    };
-    localStorageFunc();
-  }, [router]);
-
-  if (!loaded) return null;
-
-  return (
-    <main>
-      <ResultHero />
-      <ResultAnalysis phase={phase} score={score} pilarScores={pilarScores} />
-      <ResultNextSteps phase={phase} />
-      <Footer />
-    </main>
-  );
+export default function Page() {
+  return <DiagnosticResultClient />;
 }
