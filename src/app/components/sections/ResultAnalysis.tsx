@@ -1,12 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Container from "../ui/Container";
 import { variants, viewportConfig } from "@/app/lib/animations";
 import Image, { StaticImageData } from "next/image";
 import { phaseContent } from "@/app/data/resultContent";
-import { PieChart, BarChart3, Wallet, TrendingUp } from "lucide-react";
+import {
+  LucideIcon,
+  PieChart,
+  BarChart3,
+  Wallet,
+  TrendingUp,
+} from "lucide-react";
+import dynamic from "next/dynamic";
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -14,13 +20,27 @@ import {
   LineElement,
   Filler,
   Tooltip,
+  ChartOptions,
+  ChartData,
 } from "chart.js";
-import { Radar } from "react-chartjs-2";
 
 import Fase1Img from "../../assets/img/fase-1.webp";
 import Fase2Img from "../../assets/img/fase-2.webp";
 import Fase3Img from "../../assets/img/fase-3.webp";
 import Fase4Img from "../../assets/img/fase-4.webp";
+
+// 1. Importação dinâmica do Radar para evitar problemas de SSR e remover a necessidade do useEffect/mounted
+const Radar = dynamic(
+  () => import("react-chartjs-2").then((mod) => mod.Radar),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-[300px] flex items-center justify-center text-dark/20">
+        Carregando gráfico...
+      </div>
+    ),
+  },
+);
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip);
 
@@ -31,14 +51,15 @@ const phaseImages: Record<number, StaticImageData> = {
   4: Fase4Img,
 };
 
-const pillarIcons = [PieChart, BarChart3, Wallet, TrendingUp];
+// Tipagem explícita para evitar o erro de 'any'
+const pillarIcons: LucideIcon[] = [PieChart, BarChart3, Wallet, TrendingUp];
 
-function RadarChart({
-  data,
-}: {
+interface RadarChartProps {
   data: { label: string; score: number; max: number }[];
-}) {
-  const chartData = {
+}
+
+function RadarChart({ data }: RadarChartProps) {
+  const chartData: ChartData<"radar"> = {
     labels: data.map((d) => d.label),
     datasets: [
       {
@@ -54,62 +75,54 @@ function RadarChart({
     ],
   };
 
-  const options = {
+  const options: ChartOptions<"radar"> = {
     responsive: true,
     maintainAspectRatio: true,
     scales: {
       r: {
         min: 0,
         max: 100,
-        ticks: {
-          display: false,
-        },
-        grid: {
-          color: "rgba(0, 0, 0, 0.15)",
-        },
-        angleLines: {
-          color: "rgba(0, 0, 0, 0.15)",
-        },
+        ticks: { display: false },
+        grid: { color: "rgba(0, 0, 0, 0.15)" },
+        angleLines: { color: "rgba(0, 0, 0, 0.15)" },
         pointLabels: {
-          font: {
-            size: 16,
-            family: "Inter, sans-serif",
-          },
+          font: { size: 16, family: "Inter, sans-serif" },
           color: "#121212",
         },
       },
     },
     plugins: {
-      legend: {
-        display: false,
-      },
-      tooltip: {
-        enabled: false,
-      },
+      legend: { display: false },
+      tooltip: { enabled: false },
     },
   };
 
   return <Radar data={chartData} options={options} />;
 }
 
+interface ResultAnalysisProps {
+  phase?: number;
+  score?: number;
+  pilarScores?: number[];
+}
+
 export default function ResultAnalysis({
   phase = 2,
   score = 24,
   pilarScores = [7, 8, 10, 7],
-}) {
+}: ResultAnalysisProps) {
   const content = phaseContent[phase];
   const phaseImage = phaseImages[phase] ?? Fase2Img;
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const pillarData = [
     { label: "Rentabilidade", score: pilarScores[0] ?? 7, max: 12 },
     { label: "Resultado", score: pilarScores[1] ?? 8, max: 12 },
-    { label: "Retorno (ROI)", score: pilarScores[3] ?? 7, max: 12 },
     { label: "Caixa", score: pilarScores[2] ?? 10, max: 12 },
+    {
+      label: "Retorno sobre investimento",
+      score: pilarScores[3] ?? 7,
+      max: 12,
+    },
   ];
 
   return (
@@ -134,7 +147,6 @@ export default function ResultAnalysis({
 
       {/* ─── Perfil e Score ─── */}
       <Container className="py-20">
-        {/* Header: Fase + Pontuação */}
         <motion.div
           variants={variants.staggerContainer}
           initial="initial"
@@ -164,9 +176,7 @@ export default function ResultAnalysis({
           </motion.div>
         </motion.div>
 
-        {/* Perfil Card + Imagem */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-24">
-          {/* Card de Fase */}
           <motion.div
             variants={variants.staggerContainer}
             initial="initial"
@@ -193,21 +203,19 @@ export default function ResultAnalysis({
             </motion.div>
           </motion.div>
 
-          {/* Imagem com Overlay e Hover via Framer Motion */}
           <motion.div
             variants={variants.fadeIn}
             initial="initial"
             whileInView="animate"
-            whileHover="hover" // Ativa o estado de hover do Framer Motion
+            whileHover="hover"
             viewport={viewportConfig}
             className="relative aspect-[10/8] h-full col-span-12 md:col-span-7 rounded-lg overflow-hidden shadow-xl cursor-pointer"
           >
-            {/* Container da Imagem que vai aumentar de tamanho */}
             <motion.div
               variants={{
                 initial: { scale: 1 },
                 animate: { scale: 1 },
-                hover: { scale: 1.05 }, // Dá o zoom
+                hover: { scale: 1.05 },
               }}
               transition={{ duration: 0.7, ease: "easeOut" }}
               className="absolute inset-0 w-full h-full"
@@ -220,12 +228,11 @@ export default function ResultAnalysis({
               />
             </motion.div>
 
-            {/* Overlay azul que vai alterar a opacidade */}
             <motion.div
               variants={{
                 initial: { opacity: 0.2 },
                 animate: { opacity: 0.2 },
-                hover: { opacity: 0.1 }, // Fica mais transparente no hover
+                hover: { opacity: 0.1 },
               }}
               transition={{ duration: 0.7, ease: "easeOut" }}
               className="absolute inset-0 z-10 bg-primary-deep pointer-events-none"
@@ -233,7 +240,6 @@ export default function ResultAnalysis({
           </motion.div>
         </div>
 
-        {/* ─── Avaliação dos pilares (título + radar) ─── */}
         <motion.div
           variants={variants.staggerContainer}
           initial="initial"
@@ -259,7 +265,6 @@ export default function ResultAnalysis({
           </motion.p>
         </motion.div>
 
-        {/* Radar Chart Wrapper */}
         <motion.div
           variants={variants.fadeIn}
           initial="initial"
@@ -268,7 +273,6 @@ export default function ResultAnalysis({
           className="w-full mx-auto mt-12"
         >
           <div className="relative flex flex-col border border-[#4285F4] rounded-lg p-6 md:p-10 bg-transparent">
-            {/* Textos Topo Esquerda */}
             <motion.div
               variants={variants.fadeInUp}
               className="text-left z-10 md:absolute md:top-8 md:left-8 mb-8 md:mb-0"
@@ -279,12 +283,10 @@ export default function ResultAnalysis({
               <p className="text-sm text-dark/50 mt-2">Pontuações</p>
             </motion.div>
 
-            {/* Gráfico Centralizado protegido contra o bug de SSR */}
             <div className="flex justify-center items-center w-full max-w-2xl mx-auto py-4 md:py-16">
-              {mounted && <RadarChart data={pillarData} />}
+              <RadarChart data={pillarData} />
             </div>
 
-            {/* Texto Canto Inferior Direito */}
             <motion.div
               variants={variants.fadeInUp}
               className="text-right z-10 md:absolute md:bottom-8 md:right-8 mt-4 md:mt-0"
@@ -299,7 +301,6 @@ export default function ResultAnalysis({
       <div className="bg-dark py-24 md:py-32">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Título esquerda */}
             <motion.div
               variants={variants.staggerContainer}
               initial="initial"
@@ -310,13 +311,10 @@ export default function ResultAnalysis({
                 variants={variants.fadeInUp}
                 className="text-3xl md:text-5xl text-center md:text-left font-bold text-light leading-tight"
               >
-                Avaliação dos
-                <br />
-                Pilares Financeiros
+                Avaliação dos <br /> Pilares Financeiros
               </motion.h3>
             </motion.div>
 
-            {/* Grid 2x2 dos pilares */}
             <motion.div
               variants={variants.staggerContainer}
               initial="initial"
