@@ -329,7 +329,6 @@ export default function ResultAnalysis({
                     key={i}
                     variants={variants.fadeInUp}
                     whileHover={{ y: -4 }}
-                    transition={{ type: "spring", stiffness: 300 }}
                     className="group flex flex-col items-center text-center space-y-3"
                   >
                     <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/5 border border-white/5 flex items-center justify-center transition-all duration-300 group-hover:bg-primary-deep/20 group-hover:border-primary-deep/40">
