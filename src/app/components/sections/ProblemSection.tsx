@@ -64,8 +64,7 @@ export default function ProblemSection() {
                 className="text-light/60 text-lg leading-relaxed max-w-xl"
               >
                 Falta caixa para expandir, decisões geram insegurança, o
-                crescimento parece mais arriscado do que deveria. Sem clareza
-                financeira, o empresário não sabe com precisão:
+                crescimento parece mais arriscado do que deveria.
               </motion.p>
             </div>
 
@@ -95,12 +94,12 @@ export default function ProblemSection() {
                 </p>
               </motion.div>
 
-              <motion.div variants={variants.fadeInUp} className="space-y-2">
-                <h3 className="text-light text-xl font-bold leading-snug">
-                  O Método FinanceiraMente
-                </h3>
+              <motion.div variants={variants.fadeInUp} className="  space-y-2">
                 <p className="text-light/60 text-lg leading-relaxed">
-                  Foi desenvolvido para ajudar empresários a estruturar
+                  <strong className="text-light">
+                    O Método FinanceiraMente
+                  </strong>{" "}
+                  foi desenvolvido para ajudar empresários a estruturar
                   financeiramente seus negócios e transformar números em
                   decisões claras.
                 </p>
@@ -113,6 +112,12 @@ export default function ProblemSection() {
             variants={variants.staggerContainer}
             className="grid grid-cols-1 gap-6 sticky top-32"
           >
+            <motion.p
+              variants={variants.fadeInUp}
+              className="text-light text-lg font-medium"
+            >
+              Sem clareza financeira, o empresário não sabe com precisão:
+            </motion.p>
             {painCards.map((card, index) => (
               <motion.div
                 key={index}
