@@ -59,7 +59,7 @@ export default function DiagnosticHero() {
   };
 
   return (
-    <section className="bg-light flex justify-center items-center pt-32 pb-20 min-h-screen">
+    <section className="bg-light flex justify-center items-center pt-36 pb-20 2xl:pt-40">
       <Container>
         {/* O PAI do grid agora controla o fluxo de ambas as colunas */}
         <motion.div

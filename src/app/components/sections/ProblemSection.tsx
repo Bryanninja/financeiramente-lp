@@ -114,7 +114,7 @@ export default function ProblemSection() {
           >
             <motion.p
               variants={variants.fadeInUp}
-              className="text-light text-lg font-medium"
+              className="text-light text-lg text-pretty font-medium"
             >
               Sem clareza financeira, o empresário não sabe com precisão:
             </motion.p>
