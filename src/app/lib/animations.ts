@@ -35,4 +35,4 @@ export const variants: NamedVariants = {
   },
 };
 
-export const viewportConfig = { once: true, amount: 0.3 };
+export const viewportConfig = { once: true, amount: 0.1 };

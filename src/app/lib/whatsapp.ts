@@ -1,8 +1,7 @@
 export const WHATSAPP_NUMBER = "5511981110009";
 
 export const WHATSAPP_MESSAGES = {
-  default:
-    "Olá Michel! Gostaria de agendar uma Sessão Estratégica FinanceiraMente.",
+  default: "Olá Michel! Gostaria de agendar uma Sessão Estratégica gratuita.",
   sessaoEstrategica:
     "Olá Michel! Quero agendar minha Sessão Estratégica FinanceiraMente gratuita.",
 };

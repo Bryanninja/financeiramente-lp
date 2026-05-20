@@ -69,16 +69,6 @@ export default function FinalCTA() {
               fill
               className="object-cover object-top hover:scale-105 transition-transform duration-1000"
             />
-
-            {/* Tag Flutuante sobre a Imagem */}
-            <div className="absolute top-36 md:top-14 left-1/2 -translate-x-1/2 md:left-auto md:right-1/2 md:translate-x-full lg:right-[55%]">
-              <div className="flex items-center gap-2 px-4 py-1 rounded-full border border-dark bg-dark/40 backdrop-blur-md">
-                <div className="w-2 h-2 rounded-full bg-primary-vibrant shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
-                <span className="text-[10px] md:text-sm tracking-widest text-light">
-                  Aprenda com o Michel
-                </span>
-              </div>
-            </div>
           </motion.div>
 
           {/* 3. Seção de Pontos de Clareza */}

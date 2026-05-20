@@ -1,4 +1,4 @@
-import Hero from "./components/sections/Hero";
+import Hero2 from "./components/sections/Hero2";
 import ProblemSection from "./components/sections/ProblemSection";
 import ProblemReal from "./components/sections/ProblemReal";
 import MaturityMap from "./components/sections/MaturityMap";
@@ -17,7 +17,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main>
-      <Hero />
+      <Hero2 />
       <ProblemSection />
       <ProblemReal />
       <MaturityMap />

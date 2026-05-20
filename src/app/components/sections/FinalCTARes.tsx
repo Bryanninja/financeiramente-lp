@@ -117,7 +117,7 @@ export default function ResultNextSteps({ phase = 2 }) {
                   href={getWhatsAppUrl("sessaoEstrategica")}
                   target="_blank"
                 >
-                  Agendar Sessão Estratégica FinanceiraMente
+                  Quero minha sessão estratégica gratuita
                 </Button>
               </motion.div>
             </div>
@@ -174,7 +174,7 @@ export default function ResultNextSteps({ phase = 2 }) {
                 que exigem uma análise mais aprofundada para compreender seus
                 desafios e oportunidades financeiras. Se você quiser explorar
                 com mais profundidade os resultados deste diagnóstico, pode
-                agendar uma Sessão Estratégica FinanceiraMente.
+                agendar uma Sessão Estratégica gratuita - Financeiramente.
               </motion.p>
               <motion.p
                 variants={variants.fadeInUp}
@@ -216,7 +216,7 @@ export default function ResultNextSteps({ phase = 2 }) {
                 href={getWhatsAppUrl("sessaoEstrategica")}
                 target="_blank"
               >
-                Agendar Sessão Estratégica FinanceiraMente
+                Quero minha sessão estratégica gratuita
               </Button>
             </motion.div>
           </motion.div>

@@ -69,7 +69,7 @@ export default function Hero() {
                   href={getWhatsAppUrl("sessaoEstrategica")}
                   target="_blank"
                 >
-                  Agendar Sessão Estratégica Financeiramente
+                  Quero minha sessão estratégica gratuita
                 </Button>
               </motion.div>
             </div>
@@ -97,7 +97,7 @@ export default function Hero() {
           <TrendingUp className="text-light w-6 h-6" />
         </div>
         <div className="text-light text-sm md:text-[15px] leading-snug opacity-90 font-normal">
-          O problema raramente é vender. <br />O problema é crescer com
+          O problema raramente é vender. <br />O problema é crescer sem
           estrutura.
         </div>
       </motion.div>

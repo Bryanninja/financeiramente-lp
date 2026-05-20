@@ -24,7 +24,7 @@ export default function PrivacyPolicy() {
       <p>
         Coletamos informações fornecidas voluntariamente por você ao preencher o{" "}
         <strong>Diagnóstico de Maturidade Financeira</strong> ou ao agendar uma{" "}
-        <strong>Sessão Estratégica</strong>. Isso inclui:
+        <strong>Sessão Estratégica gratuita</strong>. Isso inclui:
       </p>
       <ul>
         <li>Dados de identificação (Nome, E-mail, Telefone);</li>

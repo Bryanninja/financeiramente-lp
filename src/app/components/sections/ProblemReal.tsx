@@ -92,7 +92,7 @@ export default function ProblemReal() {
                 href={getWhatsAppUrl("sessaoEstrategica")}
                 target="_blank"
               >
-                Agendar Sessão Estratégica FinanceiraMente
+                Quero minha sessão estratégica gratuita
               </Button>
             </motion.div>
           </div>
@@ -156,7 +156,7 @@ export default function ProblemReal() {
                 href={getWhatsAppUrl("sessaoEstrategica")}
                 target="_blank"
               >
-                Agendar Sessão Estratégica FinanceiraMente
+                Quero minha sessão estratégica gratuita
               </Button>
             </motion.div>
           </div>

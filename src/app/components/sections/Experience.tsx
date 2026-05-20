@@ -151,11 +151,11 @@ export default function Experience() {
             </motion.p>
 
             <motion.div variants={variants.fadeIn}>
-              <svg className="w-full h-32 md:h-48 overflow-visible">
+              <svg className="w-full h-12 md:h-48 overflow-visible">
                 <text
                   x="0"
                   y="80%"
-                  className="text-8xl md:text-[12rem] font-bold"
+                  className="text-6xl md:text-[12rem] font-bold"
                   fill="rgba(255,255,255,0.05)"
                   stroke="white"
                   strokeWidth="1"

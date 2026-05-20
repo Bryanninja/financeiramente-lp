@@ -142,7 +142,7 @@ const Header = ({ transparent = false, noBackground = false }: HeaderProps) => {
                   target="_blank"
                   className="w-full py-4 text-base flex justify-center items-center gap-2"
                 >
-                  Agendar Sessão Estratégica
+                  Quero minha sessão estratégica gratuita
                 </Button>
 
                 <Link
