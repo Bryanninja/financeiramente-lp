@@ -52,22 +52,30 @@ export default function MethodSteps() {
           <div className="text-center max-w-3xl mx-auto space-y-6">
             <motion.h2
               variants={variants.fadeInUp}
-              className="text-3xl md:text-5xl font-bold text-dark leading-tight"
+              className="text-4xl md:text-5xl font-bold text-dark leading-tight"
             >
-              O caminho do Método FinanceiraMente no seu negócio
+              O Caminho do Método da FinanceiraMente no seu negócio
             </motion.h2>
             <motion.p
               variants={variants.fadeInUp}
-              className="text-dark/70 text-lg md:text-xl"
+              className="text-dark/70 text-lg text-pretty md:text-xl"
             >
-              Comece com um diagnóstico inicial gratuito e descubra como evoluir
-              até o acompanhamento estratégico completo.
+              Dependendo da fase de maturidade financeira do negócio, diferentes
+              produtos e serviços da FinanceiraMente podem ajudar na evolução
+              financeira da empresa.
             </motion.p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
             {/* Lado Esquerdo: Timeline */}
+
             <div className="flex flex-col space-y-8 pt-4">
+              <motion.h3
+                variants={variants.fadeInUp}
+                className="text-xl md:text-2xl font-bold text-dark leading-tight"
+              >
+                Produtos e Soluções
+              </motion.h3>
               <motion.div
                 variants={variants.staggerContainer}
                 className="relative"
@@ -101,18 +109,20 @@ export default function MethodSteps() {
                         className={`ml-6 flex-1 transition-all p-6 duration-300 
                         ${index === 0 ? "bg-white border border-primary-vibrant rounded-2xl shadow-xl -mt-2" : "py-2"}`}
                       >
-                        {index === 0 && (
-                          <div className="inline-flex items-center gap-2 px-3 py-1 w-fit rounded-full border border-dark/60 bg-transparent mb-4">
-                            <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
-                            <span className="text-sm tracking-wider text-dark font-semibold">
-                              Sessão Gratuita
-                            </span>
-                          </div>
-                        )}
+                        <div className="flex flex-col-reverse md:flex-row md:gap-4 ">
+                          <h3 className="text-xl font-medium text-dark mb-2">
+                            {step.title}
+                          </h3>
 
-                        <h3 className="text-xl font-medium text-dark mb-2">
-                          {step.title}
-                        </h3>
+                          {index === 0 && (
+                            <div className="inline-flex items-center gap-2 px-3 py-1 w-fit rounded-full border border-dark/60 bg-transparent mb-4">
+                              <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
+                              <span className="text-xs md:text-sm tracking-wider text-dark font-semibold">
+                                Sessão Gratuita
+                              </span>
+                            </div>
+                          )}
+                        </div>
                         <p
                           className={`text-pretty leading-relaxed text-base ${index === 0 ? "text-dark/80" : "text-dark/70"}`}
                         >
@@ -127,8 +137,14 @@ export default function MethodSteps() {
               {/* Botão de Chamada */}
               <motion.div
                 variants={variants.fadeInUp}
-                className="space-y-3 pt-6"
+                className="space-y-8 pt-4"
               >
+                <h3 className="text-xl text-dark font-medium">
+                  Agende uma Sessão Estratégica FinanceiraMente gratuita e
+                  descubra qual caminho pode ajudar seu negócio a evoluir
+                  financeiramente com mais clareza.
+                </h3>
+
                 <Button
                   variant="black"
                   className="w-full md:w-auto px-10"
@@ -137,9 +153,6 @@ export default function MethodSteps() {
                 >
                   Quero minha sessão estratégica gratuita
                 </Button>
-                <p className="text-sm text-dark font-medium">
-                  Ganhe o Diagnóstico inicial sem custos.
-                </p>
               </motion.div>
             </div>
 
