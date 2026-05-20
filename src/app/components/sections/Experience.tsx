@@ -13,28 +13,23 @@ import MichelExperienceImg2 from "../../assets/img/michel-experience2.webp";
 const results = [
   {
     value: "+45%",
-    label: "Crescimento no EBITDA por unidade produzida ao longo de três anos.",
+    label: "De EBITDA por unidade produzida em três anos.",
   },
   {
     value: "-55%",
-    label:
-      "Reequilíbrio do ciclo financeiro com redução no prazo médio de recebimento.",
+    label: "No prazo médio de recebimento.",
   },
   {
     value: "+24%",
-    label:
-      "Reequilíbrio do ciclo financeiro com aumento no prazo médio de pagamento.",
+    label: "No prazo médio de pagamento.",
   },
   {
     value: "40%",
-    label:
-      "Reestruturação operacional responsável pelo EBITDA anual da operação.",
+    label: "Do EBITDA anual gerado por reestruturação operacional.",
   },
-  { value: "50 M", label: "USD Gerados à controladora sob restrição cambial." },
   {
-    value: "Liderança",
-    label:
-      "De projetos de integração e padronização em operações internacionais.",
+    value: "50M",
+    label: "USD 50M enviados à controladora sob restrição cambial.",
   },
 ];
 
@@ -185,6 +180,8 @@ export default function Experience() {
             <motion.p variants={variants.fadeInUp} className="text-dark/80">
               Hoje Michel aplica essa visão para ajudar empresários a estruturar
               financeiramente seus negócios e tomar decisões com mais clareza.
+              Incluindo também liderança de projetos de integração e
+              padronização financeira em operações internacionais.
             </motion.p>
           </div>
 
@@ -192,7 +189,7 @@ export default function Experience() {
             {canScrollLeft && (
               <button
                 onClick={() => scroll("left")}
-                className="absolute -left-5 top-1/2 -translate-y-1/2 z-30 bg-dark text-white p-4 rounded-full shadow-2xl hover:bg-primary-vibrant transition-all duration-300"
+                className="absolute -left-5 top-1/2 cursor-pointer -translate-y-1/2 z-30 bg-dark text-white p-4 rounded-full shadow-2xl hover:bg-primary-vibrant transition-all duration-300"
               >
                 <ChevronLeft size={24} />
               </button>
@@ -223,7 +220,7 @@ export default function Experience() {
             {canScrollRight && (
               <button
                 onClick={() => scroll("right")}
-                className="absolute -right-5 top-1/2 -translate-y-1/2 z-30 bg-dark text-white p-4 rounded-full shadow-2xl hover:bg-primary-deep transition-all duration-300"
+                className="absolute cursor-pointer -right-5 top-1/2 -translate-y-1/2 z-30 bg-dark text-white p-4 rounded-full shadow-2xl hover:bg-primary-deep transition-all duration-300"
               >
                 <ChevronRight size={24} />
               </button>
