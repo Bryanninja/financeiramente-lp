@@ -67,7 +67,7 @@ export default function ResultNextSteps({ phase = 2 }) {
               </motion.h3>
               <motion.p
                 variants={variants.fadeInUp}
-                className="text-base md:text-lg text-light/70 leading-relaxed"
+                className="text-base md:text-lg whitespace-pre-line text-light/70 leading-relaxed"
               >
                 {content.interpretation}
               </motion.p>
@@ -105,7 +105,7 @@ export default function ResultNextSteps({ phase = 2 }) {
                     {content.title}
                   </span>
                 </div>
-                <p className="text-dark/70 leading-relaxed max-w-xl text-pretty text-base md:text-lg">
+                <p className="text-dark/70 leading-relaxed max-w-xl whitespace-pre-line text-pretty text-base md:text-lg">
                   {content.nextStep} {content.nextStepDetails}
                 </p>
               </motion.div>
@@ -174,7 +174,7 @@ export default function ResultNextSteps({ phase = 2 }) {
                 que exigem uma análise mais aprofundada para compreender seus
                 desafios e oportunidades financeiras. Se você quiser explorar
                 com mais profundidade os resultados deste diagnóstico, pode
-                agendar uma Sessão Estratégica gratuita - Financeiramente.
+                agendar uma Sessão Estratégica gratuita.
               </motion.p>
               <motion.p
                 variants={variants.fadeInUp}
@@ -192,7 +192,6 @@ export default function ResultNextSteps({ phase = 2 }) {
                 <motion.div
                   key={i}
                   variants={variants.fadeInUp}
-                  whileHover={{ y: -4 }}
                   className="bg-[#1A1A1A] p-8 rounded-xl border border-white/5 space-y-6 hover:border-primary-vibrant/20 transition-all group"
                 >
                   <item.icon

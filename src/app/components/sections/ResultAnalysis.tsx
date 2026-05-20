@@ -156,7 +156,7 @@ export default function ResultAnalysis({
         >
           <motion.div variants={variants.fadeInUp}>
             <span className=" text-2xl md:text-4xl font-bold text-dark ">
-              Perfil financeiro do negócio
+              Perfil Financeiro do negócio
             </span>
             <p className="text-lg md:text-xl mt-2 text-dark/70">
               Fase: {content.title}
@@ -194,10 +194,10 @@ export default function ResultAnalysis({
               <h3 className="text-4xl font-bold text-dark mb-4">
                 {content.title}
               </h3>
-              <p className="text-dark leading-relaxed mb-4 text-base">
+              <p className="text-dark leading-relaxed font-medium mb-4 text-base">
                 Negócio em {content.title}
               </p>
-              <p className="text-dark/70 leading-relaxed text-sm md:text-base">
+              <p className="text-dark/90 whitespace-pre-line leading-relaxed text-sm md:text-base">
                 {content.description}
               </p>
             </motion.div>
