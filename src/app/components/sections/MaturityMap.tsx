@@ -44,10 +44,10 @@ const phases = [
 ];
 
 const benefits = [
-  "Sua fase no Mapa de Maturidade Financeira FinanceiraMente",
-  "O Radar FinanceiraMente, que mostra a estrutura financeira da empresa",
-  "Um relatório de maturidade com os próximos passos para a evolução.",
-  "Avaliação dos 4 pilares financeiros do negócio.",
+  "Sua fase no Mapa de Maturidade Financeira da FinanceiraMente.",
+  "O Radar FinanceiraMente, que mostra a estrutura financeira da empresa.",
+  "Um relatório de maturidade financeira com os próximos passos para evolução.",
+  "Avaliação dos 4 pilares financeiros fundamentais para gestão do negócio.",
 ];
 
 export default function MaturityMap() {
@@ -84,7 +84,7 @@ export default function MaturityMap() {
             className="text-light/60 text-lg leading-relaxed"
           >
             Pequenos negócios passam por diferentes níveis de maturidade
-            financeira. O Mapa de Maturidade Financeira FinanceiraMente ajuda
+            financeira. O Mapa de Maturidade Financeira da FinanceiraMente ajuda
             empresários a identificar onde estão hoje e qual é o próximo passo
             para evoluir.
           </motion.p>
@@ -138,16 +138,10 @@ export default function MaturityMap() {
           <div className="space-y-8">
             <motion.h3
               variants={variants.fadeInUp}
-              className="text-3xl md:text-4xl text-balance font-bold text-light"
+              className="text-4xl md:text-5xl text-balance leading-tight font-bold text-light"
             >
-              Descubra em qual fase financeira está o seu negócio.
-            </motion.h3>
-
-            <motion.h3
-              variants={variants.fadeInUp}
-              className="text-base text-light/70"
-            >
-              Ao responder o diagnóstico, você receberá
+              Descubra em qual fase financeira está o{" "}
+              <br className="hidden md:block" /> seu negócio.
             </motion.h3>
 
             <motion.div
@@ -162,6 +156,13 @@ export default function MaturityMap() {
 
           {/* Lista de Benefícios com Stagger */}
           <div className="grid grid-cols-1 gap-4">
+            <motion.h3
+              variants={variants.fadeInUp}
+              className="text-lg text-light font-medium"
+            >
+              Ao responder o diagnóstico, você receberá:
+            </motion.h3>
+
             <motion.div
               variants={variants.staggerContainer}
               className="grid grid-cols-1 gap-4"
@@ -170,12 +171,12 @@ export default function MaturityMap() {
                 <motion.div
                   key={index}
                   variants={variants.fadeInUp}
-                  className="flex items-center gap-4 p-5 rounded-lg border border-white/5 hover:bg-white/10 transition-colors"
+                  className="flex items-center gap-4 p-5 rounded-lg border border-white/5 hover:bg-white/5 transition-colors"
                 >
                   <div className="shrink-0 w-10 h-10 md:w-12 md:h-12 rounded bg-light/5 flex items-center justify-center border-2 border-primary-deep shadow-inner">
                     <img src="/check.svg" alt="check icon" />
                   </div>
-                  <p className="text-light/80 text-sm md:text-base font-medium">
+                  <p className="text-light/80 text-sm text-pretty md:text-base font-medium">
                     {benefit}
                   </p>
                 </motion.div>
