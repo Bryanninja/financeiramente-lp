@@ -5,6 +5,7 @@ import Link from "next/link"; // Importação essencial
 import { motion } from "framer-motion";
 import Container from "../ui/Container";
 import { variants, viewportConfig } from "@/app/lib/animations";
+import { Mail } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -69,6 +70,13 @@ export default function Footer() {
               variants={variants.fadeInUp}
               className="flex gap-6 items-center"
             >
+              <a
+                href="mailto:michel@msfinanceiramente.com"
+                className="text-light/70 hover:text-light transition-colors"
+                aria-label="Enviar e-mail para Michel"
+              >
+                <Mail />
+              </a>
               <a
                 href="https://www.instagram.com/michel.financeiramente/"
                 target="_blank"
