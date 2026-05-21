@@ -84,7 +84,8 @@ export default function ResultHero() {
               variants={variants.fadeInUp}
               className="text-3xl md:text-5xl pt-32 font-bold text-white leading-tight tracking-tight"
             >
-              Relatório de Maturidade <br /> Financeira - FinanceiraMente
+              Relatório de Maturidade <br className="hidden md:block" />{" "}
+              Financeira - FinanceiraMente
             </motion.h1>
 
             <motion.p
