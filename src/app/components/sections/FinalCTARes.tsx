@@ -8,36 +8,46 @@ import { phaseContent } from "@/app/data/resultContent";
 import Image from "next/image";
 import { Search, BarChart3, TrendingUp, Target } from "lucide-react";
 import { getWhatsAppUrl } from "@/app/lib/whatsapp";
+import { useLocale, useTranslations } from "next-intl";
 
-const phaseSvgs: Record<number, string> = {
+const phaseSvgs_pt: Record<number, string> = {
   1: "/financeiramente-escuro.svg",
   2: "/financeiramente-consciencia.svg",
   3: "/financeiramente-estrutura.svg",
   4: "/financeiramente-inteligencia.svg",
 };
 
-const ctaItems = [
-  {
-    icon: Search,
-    text: "Analisar com mais profundidade a estrutura financeira do seu negócio.",
-  },
-  { icon: BarChart3, text: "Identificar pontos críticos de melhorias." },
-  {
-    icon: TrendingUp,
-    text: "Discutir caminhos possíveis para evolução financeira.",
-  },
-  {
-    icon: Target,
-    text: "Avaliar oportunidades reais para fortalecer os pilares financeiros da empresa.",
-  },
-];
+const phaseSvgs_en: Record<number, string> = {
+  1: "/financeiramente-dark.svg",
+  2: "/financeiramente-awareness.svg",
+  3: "/financeiramente-structure.svg",
+  4: "/financeiramente-intelligence.svg",
+};
 
 export default function ResultNextSteps({ phase = 2 }) {
-  const content = phaseContent[phase];
+  const tPhase = useTranslations(`Phases.${phase}`);
+  const t = useTranslations("FinalCTARes");
+  const locale = useLocale();
+  const phaseSvgs = locale === "en" ? phaseSvgs_en : phaseSvgs_pt;
+
+  const ctaItems = [
+    {
+      icon: Search,
+      text: t("ctaItems.0"),
+    },
+    { icon: BarChart3, text: t("ctaItems.1") },
+    {
+      icon: TrendingUp,
+      text: t("ctaItems.2"),
+    },
+    {
+      icon: Target,
+      text: t("ctaItems.3"),
+    },
+  ];
 
   return (
     <section className="bg-light">
-      {/* ─── Interpretação do Diagnóstico ─── */}
       <div className="bg-dark pb-24 md:pb-32">
         <Container>
           <motion.div
@@ -53,7 +63,7 @@ export default function ResultNextSteps({ phase = 2 }) {
             >
               <img
                 src={phaseSvgs[phase] ?? "/financeiramente-consciencia.svg"}
-                alt="Interpretação"
+                alt={t("interpretationAlt")}
                 className="w-full"
               />
             </motion.div>
@@ -63,20 +73,19 @@ export default function ResultNextSteps({ phase = 2 }) {
                 variants={variants.fadeInUp}
                 className="text-3xl font-bold text-light/90 uppercase"
               >
-                Interpretação do Diagnóstico
+                {t("interpretationTitle")}
               </motion.h3>
               <motion.p
                 variants={variants.fadeInUp}
                 className="text-base md:text-lg whitespace-pre-line text-light/70 leading-relaxed"
               >
-                {content.interpretation}
+                {tPhase("interpretation")}
               </motion.p>
             </div>
           </motion.div>
         </Container>
       </div>
 
-      {/* ─── Próximo Passo de Evolução ─── */}
       <div className="bg-light py-32">
         <Container>
           <motion.div
@@ -89,7 +98,7 @@ export default function ResultNextSteps({ phase = 2 }) {
             <div className="space-y-8">
               <motion.div variants={variants.fadeInUp} className="space-y-2">
                 <h3 className="text-4xl md:text-5xl font-bold text-dark leading-tight">
-                  Próximo Passo <br /> de Evolução
+                  {t("nextStepTitle.part1")} <br /> {t("nextStepTitle.part2")}
                 </h3>
               </motion.div>
 
@@ -98,15 +107,15 @@ export default function ResultNextSteps({ phase = 2 }) {
                   <div className="inline-flex items-center gap-2 px-3 py-1 w-fit rounded-full border border-dark/60 bg-transparent">
                     <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
                     <span className="text-sm tracking-wider text-dark font-semibold">
-                      Fase
+                      {t("phaseLabel")}
                     </span>
                   </div>
                   <span className="text-2xl font-semibold text-dark">
-                    {content.title}
+                    {tPhase("title")}
                   </span>
                 </div>
                 <p className="text-dark/70 leading-relaxed max-w-xl whitespace-pre-line text-pretty text-base md:text-lg">
-                  {content.nextStep} {content.nextStepDetails}
+                  {tPhase("nextStep")} {tPhase("nextStepDetails")}
                 </p>
               </motion.div>
 
@@ -117,7 +126,7 @@ export default function ResultNextSteps({ phase = 2 }) {
                   href={getWhatsAppUrl("sessaoEstrategica")}
                   target="_blank"
                 >
-                  Quero minha sessão estratégica gratuita
+                  {t("button")}
                 </Button>
               </motion.div>
             </div>
@@ -138,7 +147,7 @@ export default function ResultNextSteps({ phase = 2 }) {
               >
                 <Image
                   src={NextStepImg}
-                  alt="Próximos passos - Michel Stawicki - Especialista em Estruturação Financeira e Mentoria"
+                  alt={t("nextStepAlt")}
                   fill
                   className="object-cover"
                 />
@@ -148,7 +157,6 @@ export default function ResultNextSteps({ phase = 2 }) {
         </Container>
       </div>
 
-      {/* ─── CTA Final (Aprofunde a análise) ─── */}
       <div className="bg-dark py-24">
         <Container>
           <motion.div
@@ -163,24 +171,19 @@ export default function ResultNextSteps({ phase = 2 }) {
                 variants={variants.fadeInUp}
                 className="text-3xl md:text-5xl text-balance font-bold text-light leading-tight"
               >
-                Aprofunde a análise do seu negócio
+                {t("deepenTitle")}
               </motion.h2>
               <motion.p
                 variants={variants.fadeInUp}
                 className="text-light/55 text-sm md:text-base leading-relaxed"
               >
-                O diagnóstico realizado oferece uma visão inicial da estrutura
-                financeira do seu negócio. Cada empresa possui particularidades
-                que exigem uma análise mais aprofundada para compreender seus
-                desafios e oportunidades financeiras. Se você quiser explorar
-                com mais profundidade os resultados deste diagnóstico, pode
-                agendar uma Sessão Estratégica gratuita.
+                {t("deepenDesc")}
               </motion.p>
               <motion.p
                 variants={variants.fadeInUp}
                 className="text-light/80 text-lg font-medium"
               >
-                Durante essa conversa iremos:
+                {t("duringConversation")}
               </motion.p>
             </div>
 
@@ -215,7 +218,7 @@ export default function ResultNextSteps({ phase = 2 }) {
                 href={getWhatsAppUrl("sessaoEstrategica")}
                 target="_blank"
               >
-                Quero minha sessão estratégica gratuita
+                {t("button")}
               </Button>
             </motion.div>
           </motion.div>

@@ -8,8 +8,11 @@ import { variants } from "@/app/lib/animations";
 import BgHero from "../../assets/img/Hero.webp";
 import Container from "../ui/Container";
 import { getWhatsAppUrl } from "@/app/lib/whatsapp";
+import { useTranslations } from "next-intl";
 
 export default function Hero() {
+  const t = useTranslations("Hero");
+
   return (
     <motion.section
       id="home"
@@ -25,7 +28,7 @@ export default function Hero() {
         className="z-30 w-full absolute top-0 left-0 bg-primary-deep/60 backdrop-blur-xl py-3 text-center"
       >
         <span className="text-sm md:text-base tracking-[0.1em] text-light">
-          Michel Stawicki — Especialista Financeiro
+          {t("topBar")}
         </span>
       </motion.div>
 
@@ -49,19 +52,15 @@ export default function Hero() {
                 variants={variants.fadeInUp}
                 className="text-4xl md:text-5xl font-bold text-balance text-light leading-[1.15] tracking-tight"
               >
-                Empresas raramente quebram por falta de vendas.{" "}
-                <br className="hidden md:block" />
-                <span className="text-light">
-                  Elas quebram por falta de estrutura financeira.
-                </span>
+                {t("title.part1")} <br className="hidden md:block" />
+                <span className="text-light">{t("title.part2")}</span>
               </motion.h1>
 
               <motion.p
                 variants={variants.fadeInUp}
                 className="text-lg md:text-xl text-light/80 max-w-[550px] leading-relaxed"
               >
-                Mas muitas outras não quebram. Elas simplesmente não conseguem
-                crescer.
+                {t("subtitle")}
               </motion.p>
 
               <motion.div variants={variants.fadeInUp} className="pt-2">
@@ -69,7 +68,7 @@ export default function Hero() {
                   href={getWhatsAppUrl("sessaoEstrategica")}
                   target="_blank"
                 >
-                  Quero minha sessão estratégica gratuita
+                  {t("cta")}
                 </Button>
               </motion.div>
             </div>
@@ -79,7 +78,7 @@ export default function Hero() {
         <div className="relative order-last w-full h-[500px] md:h-auto md:absolute md:inset-0 md:z-0 overflow-hidden">
           <Image
             src={BgHero}
-            alt="Michel Stawicki analisando dados - Especialista em Estruturação Financeira e Mentoria"
+            alt={t("imageAlt")}
             fill
             className="object-cover object-right md:object-top"
             priority
@@ -97,8 +96,8 @@ export default function Hero() {
           <TrendingUp className="text-light w-6 h-6" />
         </div>
         <div className="text-light text-sm md:text-[15px] leading-snug opacity-90 font-normal">
-          O problema raramente é vender. <br />O problema é crescer sem
-          estrutura.
+          {t("floatingBadge.part1")} <br />
+          {t("floatingBadge.part2")}
         </div>
       </motion.div>
     </motion.section>

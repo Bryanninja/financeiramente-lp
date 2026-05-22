@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Container from "../ui/Container";
 import Button from "../ui/Button";
 import { variants, viewportConfig } from "@/app/lib/animations";
+import { useTranslations, useLocale } from "next-intl";
 
 // Imagens
 import Fase1Img from "../../assets/img/fase-1.webp";
@@ -12,49 +13,47 @@ import Fase2Img from "../../assets/img/fase-2.webp";
 import Fase3Img from "../../assets/img/fase-3.webp";
 import Fase4Img from "../../assets/img/fase-4.webp";
 
-const phases = [
-  {
-    number: 1,
-    title: "NEGÓCIO NO ESCURO",
-    description:
-      "O empresário trabalha muito, mas não tem clareza real sobre os números do negócio. Decisões são tomadas no feeling e o caixa frequentemente gera preocupação.",
-    image: Fase1Img,
-  },
-  {
-    number: 2,
-    title: "CONSCIÊNCIA",
-    description:
-      "O empresário começa a olhar para receitas, custos e despesas, mas ainda sem uma estrutura financeira consistente. Os números existem, mas ainda não orientam o negócio.",
-    image: Fase2Img,
-  },
-  {
-    number: 3,
-    title: "ESTRUTURA",
-    description:
-      "O negócio passa a ter processos, controles e indicadores que permitem acompanhar o desempenho financeiro com mais clareza. A gestão financeira começa a se organizar.",
-    image: Fase3Img,
-  },
-  {
-    number: 4,
-    title: "INTELIGÊNCIA",
-    description:
-      "Os números deixam de ser apenas controle. Eles passam a orientar decisões estratégicas de crescimento, investimento e expansão.",
-    image: Fase4Img,
-  },
-];
-
-const benefits = [
-  "Sua fase no Mapa de Maturidade Financeira da FinanceiraMente.",
-  "O Radar FinanceiraMente, que mostra a estrutura financeira da empresa.",
-  "Um relatório de maturidade financeira com os próximos passos para evolução.",
-  "Avaliação dos 4 pilares financeiros fundamentais para gestão do negócio.",
-];
-
 export default function MaturityMap() {
+  const t = useTranslations("MaturityMap");
+  const locale = useLocale();
+
+  const phases = [
+    {
+      number: 1,
+      title: t("phases.0.title"),
+      description: t("phases.0.description"),
+      image: Fase1Img,
+    },
+    {
+      number: 2,
+      title: t("phases.1.title"),
+      description: t("phases.1.description"),
+      image: Fase2Img,
+    },
+    {
+      number: 3,
+      title: t("phases.2.title"),
+      description: t("phases.2.description"),
+      image: Fase3Img,
+    },
+    {
+      number: 4,
+      title: t("phases.3.title"),
+      description: t("phases.3.description"),
+      image: Fase4Img,
+    },
+  ];
+
+  const benefits = [
+    t("benefits.0"),
+    t("benefits.1"),
+    t("benefits.2"),
+    t("benefits.3"),
+  ];
+
   return (
     <section id="mapa" className="bg-dark py-24 md:py-32 overflow-hidden">
       <Container className="space-y-20">
-        {/* Header da Secção */}
         <motion.div
           variants={variants.staggerContainer}
           initial="initial"
@@ -68,7 +67,7 @@ export default function MaturityMap() {
           >
             <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
             <span className="text-sm font-semibold text-light/70 tracking-widest">
-              Mapa de Maturidade Financeira
+              {t("badge")}
             </span>
           </motion.div>
 
@@ -76,21 +75,17 @@ export default function MaturityMap() {
             variants={variants.fadeInUp}
             className="text-4xl md:text-5xl text-balance leading-tight font-bold text-light"
           >
-            Em qual fase financeira está o seu negócio?
+            {t("title")}
           </motion.h2>
 
           <motion.p
             variants={variants.fadeInUp}
             className="text-light/60 text-lg leading-relaxed"
           >
-            Pequenos negócios passam por diferentes níveis de maturidade
-            financeira. O Mapa de Maturidade Financeira da FinanceiraMente ajuda
-            empresários a identificar onde estão hoje e qual é o próximo passo
-            para evoluir.
+            {t("description")}
           </motion.p>
         </motion.div>
 
-        {/* Grid de Fases com Stagger */}
         <motion.div
           variants={variants.staggerContainer}
           initial="initial"
@@ -112,7 +107,7 @@ export default function MaturityMap() {
                   className="object-cover brightness-75 group-hover:brightness-100 transition-all duration-700"
                 />
                 <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded text-xs font-bold text-light border border-white/10">
-                  Fase {phase.number}
+                  {t("phase")} {phase.number}
                 </div>
               </div>
               <div className="p-8 space-y-4">
@@ -127,7 +122,6 @@ export default function MaturityMap() {
           ))}
         </motion.div>
 
-        {/* Rodapé de Conversão */}
         <motion.div
           variants={variants.staggerContainer}
           initial="initial"
@@ -140,27 +134,25 @@ export default function MaturityMap() {
               variants={variants.fadeInUp}
               className="text-4xl md:text-5xl text-balance leading-tight font-bold text-light"
             >
-              Descubra em qual fase financeira está o{" "}
-              <br className="hidden md:block" /> seu negócio.
+              {t("ctaTitle.part1")} <br className="hidden md:block" /> {t("ctaTitle.part2")}
             </motion.h3>
 
             <motion.div
               variants={variants.fadeInUp}
               className="hidden md:block"
             >
-              <Button href="/diagnostic">
-                Descobrir maturidade financeira do meu negócio
+              <Button href={`/${locale}/diagnostic`}>
+                {t("ctaButton")}
               </Button>
             </motion.div>
           </div>
 
-          {/* Lista de Benefícios com Stagger */}
           <div className="grid grid-cols-1 gap-4">
             <motion.h3
               variants={variants.fadeInUp}
               className="text-lg text-light font-medium"
             >
-              Ao responder o diagnóstico, você receberá:
+              {t("benefitsTitle")}
             </motion.h3>
 
             <motion.div
@@ -187,8 +179,8 @@ export default function MaturityMap() {
               variants={variants.fadeInUp}
               className="block md:hidden mt-4"
             >
-              <Button href="/diagnostic" className="w-full">
-                Descobrir maturidade financeira
+              <Button href={`/${locale}/diagnostic`} className="w-full">
+                {t("ctaButtonMobile")}
               </Button>
             </motion.div>
           </div>

@@ -8,12 +8,14 @@ import { variants } from "@/app/lib/animations";
 import BgHeroCutout from "../../assets/img/hero2.webp";
 import Container from "../ui/Container";
 import { getWhatsAppUrl } from "@/app/lib/whatsapp";
+import { useTranslations } from "next-intl";
 
 export default function Hero() {
+  const t = useTranslations("Hero");
+
   return (
     <motion.section
       id="home"
-      // Unificando a animação no topo da seção
       variants={variants.staggerContainer}
       initial="initial"
       animate="animate"
@@ -24,7 +26,7 @@ export default function Hero() {
         className="z-30 w-full bg-primary-deep/60 backdrop-blur-xl py-3 text-center"
       >
         <span className="text-sm md:text-base tracking-[0.1em] text-light">
-          Michel Stawicki — Especialista Financeiro
+          {t("topBar")}
         </span>
       </motion.div>
 
@@ -47,19 +49,15 @@ export default function Hero() {
                 variants={variants.fadeInUp}
                 className="text-4xl md:text-5xl font-bold text-balance text-light leading-[1.15] tracking-tight"
               >
-                Empresas raramente quebram por falta de vendas.{" "}
-                <br className="hidden md:block" />
-                <span className="text-light">
-                  Elas quebram por falta de estrutura financeira.
-                </span>
+                {t("title.part1")} <br className="hidden md:block" />
+                <span className="text-light">{t("title.part2")}</span>
               </motion.h1>
 
               <motion.p
                 variants={variants.fadeInUp}
                 className="text-lg md:text-xl text-light/80 max-w-[550px] leading-relaxed"
               >
-                Mas muitas outras não quebram. Elas simplesmente não conseguem
-                crescer.
+                {t("subtitle")}
               </motion.p>
 
               <motion.div variants={variants.fadeInUp} className="pt-2">
@@ -67,7 +65,7 @@ export default function Hero() {
                   href={getWhatsAppUrl("sessaoEstrategica")}
                   target="_blank"
                 >
-                  Quero minha sessão estratégica gratuita
+                  {t("cta")}
                 </Button>
               </motion.div>
             </div>
@@ -77,7 +75,7 @@ export default function Hero() {
         <div className="relative order-last w-full h-[550px] md:h-auto md:absolute md:inset-y-0 md:right-0 md:z-10 md:w-1/2 overflow-hidden flex items-end justify-center md:justify-end">
           <Image
             src={BgHeroCutout}
-            alt="Michel Stawicki - Especialista em Estruturação Financeira e Mentoria"
+            alt={t("imageAlt")}
             className="w-full h-full md:w-auto md:h-full object-cover object-top md:object-contain md:object-right-bottom md:max-h-[96%]"
             priority
           />
@@ -93,8 +91,8 @@ export default function Hero() {
           <TrendingUp className="text-light w-6 h-6" />
         </div>
         <div className="text-light text-sm md:text-[15px] leading-snug opacity-90 font-normal">
-          O problema raramente é vender. <br />O problema é crescer sem
-          estrutura.
+          {t("floatingBadge.part1")} <br />
+          {t("floatingBadge.part2")}
         </div>
       </motion.div>
     </motion.section>

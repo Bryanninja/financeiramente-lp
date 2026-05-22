@@ -7,37 +7,35 @@ import Container from "../ui/Container";
 import Button from "../ui/Button";
 import { variants, viewportConfig } from "@/app/lib/animations";
 import { getWhatsAppUrl } from "@/app/lib/whatsapp";
-
 import CollaborationImg from "../../assets/img/collaboration.webp";
-
-const steps = [
-  {
-    title: "Diagnóstico Inicial",
-    description:
-      "Um diagnóstico inicial para identificar em qual fase do Mapa de Maturidade Financeira FinanceiraMente o seu negócio se encontra.",
-    status: "checked",
-  },
-  {
-    title: "Raio-X Financeiro",
-    description:
-      "Uma análise estruturada da situação financeira do negócio para identificar fragilidades, oportunidades de melhoria e prioridades de estruturação financeira..",
-    status: "solid",
-  },
-  {
-    title: "Estruturação",
-    description:
-      "Implantação de processos, controles e ferramentas que organizam a gestão financeira do negócio.",
-    status: "solid",
-  },
-  {
-    title: "Consultoria Estratégica",
-    description:
-      "Acompanhamento para estruturar financeiramente o negócio e apoiar decisões importantes de crescimento.",
-    status: "solid",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function MethodSteps() {
+  const t = useTranslations("MethodSteps");
+
+  const steps = [
+    {
+      title: t("steps.0.title"),
+      description: t("steps.0.description"),
+      status: "checked",
+    },
+    {
+      title: t("steps.1.title"),
+      description: t("steps.1.description"),
+      status: "solid",
+    },
+    {
+      title: t("steps.2.title"),
+      description: t("steps.2.description"),
+      status: "solid",
+    },
+    {
+      title: t("steps.3.title"),
+      description: t("steps.3.description"),
+      status: "solid",
+    },
+  ];
+
   return (
     <section className="bg-light py-24 md:py-32 overflow-hidden">
       <Container>
@@ -48,39 +46,33 @@ export default function MethodSteps() {
           viewport={viewportConfig}
           className="space-y-16"
         >
-          {/* Header Centralizado */}
           <div className="text-center max-w-3xl mx-auto space-y-6">
             <motion.h2
               variants={variants.fadeInUp}
               className="text-4xl md:text-5xl font-bold text-dark leading-tight"
             >
-              O Caminho do Método da FinanceiraMente no seu negócio
+              {t("title")}
             </motion.h2>
             <motion.p
               variants={variants.fadeInUp}
               className="text-dark/70 text-lg text-pretty md:text-xl"
             >
-              Dependendo da fase de maturidade financeira do negócio, diferentes
-              produtos e serviços da FinanceiraMente podem ajudar na evolução
-              financeira da empresa.
+              {t("description")}
             </motion.p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
-            {/* Lado Esquerdo: Timeline */}
-
             <div className="flex flex-col space-y-8 pt-4">
               <motion.h3
                 variants={variants.fadeInUp}
                 className="text-xl md:text-2xl font-bold text-dark leading-tight"
               >
-                Produtos e Soluções
+                {t("productsTitle")}
               </motion.h3>
               <motion.div
                 variants={variants.staggerContainer}
                 className="relative"
               >
-                {/* Linha Vertical Animada */}
                 <motion.div
                   initial={{ scaleY: 0 }}
                   whileInView={{ scaleY: 1 }}
@@ -95,7 +87,6 @@ export default function MethodSteps() {
                       variants={variants.fadeInUp}
                       className="relative flex items-start group"
                     >
-                      {/* Círculo da Timeline */}
                       <div className="relative z-10 flex items-center justify-center w-10 h-10 shrink-0">
                         <div className="w-8 h-8 rounded-full bg-dark flex items-center justify-center border border-white/10 shadow-lg">
                           {step.status === "checked" && (
@@ -104,7 +95,6 @@ export default function MethodSteps() {
                         </div>
                       </div>
 
-                      {/* Conteúdo do Passo */}
                       <div
                         className={`ml-6 flex-1 transition-all p-6 duration-300 
                         ${index === 0 ? "bg-white border border-primary-vibrant rounded-2xl shadow-xl -mt-2" : "py-2"}`}
@@ -118,7 +108,7 @@ export default function MethodSteps() {
                             <div className="inline-flex items-center gap-2 px-3 py-1 w-fit rounded-full border border-dark/60 bg-transparent mb-4">
                               <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
                               <span className="text-xs md:text-sm tracking-wider text-dark font-semibold">
-                                Sessão Gratuita
+                                {t("freeSessionBadge")}
                               </span>
                             </div>
                           )}
@@ -134,15 +124,12 @@ export default function MethodSteps() {
                 </div>
               </motion.div>
 
-              {/* Botão de Chamada */}
               <motion.div
                 variants={variants.fadeInUp}
                 className="space-y-8 pt-4"
               >
                 <h3 className="text-xl text-dark font-medium">
-                  Agende uma Sessão Estratégica FinanceiraMente gratuita e
-                  descubra qual caminho pode ajudar seu negócio a evoluir
-                  financeiramente com mais clareza.
+                  {t("ctaDescription")}
                 </h3>
 
                 <Button
@@ -151,19 +138,18 @@ export default function MethodSteps() {
                   href={getWhatsAppUrl("sessaoEstrategica")}
                   target="_blank"
                 >
-                  Quero minha sessão estratégica gratuita
+                  {t("ctaButton")}
                 </Button>
               </motion.div>
             </div>
 
-            {/* Lado Direito: Imagem */}
             <motion.div
               variants={variants.fadeIn}
               className="relative aspect-[16/14] lg:h-full w-full rounded-lg overflow-hidden shadow-xl"
             >
               <Image
                 src={CollaborationImg}
-                alt="Michel Stawicki com cliente - Michel Stawicki - Especialista em Estruturação Financeira e Mentoria"
+                alt={t("imageAlt")}
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-1000"
                 priority

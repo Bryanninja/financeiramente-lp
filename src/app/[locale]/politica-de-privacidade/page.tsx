@@ -1,18 +1,34 @@
+import { getTranslations } from "next-intl/server";
 import LegalPage from "@/app/components/ui/LegalPage"; // Importe o componente de estrutura que criamos
 
-export const metadata = {
-  title: "Política de Privacidade",
-  description:
-    "Entenda como protegemos os dados da sua empresa e garantimos a segurança das informações coletadas no diagnóstico FinanceiraMente.",
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata.PrivacyPolicy" });
 
-export default function PrivacyPolicy() {
+  return {
+    title: t("title"),
+    description: t("description"),
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
+export default async function PrivacyPolicy({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "PrivacyPolicyPage" });
+
   return (
-    <LegalPage title="Política de Privacidade" lastUpdated="07 de Maio de 2026">
+    <LegalPage title={t("title")} lastUpdated="07 de Maio de 2026">
       <p>
         A <strong>FinanceiraMente</strong>, sob liderança de Michel Stawicki,
         tem como compromisso a transparência e a proteção dos dados de seus

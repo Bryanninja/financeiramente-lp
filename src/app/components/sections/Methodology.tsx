@@ -3,28 +3,32 @@
 import { motion } from "framer-motion";
 import Container from "../ui/Container";
 import { variants, viewportConfig } from "@/app/lib/animations";
-
-const pillars = [
-  {
-    title: "Rentabilidade",
-    description: "Entender onde o negócio realmente ganha dinheiro.",
-  },
-  {
-    title: "Resultado",
-    description: "Ter clareza sobre o desempenho real da empresa.",
-  },
-  {
-    title: "Caixa",
-    description: "Garantir que o negócio tenha liquidez para operar e crescer.",
-  },
-  {
-    title: "Retorno sobre investimento",
-    description:
-      "Avaliar se decisões financeiras estão realmente gerando valor.",
-  },
-];
+import { useLocale, useTranslations } from "next-intl";
 
 export default function Methodology() {
+  const t = useTranslations("Methodology");
+  const locale = useLocale();
+  const mapSvg = locale === "en" ? "/map.svg" : "/mapa.svg";
+
+  const pillars = [
+    {
+      title: t("pillars.0.title"),
+      description: t("pillars.0.description"),
+    },
+    {
+      title: t("pillars.1.title"),
+      description: t("pillars.1.description"),
+    },
+    {
+      title: t("pillars.2.title"),
+      description: t("pillars.2.description"),
+    },
+    {
+      title: t("pillars.3.title"),
+      description: t("pillars.3.description"),
+    },
+  ];
+
   return (
     <section id="metodo" className="bg-dark py-8 md:pb-32 overflow-hidden">
       <Container>
@@ -35,17 +39,15 @@ export default function Methodology() {
           viewport={viewportConfig}
           className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
         >
-          {/* Lado Esquerdo: Conteúdo e Cards */}
           <div className="space-y-12">
             <div className="space-y-6">
-              {/* Tag Superior */}
               <motion.div
                 variants={variants.fadeInUp}
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-light/70 bg-primary-vibrant/5"
               >
                 <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
                 <span className="text-sm tracking-wider text-light/70 font-semibold">
-                  Os 4 pilares
+                  {t("badge")}
                 </span>
               </motion.div>
 
@@ -53,20 +55,17 @@ export default function Methodology() {
                 variants={variants.fadeInUp}
                 className="text-3xl md:text-[2.6rem] font-bold text-light leading-tight"
               >
-                O Método FinanceiraMente
+                {t("title")}
               </motion.h2>
 
               <motion.p
                 variants={variants.fadeInUp}
                 className="text-light/60 text-lg leading-relaxed max-w-xl"
               >
-                Para evoluir no mapa de maturidade financeira, o negócio precisa
-                estruturar quatro elementos fundamentais. Esses elementos formam
-                os 4 Pilares Financeiros do Negócio.
+                {t("description")}
               </motion.p>
             </div>
 
-            {/* Grid de Cards dos Pilares com Stagger */}
             <motion.div
               variants={variants.staggerContainer}
               className="grid grid-cols-1 sm:grid-cols-2 gap-4"
@@ -88,14 +87,13 @@ export default function Methodology() {
             </motion.div>
           </div>
 
-          {/* Lado Direito: SVG da Escada de Maturidade */}
           <motion.div
             variants={variants.fadeInRight}
             className="relative flex justify-center lg:justify-end"
           >
             <img
-              src="/mapa.svg"
-              alt="Escada de Maturidade FinanceiraMente"
+              src={mapSvg}
+              alt={t("imageAlt")}
               className="w-full max-w-[550px] hover:scale-105 transition-transform duration-500 drop-shadow-[0_0_30px_rgba(30,58,138,0.3)]"
             />
           </motion.div>

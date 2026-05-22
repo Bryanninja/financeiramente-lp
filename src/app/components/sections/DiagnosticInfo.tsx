@@ -4,38 +4,40 @@ import { motion } from "framer-motion";
 import Container from "../ui/Container";
 import Button from "../ui/Button";
 import { variants, viewportConfig } from "@/app/lib/animations";
-
-const steps = [
-  { id: 1, text: "Negócio no Escuro" },
-  { id: 3, text: "Consciência Financeira" },
-  { id: 2, text: "Estrutura Financeira" },
-  { id: 4, text: "Inteligência Financeira" },
-];
-
-const pillars = [
-  {
-    title: "Rentabilidade",
-    desc: "Entender onde o negócio realmente ganha dinheiro.",
-  },
-  {
-    title: "Resultado",
-    desc: "Ter clareza sobre o desempenho financeiro da empresa.",
-  },
-  {
-    title: "Caixa",
-    desc: "Garantir liquidez para operar e crescer.",
-  },
-  {
-    title: "Retorno sobre investimento",
-    desc: "Avaliar se as decisões financeiras estão gerando valor.",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function DiagnosticInfo() {
+  const t = useTranslations("DiagnosticInfo");
+
+  const steps = [
+    { id: 1, text: t("steps.0") },
+    { id: 3, text: t("steps.1") },
+    { id: 2, text: t("steps.2") },
+    { id: 4, text: t("steps.3") },
+  ];
+
+  const pillars = [
+    {
+      title: t("pillars.0.title"),
+      desc: t("pillars.0.desc"),
+    },
+    {
+      title: t("pillars.1.title"),
+      desc: t("pillars.1.desc"),
+    },
+    {
+      title: t("pillars.2.title"),
+      desc: t("pillars.2.desc"),
+    },
+    {
+      title: t("pillars.3.title"),
+      desc: t("pillars.3.desc"),
+    },
+  ];
+
   return (
     <section className="bg-dark py-24 md:py-32 space-y-32">
       <Container>
-        {/* PARTE 1: Mapa de Maturidade */}
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center"
           variants={variants.staggerContainer}
@@ -48,14 +50,13 @@ export default function DiagnosticInfo() {
               variants={variants.fadeInUp}
               className="text-3xl md:text-[2.6rem] font-bold text-light leading-tight"
             >
-              A análise é baseada no Mapa de Maturidade Financeira -
-              FinanceiraMente
+              {t("titleMap")}
             </motion.h2>
             <motion.p
               variants={variants.fadeInUp}
               className="text-light/60 text-lg"
             >
-              Que organiza a evolução financeira das empresas em quatro fases
+              {t("descMap")}
             </motion.p>
           </div>
 
@@ -79,13 +80,11 @@ export default function DiagnosticInfo() {
           </motion.div>
         </motion.div>
 
-        {/* Divisor */}
         <motion.div
           variants={variants.fadeIn}
           className="h-[1px] w-full bg-white/5 my-20 md:my-24"
         />
 
-        {/* PARTE 2: Pilares Financeiros */}
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center"
           variants={variants.staggerContainer}
@@ -119,8 +118,7 @@ export default function DiagnosticInfo() {
               variants={variants.fadeInUp}
               className="text-light/60 text-lg"
             >
-              Juntos, esses pilares ajudam a identificar fragilidades,
-              oportunidades de melhoria e prioridades de evolução financeira.
+              {t("pillarsEndDesc")}
             </motion.p>
           </div>
 
@@ -129,19 +127,17 @@ export default function DiagnosticInfo() {
               variants={variants.fadeInUp}
               className="text-3xl  font-bold text-light leading-tight"
             >
-              O diagnóstico é baseado nos 4 Pilares Financeiros do Método
-              FinanceiraMente, que representam os principais elementos da
-              estrutura financeira de um negócio:
+              {t("titlePillars")}
             </motion.h2>
             <motion.p
               variants={variants.fadeInUp}
               className="text-light/60 text-lg"
             >
-              Que sustentam a gestão financeira da empresa.
+              {t("descPillars")}
             </motion.p>
             <motion.div variants={variants.fadeInUp}>
               <Button href="#diagnostic" className="px-10 py-4">
-                Começar Diagnóstico Agora
+                {t("ctaButton")}
               </Button>
             </motion.div>
           </div>

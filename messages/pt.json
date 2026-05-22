@@ -1,0 +1,674 @@
+{
+  "Footer": {
+    "rights": "Todos os direitos reservados.",
+    "nav": {
+      "home": "Home",
+      "map": "O Mapa",
+      "method": "O Método",
+      "about": "Sobre"
+    },
+    "legal": {
+      "privacy": "Política de Privacidade",
+      "terms": "Termos de Serviço",
+      "cookies": "Uso de Cookies"
+    }
+  },
+  "FinalCTA": {
+    "title": {
+      "part1": "Pronto para estruturar",
+      "part2": "financeiramente o seu negócio?"
+    },
+    "description": "Se você quer transformar números confusos em decisões claras, o primeiro passo é entender com profundidade a realidade financeira do seu negócio. Na Sessão Estratégica FinanceiraMente vamos analisar a estrutura financeira da sua empresa e identificar possíveis caminhos para evoluir no Mapa de Maturidade Financeira.",
+    "clarityTitle": {
+      "part1": "Durante essa conversa",
+      "part2": "você terá clareza sobre"
+    },
+    "points": [
+      "Em qual fase de maturidade financeira está o seu negócio",
+      "Quais são os principais pontos de fragilidade financeira",
+      "Quais são os próximos passos para estruturar financeiramente a empresa"
+    ],
+    "button": "Quero minha Sessão Estratégica Gratuita"
+  },
+  "FinalCTARes": {
+    "interpretationAlt": "Interpretação",
+    "interpretationTitle": "Interpretação do Diagnóstico",
+    "nextStepTitle": {
+      "part1": "Próximo Passo",
+      "part2": "de Evolução"
+    },
+    "phaseLabel": "Fase",
+    "button": "Quero minha sessão estratégica gratuita",
+    "nextStepAlt": "Próximos passos - Michel Stawicki - Especialista em Estruturação Financeira e Mentoria",
+    "deepenTitle": "Aprofunde a análise do seu negócio",
+    "deepenDesc": "O diagnóstico realizado oferece uma visão inicial da estrutura financeira do seu negócio. Cada empresa possui particularidades que exigem uma análise mais aprofundada para compreender seus desafios e oportunidades financeiras. Se você quiser explorar com mais profundidade os resultados deste diagnóstico, pode agendar uma Sessão Estratégica gratuita.",
+    "duringConversation": "Durante essa conversa iremos:",
+    "ctaItems": [
+      "Analisar com mais profundidade a estrutura financeira do seu negócio.",
+      "Identificar pontos críticos de melhorias.",
+      "Discutir caminhos possíveis para evolução financeira.",
+      "Avaliar oportunidades reais para fortalecer os pilares financeiros da empresa."
+    ]
+  },
+  "Experience": {
+    "badge": "Experiência",
+    "title": "O Método FinanceiraMente nasce da prática",
+    "subtitle": "Diretor Financeiro, Investidor e Empresário.",
+    "desc1": "Ao longo de mais de 30 anos de atuação em finanças, gestão e liderança empresarial, Michel Stawicki participou de projetos financeiros em organizações de grande porte no Brasil e no exterior.",
+    "desc2": "Essa experiência prática em ambientes corporativos complexos foi a base para o desenvolvimento do Método FinanceiraMente, que traduz princípios de gestão financeira utilizados em grandes organizações para a realidade de pequenos negócios.",
+    "michelBio": "Michel Stawicki atua há mais de 30 anos em finanças, gestão e liderança empresarial. Ao longo de sua carreira ocupou posições executivas em grandes organizações no Brasil e no exterior, liderando áreas financeiras responsáveis por operações complexas, projetos de transformação e decisões estratégicas de negócio.",
+    "resultsTitle": "Os resultados falam por si.",
+    "resultsDesc": "Hoje Michel aplica essa visão para ajudar empresários a estruturar financeiramente seus negócios e tomar decisões com mais clareza. Incluindo também liderança de projetos de integração e padronização financeira em operações internacionais.",
+    "results": [
+      "De EBITDA por unidade produzida em três anos.",
+      "No prazo médio de recebimento.",
+      "No prazo médio de pagamento.",
+      "Do EBITDA anual gerado por reestruturação operacional.",
+      "USD 50M enviados à controladora sob restrição cambial."
+    ],
+    "ctaButton": "Seguir no Instagram"
+  },
+  "Header": {
+    "nav": {
+      "home": "Home",
+      "map": "O Mapa",
+      "method": "O Método",
+      "about": "Sobre"
+    },
+    "ctaSession": "Quero minha sessão estratégica gratuita",
+    "ctaDiagnostic": "Fazer Diagnóstico Financeiro"
+  },
+  "DiagnosticHero": {
+    "errors": {
+      "nameRequired": "O nome é obrigatório.",
+      "emailInvalid": "Digite um e-mail válido.",
+      "companyRequired": "O nome da empresa é obrigatório.",
+      "phoneInvalid": "Digite um telefone válido."
+    },
+    "form": {
+      "submitError": "Erro ao iniciar. Verifique sua conexão e tente novamente.",
+      "name": "Seu Nome",
+      "namePlaceholder": "Digite seu nome completo",
+      "email": "E-mail Profissional",
+      "emailPlaceholder": "Digite seu e-mail",
+      "whatsapp": "WhatsApp",
+      "company": "Nome da Empresa",
+      "companyPlaceholder": "Digite o nome da sua empresa",
+      "loadingButton": "Iniciando...",
+      "submitButton": "Começar Diagnóstico Agora"
+    },
+    "timeLabel": "Menos de 3 minutos",
+    "title": "Tenha acesso claro ao perfil financeiro do seu negócio atual.",
+    "subtitle1": "Preencha o formulário para começar seu diagnóstico.",
+    "subtitle2": "Ao responder o diagnóstico você receberá um relatório que apresenta uma leitura inicial da estrutura financeira do seu negócio com base nas respostas fornecidas no diagnóstico."
+  },
+  "DiagnosticInfo": {
+    "steps": [
+      "Negócio no Escuro",
+      "Consciência Financeira",
+      "Estrutura Financeira",
+      "Inteligência Financeira"
+    ],
+    "pillars": [
+      {
+        "title": "Rentabilidade",
+        "desc": "Entender onde o negócio realmente ganha dinheiro."
+      },
+      {
+        "title": "Resultado",
+        "desc": "Ter clareza sobre o desempenho financeiro da empresa."
+      },
+      {
+        "title": "Caixa",
+        "desc": "Garantir liquidez para operar e crescer."
+      },
+      {
+        "title": "Retorno sobre investimento",
+        "desc": "Avaliar se as decisões financeiras estão gerando valor."
+      }
+    ],
+    "titleMap": "A análise é baseada no Mapa de Maturidade Financeira - FinanceiraMente",
+    "descMap": "Que organiza a evolução financeira das empresas em quatro fases",
+    "pillarsEndDesc": "Juntos, esses pilares ajudam a identificar fragilidades, oportunidades de melhoria e prioridades de evolução financeira.",
+    "titlePillars": "O diagnóstico é baseado nos 4 Pilares Financeiros do Método FinanceiraMente, que representam os principais elementos da estrutura financeira de um negócio:",
+    "descPillars": "Que sustentam a gestão financeira da empresa.",
+    "ctaButton": "Começar Diagnóstico Agora"
+  },
+  "DiagnosticQuiz": {
+    "loading": "Carregando diagnóstico...",
+    "chooseBestOption": "Escolha a melhor opção abaixo.",
+    "question": "Questão {current} de {total}",
+    "questions": [
+      {
+        "pilar": "Pilar 1 — Rentabilidade",
+        "question": "Você sabe qual é a margem de lucro de cada produto ou serviço que vende?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Não faço ideia"
+          },
+          {
+            "id": "B",
+            "text": "Tenho uma noção aproximada"
+          },
+          {
+            "id": "C",
+            "text": "Tenho isso calculado"
+          },
+          {
+            "id": "D",
+            "text": "Tenho isso calculado e acompanho regularmente"
+          }
+        ]
+      },
+      {
+        "pilar": "Pilar 1 — Rentabilidade",
+        "question": "Você revisa regularmente a precificação dos seus produtos ou serviços?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Nunca reviso"
+          },
+          {
+            "id": "B",
+            "text": "Revisão ocasional"
+          },
+          {
+            "id": "C",
+            "text": "Revisão periódica"
+          },
+          {
+            "id": "D",
+            "text": "Revisão estruturada baseada em dados"
+          }
+        ]
+      },
+      {
+        "pilar": "Pilar 1 — Rentabilidade",
+        "question": "Você consegue identificar quais produtos ou serviços são mais rentáveis para o negócio?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Não"
+          },
+          {
+            "id": "B",
+            "text": "Apenas parcialmente"
+          },
+          {
+            "id": "C",
+            "text": "Sim"
+          },
+          {
+            "id": "D",
+            "text": "Sim com análise estruturada"
+          }
+        ]
+      },
+      {
+        "pilar": "Pilar 2 — Resultado",
+        "question": "Você possui uma visão clara do resultado financeiro mensal do negócio?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Não"
+          },
+          {
+            "id": "B",
+            "text": "Tenho apenas uma ideia geral"
+          },
+          {
+            "id": "C",
+            "text": "Tenho um controle organizado"
+          },
+          {
+            "id": "D",
+            "text": "Tenho relatórios estruturados"
+          }
+        ]
+      },
+      {
+        "pilar": "Pilar 2 — Resultado",
+        "question": "Você consegue identificar facilmente quais despesas mais impactam o resultado do negócio?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Não"
+          },
+          {
+            "id": "B",
+            "text": "Apenas parcialmente"
+          },
+          {
+            "id": "C",
+            "text": "Sim"
+          },
+          {
+            "id": "D",
+            "text": "Sim com acompanhamento regular"
+          }
+        ]
+      },
+      {
+        "pilar": "Pilar 2 — Resultado",
+        "question": "Você acompanha indicadores financeiros do negócio (lucro, margem, despesas etc.)?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Não"
+          },
+          {
+            "id": "B",
+            "text": "Apenas ocasionalmente"
+          },
+          {
+            "id": "C",
+            "text": "Sim"
+          },
+          {
+            "id": "D",
+            "text": "Sim de forma estruturada"
+          }
+        ]
+      },
+      {
+        "pilar": "Pilar 3 — Caixa",
+        "question": "Você consegue prever a situação do caixa nas próximas semanas ou meses?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Não"
+          },
+          {
+            "id": "B",
+            "text": "Apenas parcialmente"
+          },
+          {
+            "id": "C",
+            "text": "Tenho algum controle"
+          },
+          {
+            "id": "D",
+            "text": "Tenho previsibilidade clara"
+          }
+        ]
+      },
+      {
+        "pilar": "Pilar 3 — Caixa",
+        "question": "Você possui algum controle ou planejamento de fluxo de caixa?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Não"
+          },
+          {
+            "id": "B",
+            "text": "Parcial"
+          },
+          {
+            "id": "C",
+            "text": "Sim"
+          },
+          {
+            "id": "D",
+            "text": "Sim com planejamento estruturado"
+          }
+        ]
+      },
+      {
+        "pilar": "Pilar 3 — Caixa",
+        "question": "Seu negócio já enfrentou falta de caixa inesperada mesmo tendo boas vendas?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Frequentemente"
+          },
+          {
+            "id": "B",
+            "text": "Algumas vezes"
+          },
+          {
+            "id": "C",
+            "text": "Raramente"
+          },
+          {
+            "id": "D",
+            "text": "Praticamente nunca"
+          }
+        ]
+      },
+      {
+        "pilar": "Pilar 4 — Retorno sobre investimento",
+        "question": "Antes de realizar investimentos importantes no negócio, você analisa o retorno esperado?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Não"
+          },
+          {
+            "id": "B",
+            "text": "Apenas intuitivamente"
+          },
+          {
+            "id": "C",
+            "text": "Faço algumas análises"
+          },
+          {
+            "id": "D",
+            "text": "Analiso de forma estruturada"
+          }
+        ]
+      },
+      {
+        "pilar": "Pilar 4 — Retorno sobre investimento",
+        "question": "Você consegue avaliar se investimentos realizados no negócio realmente geraram retorno?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Não"
+          },
+          {
+            "id": "B",
+            "text": "Apenas parcialmente"
+          },
+          {
+            "id": "C",
+            "text": "Sim em alguns casos"
+          },
+          {
+            "id": "D",
+            "text": "Sim de forma consistente"
+          }
+        ]
+      },
+      {
+        "pilar": "Pilar 4 — Retorno sobre investimento",
+        "question": "As decisões financeiras do negócio são tomadas com base em análise de números ou indicadores?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Não"
+          },
+          {
+            "id": "B",
+            "text": "Raramente"
+          },
+          {
+            "id": "C",
+            "text": "Em parte"
+          },
+          {
+            "id": "D",
+            "text": "Sim de forma consistente"
+          }
+        ]
+      }
+    ]
+  },
+  "Hero": {
+    "topBar": "Michel Stawicki — Especialista Financeiro",
+    "title": {
+      "part1": "Empresas raramente quebram por falta de vendas.",
+      "part2": "Elas quebram por falta de estrutura financeira."
+    },
+    "subtitle": "Mas muitas outras não quebram. Elas simplesmente não conseguem crescer.",
+    "cta": "Quero minha sessão estratégica gratuita",
+    "imageAlt": "Michel Stawicki analisando dados - Especialista em Estruturação Financeira e Mentoria",
+    "floatingBadge": {
+      "part1": "O problema raramente é vender.",
+      "part2": "O problema é crescer sem estrutura."
+    }
+  },
+  "Methodology": {
+    "pillars": [
+      {
+        "title": "Rentabilidade",
+        "description": "Entender onde o negócio realmente ganha dinheiro."
+      },
+      {
+        "title": "Resultado",
+        "description": "Ter clareza sobre o desempenho real da empresa."
+      },
+      {
+        "title": "Caixa",
+        "description": "Garantir que o negócio tenha liquidez para operar e crescer."
+      },
+      {
+        "title": "Retorno sobre investimento",
+        "description": "Avaliar se decisões financeiras estão realmente gerando valor."
+      }
+    ],
+    "badge": "Os 4 pilares",
+    "title": "O Método FinanceiraMente",
+    "description": "Para evoluir no mapa de maturidade financeira, o negócio precisa estruturar quatro elementos fundamentais. Esses elementos formam os 4 Pilares Financeiros do Negócio.",
+    "imageAlt": "Escada de Maturidade FinanceiraMente"
+  },
+  "ProblemSection": {
+    "painCards": [
+      "Onde o negócio realmente ganha dinheiro.",
+      "Qual é o lucro real da operação.",
+      "Se o caixa vai sustentar o crescimento.",
+      "Se um investimento realmente vale a pena."
+    ],
+    "badge": "Não consegue sair do lugar?",
+    "title": "O negócio vende, trabalha, movimenta dinheiro, mas parece sempre preso no mesmo lugar.",
+    "description": "Falta caixa para expandir, decisões geram insegurança, o crescimento parece mais arriscado do que deveria.",
+    "imageAlt": "Empresário com estresse financeiro",
+    "consequenceTitle": "Quando essas respostas não estão claras, decisões importantes acabam sendo tomadas no feeling.",
+    "consequenceDesc": "E quando decisões importantes são tomadas no feeling, duas coisas costumam acontecer: o negócio cresce com insegurança ou simplesmente deixa de crescer.",
+    "methodName": "O Método FinanceiraMente",
+    "methodDesc": "foi desenvolvido para ajudar empresários a estruturar financeiramente seus negócios e transformar números em decisões claras.",
+    "painListTitle": "Sem clareza financeira, o empresário não sabe com precisão:"
+  },
+  "ResultHero": {
+    "shareTitle": "Meu Relatório de Maturidade Financeira — FinanceiraMente",
+    "shareText": "Fiz o diagnóstico de maturidade financeira do meu negócio. Confira o método FinanceiraMente!",
+    "bgAlt": "Fundo bg relatorio",
+    "title": {
+      "part1": "Relatório de Maturidade",
+      "part2": "Financeira - FinanceiraMente"
+    },
+    "subtitle": "Este relatório apresenta uma leitura inicial da estrutura financeira do seu negócio com base nas respostas fornecidas no diagnóstico.",
+    "buttonShareSuccess": "Link copiado!",
+    "buttonShare": "Compartilhar",
+    "buttonEmailSuccess": "E-mail enviado!",
+    "buttonEmailSending": "Enviando...",
+    "buttonEmail": "Enviar para o E-mail"
+  },
+  "MaturityMap": {
+    "phases": [
+      {
+        "title": "NEGÓCIO NO ESCURO",
+        "description": "O empresário trabalha muito, mas não tem clareza real sobre os números do negócio. Decisões são tomadas no feeling e o caixa frequentemente gera preocupação."
+      },
+      {
+        "title": "CONSCIÊNCIA",
+        "description": "O empresário começa a olhar para receitas, custos e despesas, mas ainda sem uma estrutura financeira consistente. Os números existem, mas ainda não orientam o negócio."
+      },
+      {
+        "title": "ESTRUTURA",
+        "description": "O negócio passa a ter processos, controles e indicadores que permitem acompanhar o desempenho financeiro com mais clareza. A gestão financeira começa a se organizar."
+      },
+      {
+        "title": "INTELIGÊNCIA",
+        "description": "Os números deixam de ser apenas controle. Eles passam a orientar decisões estratégicas de crescimento, investimento e expansão."
+      }
+    ],
+    "benefits": [
+      "Sua fase no Mapa de Maturidade Financeira da FinanceiraMente.",
+      "O Radar FinanceiraMente, que mostra a estrutura financeira da empresa.",
+      "Um relatório de maturidade financeira com os próximos passos para evolução.",
+      "Avaliação dos 4 pilares financeiros fundamentais para gestão do negócio."
+    ],
+    "badge": "Mapa de Maturidade Financeira",
+    "title": "Em qual fase financeira está o seu negócio?",
+    "description": "Pequenos negócios passam por diferentes níveis de maturidade financeira. O Mapa de Maturidade Financeira da FinanceiraMente ajuda empresários a identificar onde estão hoje e qual é o próximo passo para evoluir.",
+    "phase": "Fase",
+    "ctaTitle": {
+      "part1": "Descubra em qual fase financeira está o",
+      "part2": "seu negócio."
+    },
+    "ctaButton": "Descobrir maturidade financeira do meu negócio",
+    "benefitsTitle": "Ao responder o diagnóstico, você receberá:",
+    "ctaButtonMobile": "Descobrir maturidade financeira"
+  },
+  "MethodSteps": {
+    "steps": [
+      {
+        "title": "Diagnóstico Inicial",
+        "description": "Um diagnóstico inicial para identificar em qual fase do Mapa de Maturidade Financeira FinanceiraMente o seu negócio se encontra."
+      },
+      {
+        "title": "Raio-X Financeiro",
+        "description": "Uma análise estruturada da situação financeira do negócio para identificar fragilidades, oportunidades de melhoria e prioridades de estruturação financeira.."
+      },
+      {
+        "title": "Estruturação",
+        "description": "Implantação de processos, controles e ferramentas que organizam a gestão financeira do negócio."
+      },
+      {
+        "title": "Consultoria Estratégica",
+        "description": "Acompanhamento para estruturar financeiramente o negócio e apoiar decisões importantes de crescimento."
+      }
+    ],
+    "title": "O Caminho do Método da FinanceiraMente no seu negócio",
+    "description": "Dependendo da fase de maturidade financeira do negócio, diferentes produtos e serviços da FinanceiraMente podem ajudar na evolução financeira da empresa.",
+    "productsTitle": "Produtos e Soluções",
+    "freeSessionBadge": "Sessão Gratuita",
+    "ctaDescription": "Agende uma Sessão Estratégica FinanceiraMente gratuita e descubra qual caminho pode ajudar seu negócio a evoluir financeiramente com mais clareza.",
+    "ctaButton": "Quero minha sessão estratégica gratuita",
+    "imageAlt": "Michel Stawicki com cliente - Michel Stawicki - Especialista em Estruturação Financeira e Mentoria"
+  },
+  "ProblemReal": {
+    "title": {
+      "part1": "O problema real do",
+      "part2": "pequeno empresário"
+    },
+    "subtitle": "A maioria dos empresários aprende a:",
+    "skills": [
+      "Vender",
+      "Atender Clientes",
+      "Fazer o negócio funcionar"
+    ],
+    "butRarelyLearns": "Mas raramente aprende a estruturar financeiramente a empresa.",
+    "ctaButton": "Quero minha sessão estratégica gratuita",
+    "paymentImageAlt": "Pagamento com cartão",
+    "calcImageAlt": "Cálculos financeiros",
+    "growthTitle": "Conforme o negócio cresce, aumentam também:",
+    "growthConsequences": [
+      "Despesas",
+      "Complexidade",
+      "Decisões financeiras"
+    ],
+    "darkTitle": "Sem uma estrutura clara de gestão financeira, o empresário passa a administrar o negócio no escuro.",
+    "darkSubtitle": "O dinheiro entra, mas não fica claro:",
+    "darkCards": [
+      "Onde está o lucro.",
+      "Quanto o negócio realmente gera.",
+      "Se o caixa sustenta a operação.",
+      "Se as decisões estão criando valor."
+    ]
+  },
+  "ResultAnalysis": {
+    "pillarsData": [
+      "Rentabilidade",
+      "Resultado",
+      "Caixa",
+      "Retorno sobre investimento"
+    ],
+    "bannerTitle": {
+      "part1": "Identificação do Perfil",
+      "part2": "Financeiro do negócio"
+    },
+    "bannerSubtitle": "Seu desempenho em resumo abaixo.",
+    "profileTitle": "Perfil Financeiro do negócio",
+    "phaseLabel": "Fase",
+    "scoreLabel": "Pontuação do diagnóstico",
+    "pointsLabel": "pontos",
+    "phaseBadge": "Fase",
+    "businessIn": "Negócio em",
+    "imageAlt": "Análise de perfil",
+    "pillarsEvaluationTitle": {
+      "part1": "Avaliação dos",
+      "part2": "pilares financeiros"
+    },
+    "pillarsEvaluationDesc": "O diagnóstico também analisa o nível de desenvolvimento dos quatro pilares financeiros que sustentam a gestão financeira do negócio. Esses pilares representam os principais elementos que influenciam a capacidade da empresa de compreender seus números e tomar decisões financeiras com mais clareza.",
+    "radarTitle": "Avaliação dos Pilares Financeiros",
+    "radarSubtitle": "Pontuações",
+    "radarFooter": "Pilares Financeiro",
+    "darkSectionTitle": {
+      "part1": "Avaliação dos",
+      "part2": "Pilares Financeiros"
+    }
+  },
+  "LegalPage": {
+    "back": "Voltar",
+    "lastUpdated": "Última atualização"
+  },
+  "Switcher": {
+    "pt": "PT",
+    "en": "EN"
+  },
+  "Metadata": {
+    "Home": {
+      "title": "Sessão Estratégica e Mentoria Financeira",
+      "description": "Agende sua Sessão Estratégica. Use nosso Diagnóstico de Maturidade Financeira para identificar gargalos e estruturar o crescimento do seu negócio."
+    },
+    "Diagnostic": {
+      "title": "Diagnóstico de Maturidade Financeira",
+      "description": "Responda a 12 perguntas rápidas e descubra em qual fase de maturidade seu negócio se encontra. Receba seu relatório em tempo real.",
+      "ogTitle": "Diagnóstico de Maturidade Financeira | FinanceiraMente",
+      "ogDescription": "Avalie a saúde financeira da sua empresa agora."
+    },
+    "DiagnosticResult": {
+      "title": "Seu Relatório de Maturidade | FinanceiraMente",
+      "description": "Análise detalhada da estrutura financeira do seu negócio."
+    },
+    "PrivacyPolicy": {
+      "title": "Política de Privacidade",
+      "description": "Entenda como protegemos os dados da sua empresa e garantimos a segurança das informações coletadas no diagnóstico FinanceiraMente."
+    },
+    "TermsOfService": {
+      "title": "Termos de Uso",
+      "description": "Termos e condições de uso da plataforma FinanceiraMente e da consultoria estratégica de Michel Stawicki."
+    }
+  },
+  "TermsOfServicePage": {
+    "title": "Termos de Serviço",
+    "content": "..."
+  },
+  "PrivacyPolicyPage": {
+    "title": "Política de Privacidade",
+    "content": "..."
+  },
+  "Phases": {
+    "1": {
+      "title": "Negócio no Escuro",
+      "description": "Seu negócio ainda apresenta baixa visibilidade sobre aspectos financeiros essenciais da operação.\n\nEmpresas nessa fase normalmente operam com pouca clareza sobre rentabilidade, resultado e comportamento do caixa.",
+      "interpretation": "O diagnóstico indica que o negócio ainda apresenta baixa visibilidade sobre elementos financeiros essenciais da operação. Nessa fase é comum que o empresário tenha dificuldade para identificar com clareza o lucro real do negócio, prever o comportamento do caixa ou avaliar o impacto financeiro das decisões tomadas no dia a dia.\n\nIsso não significa necessariamente que o negócio esteja em dificuldade. Muitas empresas passam por esse estágio durante seu desenvolvimento.\n\nNo entanto, a ausência de uma estrutura financeira clara pode tornar a gestão mais reativa, com decisões sendo tomadas à medida que os problemas aparecem.",
+      "nextStep": "O primeiro passo de evolução consiste em construir clareza financeira básica sobre o funcionamento do negócio.",
+      "nextStepDetails": "Isso inclui desenvolver visibilidade sobre elementos fundamentais como rentabilidade, resultado financeiro e comportamento do caixa.\n\nOrganizar essas informações permite que o empresário compreenda melhor o desempenho do negócio e comece a tomar decisões com maior segurança.\n\nA partir dessa base inicial, torna-se possível estruturar gradualmente uma gestão financeira mais consistente."
+    },
+    "2": {
+      "title": "Consciência Financeira",
+      "description": "Seu negócio já demonstra alguma atenção aos números financeiros e começa a desenvolver maior clareza sobre o desempenho da empresa.\n\nNo entanto, ainda pode faltar uma estrutura financeira integrada que permita transformar esses dados em decisões mais consistentes.",
+      "interpretation": "O diagnóstico indica que o negócio já apresenta algum nível de atenção aos números financeiros e começa a desenvolver maior consciência sobre o desempenho da empresa. Nessa fase o empresário normalmente acompanha receitas, despesas ou resultados, mas ainda pode faltar uma estrutura financeira integrada que permita transformar essas informações em decisões mais claras e consistentes.\n\nEsse estágio representa uma transição importante entre uma gestão financeira mais intuitiva e uma gestão financeira estruturada.\n\nFortalecer os pilares financeiros do negócio ajuda a transformar os números em ferramentas reais de gestão e apoio à tomada de decisão.",
+      "nextStep": "O próximo passo é organizar os pilares financeiros do negócio de forma mais estruturada.",
+      "nextStepDetails": "Isso significa transformar informações financeiras dispersas em um sistema mais claro de gestão, permitindo compreender melhor a rentabilidade, acompanhar o resultado financeiro e melhorar a previsibilidade do caixa.\n\nQuando esses elementos passam a funcionar de forma integrada, os números deixam de ser apenas registros e passam a apoiar decisões importantes do negócio."
+    },
+    "3": {
+      "title": "Estrutura Financeira",
+      "description": "Seu negócio já apresenta uma base organizada de gestão financeira e maior clareza sobre os números da operação.\n\nIsso indica que a gestão financeira já começa a apoiar decisões relevantes do negócio.",
+      "interpretation": "O diagnóstico indica que o negócio já possui uma base organizada de gestão financeira e maior clareza sobre os números da operação. Empresas nesse estágio geralmente já possuem processos ou ferramentas que permitem acompanhar resultados, analisar o desempenho financeiro e ter maior previsibilidade sobre o comportamento do caixa.\n\nIsso representa um nível relevante de maturidade financeira.\n\nO próximo passo é utilizar essa estrutura de forma cada vez mais estratégica, permitindo que as informações financeiras apoiem decisões de crescimento, investimento e expansão do negócio.",
+      "nextStep": "O foco agora passa a ser utilizar a estrutura financeira existente de forma cada vez mais estratégica.",
+      "nextStepDetails": "Isso envolve aprofundar a análise de rentabilidade, avaliar investimentos com maior clareza e integrar as informações financeiras às decisões de crescimento do negócio.\n\nNesse estágio, a gestão financeira deixa de ser apenas controle e passa a atuar como um instrumento de apoio à estratégia da empresa."
+    },
+    "4": {
+      "title": "Inteligência Financeira",
+      "description": "Seu negócio demonstra um nível elevado de maturidade financeira.\n\nOs números já são utilizados como ferramenta de gestão e suporte às decisões estratégicas da empresa.",
+      "interpretation": "O diagnóstico indica que o negócio apresenta um nível elevado de maturidade financeira. Nesse estágio, os números já fazem parte da forma como o negócio é gerido e as informações financeiras são utilizadas como suporte para decisões estratégicas.\n\nEmpresas nessa fase costumam apresentar maior clareza sobre rentabilidade, previsibilidade financeira e capacidade de avaliar o impacto das decisões do negócio.\n\nA gestão financeira passa a atuar não apenas como controle, mas como um sistema de suporte à estratégia e ao crescimento da empresa.",
+      "nextStep": "O próximo passo consiste em utilizar a estrutura financeira já existente para apoiar decisões estratégicas de longo prazo.",
+      "nextStepDetails": "Isso pode incluir avaliação de novos investimentos, planejamento de crescimento, expansão da operação e melhoria contínua da eficiência financeira do negócio.\n\nNesse estágio, a gestão financeira funciona como um sistema de suporte às decisões estratégicas da empresa."
+    }
+  }
+}

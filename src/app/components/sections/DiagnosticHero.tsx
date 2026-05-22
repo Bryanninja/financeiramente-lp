@@ -12,20 +12,23 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
-
-const leadSchema = z.object({
-  name: z.string().min(2, "O nome é obrigatório."),
-  email: z.string().email("Digite um e-mail válido."),
-  company: z.string().min(2, "O nome da empresa é obrigatório."),
-  phone: z.string().min(12, "Digite um telefone válido."),
-});
-
-type LeadFormData = z.infer<typeof leadSchema>;
+import { useLocale, useTranslations } from "next-intl";
 
 export default function DiagnosticHero() {
+  const t = useTranslations("DiagnosticHero");
+  const locale = useLocale();
   const [loading, setLoading] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const router = useRouter();
+
+  const leadSchema = z.object({
+    name: z.string().min(2, t("errors.nameRequired")),
+    email: z.string().email(t("errors.emailInvalid")),
+    company: z.string().min(2, t("errors.companyRequired")),
+    phone: z.string().min(12, t("errors.phoneInvalid")),
+  });
+
+  type LeadFormData = z.infer<typeof leadSchema>;
 
   const {
     register,
@@ -44,31 +47,27 @@ export default function DiagnosticHero() {
       const res = await fetch("/enviar.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, locale }),
       });
       if (!res.ok) throw new Error();
       localStorage.setItem("fm_user", JSON.stringify(data));
-      router.push("/questions");
+      router.push(`/${locale}/questions`);
     } catch {
-      setSubmitError(
-        "Erro ao iniciar. Verifique sua conexão e tente novamente.",
-      );
+      setSubmitError(t("form.submitError"));
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section className="bg-light flex justify-center items-center pt-36 pb-20 2xl:pt-40">
+    <section id="diagnostic" className="bg-light flex justify-center items-center pt-36 pb-20 2xl:pt-40">
       <Container>
-        {/* O PAI do grid agora controla o fluxo de ambas as colunas */}
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start"
           variants={variants.staggerContainer}
           initial="initial"
           animate="animate"
         >
-          {/* Lado Esquerdo: Texto (Inicia a cascata interna) */}
           <motion.div
             variants={variants.staggerContainer}
             className="space-y-8"
@@ -79,7 +78,7 @@ export default function DiagnosticHero() {
             >
               <Watch className="text-dark/70" />
               <span className="text-sm font-semibold text-dark/70 tracking-wider">
-                Menos de 3 minutos
+                {t("timeLabel")}
               </span>
             </motion.div>
 
@@ -87,21 +86,17 @@ export default function DiagnosticHero() {
               variants={variants.fadeInUp}
               className="text-4xl md:text-5xl text-balance font-bold text-dark leading-[1.1] tracking-tight"
             >
-              Tenha acesso claro ao perfil financeiro do seu negócio atual.
+              {t("title")}
             </motion.h1>
 
             <motion.p
               variants={variants.fadeInUp}
               className="text-lg text-dark/70 max-w-lg leading-relaxed"
             >
-              Preencha o formulário para começar seu diagnóstico. Ao responder o
-              diagnóstico você receberá um relatório que apresenta uma leitura
-              inicial da estrutura financeira do seu negócio com base nas
-              respostas fornecidas no diagnóstico.
+              {t("subtitle1")} {t("subtitle2")}
             </motion.p>
           </motion.div>
 
-          {/* Lado Direito: Formulário (Entra por último na fila do grid) */}
           <motion.form
             variants={variants.fadeInUp}
             onSubmit={handleSubmit(onSubmit)}
@@ -109,11 +104,11 @@ export default function DiagnosticHero() {
           >
             <div className="space-y-2">
               <label className="text-sm font-semibold text-dark">
-                Seu Nome
+                {t("form.name")}
               </label>
               <input
                 type="text"
-                placeholder="Digite seu nome completo"
+                placeholder={t("form.namePlaceholder")}
                 {...register("name")}
                 className={`w-full px-4 py-3 mt-2 rounded-lg border focus:border-primary-deep outline-none transition-colors ${
                   errors.name ? "border-red-500" : "border-dark/40"
@@ -121,18 +116,18 @@ export default function DiagnosticHero() {
               />
               {errors.name && (
                 <p className="text-red-500 text-xs mt-1">
-                  {errors.name.message}
+                  {errors.name.message as string}
                 </p>
               )}
             </div>
 
             <div className="space-y-2">
               <label className="text-sm font-semibold text-dark">
-                E-mail Profissional
+                {t("form.email")}
               </label>
               <input
                 type="email"
-                placeholder="Digite seu e-mail"
+                placeholder={t("form.emailPlaceholder")}
                 {...register("email")}
                 className={`w-full px-4 py-3 rounded-lg border mt-2 focus:border-primary-deep outline-none transition-colors ${
                   errors.email ? "border-red-500" : "border-dark/40"
@@ -140,14 +135,14 @@ export default function DiagnosticHero() {
               />
               {errors.email && (
                 <p className="text-red-500 text-xs mt-1">
-                  {errors.email.message}
+                  {errors.email.message as string}
                 </p>
               )}
             </div>
 
             <div className="space-y-2">
               <label className="text-sm font-semibold text-dark">
-                WhatsApp
+                {t("form.whatsapp")}
               </label>
               <Controller
                 name="phone"
@@ -174,18 +169,18 @@ export default function DiagnosticHero() {
               />
               {errors.phone && (
                 <p className="text-red-500 text-xs mt-1">
-                  {errors.phone.message}
+                  {errors.phone.message as string}
                 </p>
               )}
             </div>
 
             <div className="space-y-2">
               <label className="text-sm font-semibold text-dark">
-                Nome da Empresa
+                {t("form.company")}
               </label>
               <input
                 type="text"
-                placeholder="Digite o nome da sua empresa"
+                placeholder={t("form.companyPlaceholder")}
                 {...register("company")}
                 className={`w-full px-4 py-3 rounded-lg border mt-2 focus:border-primary-deep outline-none transition-colors ${
                   errors.company ? "border-red-500" : "border-dark/40"
@@ -193,7 +188,7 @@ export default function DiagnosticHero() {
               />
               {errors.company && (
                 <p className="text-red-500 text-xs mt-1">
-                  {errors.company.message}
+                  {errors.company.message as string}
                 </p>
               )}
             </div>
@@ -205,7 +200,7 @@ export default function DiagnosticHero() {
                 className="w-full text-lg disabled:opacity-70 disabled:cursor-not-allowed"
                 disabled={loading}
               >
-                {loading ? "Iniciando..." : "Começar Diagnóstico Agora"}
+                {loading ? t("form.loadingButton") : t("form.submitButton")}
               </Button>
               {submitError && (
                 <p className="text-red-500 text-sm mt-4 text-center">

@@ -5,15 +5,29 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Container from "../ui/Container";
 import { variants, viewportConfig } from "@/app/lib/animations";
-import { questions } from "@/app/data/questions";
+
 import Footer from "./Footer";
 import Header from "./Header";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function DiagnosticQuiz() {
+  const t = useTranslations("DiagnosticQuiz");
+  const locale = useLocale();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
-  const totalSteps = questions.length;
-  const currentData = questions[currentStep];
+  const totalSteps = 12;
+
+  const currentData = currentStep < totalSteps ? {
+    pilar: t(`questions.${currentStep}.pilar`),
+    question: t(`questions.${currentStep}.question`),
+    options: [
+      { id: "A", text: t(`questions.${currentStep}.options.0.text`) },
+      { id: "B", text: t(`questions.${currentStep}.options.1.text`) },
+      { id: "C", text: t(`questions.${currentStep}.options.2.text`) },
+      { id: "D", text: t(`questions.${currentStep}.options.3.text`) },
+    ],
+  } : null;
+
   const router = useRouter();
 
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -22,7 +36,7 @@ export default function DiagnosticQuiz() {
     const checkGuard = async () => {
       const user = localStorage.getItem("fm_user");
       if (!user) {
-        router.push("/diagnostic");
+        router.push(`/${locale}/diagnostic`);
       } else {
         setIsAuthorized(true);
       }
@@ -35,7 +49,7 @@ export default function DiagnosticQuiz() {
   if (!currentData) {
     return (
       <section className="bg-white min-h-screen flex items-center justify-center">
-        <p className="text-dark/70 font-medium">Carregando diagnóstico...</p>
+        <p className="text-dark/70 font-medium">{t("loading")}</p>
       </section>
     );
   }
@@ -76,7 +90,7 @@ export default function DiagnosticQuiz() {
         }),
       );
 
-      router.push("/diagnostic-result");
+      router.push(`/${locale}/diagnostic-result`);
     }
   };
 
@@ -92,7 +106,6 @@ export default function DiagnosticQuiz() {
             animate="animate"
             exit="initial"
           >
-            {/* Cabeçalho da Pergunta */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start border-b border-dark/20 pb-16">
               <div className="lg:col-span-7 space-y-6">
                 <motion.h2
@@ -105,7 +118,7 @@ export default function DiagnosticQuiz() {
                   variants={variants.fadeInUp}
                   className="text-dark/70 text-lg"
                 >
-                  Escolha a melhor opção abaixo.
+                  {t("chooseBestOption")}
                 </motion.p>
               </div>
 
@@ -125,7 +138,10 @@ export default function DiagnosticQuiz() {
                   className="flex flex-col gap-4"
                 >
                   <span className="text-2xl md:text-3xl text-dark">
-                    Questão {currentStep + 1} de {totalSteps}
+                    {t("question", {
+                      current: currentStep + 1,
+                      total: totalSteps,
+                    })}
                   </span>
                   <span className="text-sm font-medium text-dark/70 uppercase tracking-widest">
                     {currentData.pilar}
@@ -134,7 +150,6 @@ export default function DiagnosticQuiz() {
               </div>
             </div>
 
-            {/* Opções de Resposta */}
             <motion.div
               variants={variants.staggerContainer}
               className="divide-y divide-dark/20"

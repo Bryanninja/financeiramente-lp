@@ -23,6 +23,7 @@ import { variants, viewportConfig } from "@/app/lib/animations";
 import PaymentImg from "../../assets/img/payment.webp";
 import CalcImg from "../../assets/img/calculation.webp";
 import { getWhatsAppUrl } from "@/app/lib/whatsapp";
+import { useTranslations } from "next-intl";
 
 interface IconChipProps {
   icon: LucideIcon;
@@ -45,10 +46,11 @@ const IconChip = ({ icon: Icon, text, color = "primary" }: IconChipProps) => (
 );
 
 export default function ProblemReal() {
+  const t = useTranslations("ProblemReal");
+
   return (
     <section className="bg-light py-24 md:py-32 space-y-32 overflow-hidden">
       <Container className="space-y-16 md:space-y-32">
-        {/* PARTE 1: O Problema Real */}
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
           variants={variants.staggerContainer}
@@ -60,10 +62,10 @@ export default function ProblemReal() {
             <div className="space-y-6">
               <motion.div variants={variants.fadeInUp} className="space-y-4">
                 <h2 className="text-3xl md:text-5xl font-bold text-dark leading-tight">
-                  O problema real do <br /> pequeno empresário
+                  {t("title.part1")} <br /> {t("title.part2")}
                 </h2>
                 <p className="text-dark/90 font-medium text-lg md:text-2xl">
-                  A maioria dos empresários aprende a:
+                  {t("subtitle")}
                 </p>
               </motion.div>
 
@@ -71,9 +73,9 @@ export default function ProblemReal() {
                 variants={variants.staggerContainer}
                 className="flex flex-wrap gap-6"
               >
-                <IconChip icon={ArrowUpRight} text="Vender" />
-                <IconChip icon={Users} text="Atender Clientes" />
-                <IconChip icon={Settings} text="Fazer o negócio funcionar" />
+                <IconChip icon={ArrowUpRight} text={t("skills.0")} />
+                <IconChip icon={Users} text={t("skills.1")} />
+                <IconChip icon={Settings} text={t("skills.2")} />
               </motion.div>
             </div>
 
@@ -82,7 +84,7 @@ export default function ProblemReal() {
               className="p-4 bg-accent-bronze/32 rounded-lg border-accent-bronze"
             >
               <p className="text-dark font-medium">
-                Mas raramente aprende a estruturar financeiramente a empresa.
+                {t("butRarelyLearns")}
               </p>
             </motion.div>
 
@@ -92,7 +94,7 @@ export default function ProblemReal() {
                 href={getWhatsAppUrl("sessaoEstrategica")}
                 target="_blank"
               >
-                Quero minha sessão estratégica gratuita
+                {t("ctaButton")}
               </Button>
             </motion.div>
           </div>
@@ -103,14 +105,13 @@ export default function ProblemReal() {
           >
             <Image
               src={PaymentImg}
-              alt="Pagamento com cartão"
+              alt={t("paymentImageAlt")}
               fill
               className="object-cover"
             />
           </motion.div>
         </motion.div>
 
-        {/* PARTE 2: Conforme o negócio cresce */}
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
           variants={variants.staggerContainer}
@@ -124,7 +125,7 @@ export default function ProblemReal() {
           >
             <Image
               src={CalcImg}
-              alt="Cálculos financeiros"
+              alt={t("calcImageAlt")}
               fill
               className="object-cover"
             />
@@ -133,18 +134,18 @@ export default function ProblemReal() {
           <div className="order-1 lg:order-2 space-y-8">
             <motion.div variants={variants.fadeInUp} className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold text-dark leading-tight">
-                Conforme o negócio cresce, aumentam também:
+                {t("growthTitle")}
               </h2>
 
               <motion.div
                 variants={variants.staggerContainer}
                 className="flex flex-wrap gap-3"
               >
-                <IconChip icon={MinusCircle} text="Despesas" color="accent" />
-                <IconChip icon={Layers} text="Complexidade" color="accent" />
+                <IconChip icon={MinusCircle} text={t("growthConsequences.0")} color="accent" />
+                <IconChip icon={Layers} text={t("growthConsequences.1")} color="accent" />
                 <IconChip
                   icon={PieChart}
-                  text="Decisões financeiras"
+                  text={t("growthConsequences.2")}
                   color="accent"
                 />
               </motion.div>
@@ -156,13 +157,12 @@ export default function ProblemReal() {
                 href={getWhatsAppUrl("sessaoEstrategica")}
                 target="_blank"
               >
-                Quero minha sessão estratégica gratuita
+                {t("ctaButton")}
               </Button>
             </motion.div>
           </div>
         </motion.div>
 
-        {/* PARTE 3: Administrar no escuro */}
         <motion.div
           variants={variants.staggerContainer}
           initial="initial"
@@ -175,14 +175,13 @@ export default function ProblemReal() {
               variants={variants.fadeInUp}
               className="text-3xl md:text-4xl font-bold text-dark leading-tight"
             >
-              Sem uma estrutura clara de gestão financeira, o empresário passa a
-              administrar o negócio no escuro.
+              {t("darkTitle")}
             </motion.h2>
             <motion.p
               variants={variants.fadeInUp}
               className="text-dark/80 text-xl font-medium"
             >
-              O dinheiro entra, mas não fica claro:
+              {t("darkSubtitle")}
             </motion.p>
           </div>
 
@@ -191,10 +190,10 @@ export default function ProblemReal() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {[
-              { icon: Search, text: "Onde está o lucro." },
-              { icon: Activity, text: "Quanto o negócio realmente gera." },
-              { icon: BarChart3, text: "Se o caixa sustenta a operação." },
-              { icon: Target, text: "Se as decisões estão criando valor." },
+              { icon: Search, text: t("darkCards.0") },
+              { icon: Activity, text: t("darkCards.1") },
+              { icon: BarChart3, text: t("darkCards.2") },
+              { icon: Target, text: t("darkCards.3") },
             ].map((card, i) => (
               <motion.div
                 key={i}

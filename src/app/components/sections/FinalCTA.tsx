@@ -7,26 +7,28 @@ import Container from "../ui/Container";
 import Button from "../ui/Button";
 import { variants, viewportConfig } from "@/app/lib/animations";
 import { getWhatsAppUrl } from "@/app/lib/whatsapp";
+import { useTranslations } from "next-intl";
 
-// Imagem central (Michel e Cliente sorrindo)
 import FinalMeetingImg from "../../assets/img/final-meeting.webp";
 
-const clarityPoints = [
-  {
-    icon: <Search className="w-6 h-6" />,
-    text: "Em qual fase de maturidade financeira está o seu negócio",
-  },
-  {
-    icon: <DollarSign className="w-6 h-6" />,
-    text: "Quais são os principais pontos de fragilidade financeira",
-  },
-  {
-    icon: <Calculator className="w-6 h-6" />,
-    text: "Quais são os próximos passos para estruturar financeiramente a empresa",
-  },
-];
-
 export default function FinalCTA() {
+  const t = useTranslations("FinalCTA");
+
+  const clarityPoints = [
+    {
+      icon: <Search className="w-6 h-6" />,
+      text: t("points.0"),
+    },
+    {
+      icon: <DollarSign className="w-6 h-6" />,
+      text: t("points.1"),
+    },
+    {
+      icon: <Calculator className="w-6 h-6" />,
+      text: t("points.2"),
+    },
+  ];
+
   return (
     <section className="bg-dark py-24 md:py-32 overflow-hidden">
       <Container>
@@ -37,47 +39,40 @@ export default function FinalCTA() {
           viewport={viewportConfig}
           className="space-y-16"
         >
-          {/* 1. Header de Chamada */}
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <motion.h2
               variants={variants.fadeInUp}
               className="text-3xl md:text-5xl font-bold text-light leading-tight"
             >
-              Pronto para estruturar <br /> financeiramente o seu negócio?
+              {t("title.part1")} <br /> {t("title.part2")}
             </motion.h2>
 
             <motion.p
               variants={variants.fadeInUp}
               className="text-light/70 text-base md:text-lg leading-relaxed max-w-3xl mx-auto"
             >
-              Se você quer transformar números confusos em decisões claras, o
-              primeiro passo é entender com profundidade a realidade financeira
-              do seu negócio. Na Sessão Estratégica FinanceiraMente vamos
-              analisar a estrutura financeira da sua empresa e identificar
-              possíveis caminhos para evoluir no Mapa de Maturidade Financeira.
+              {t("description")}
             </motion.p>
           </div>
 
-          {/* 2. Imagem de Destaque com Tag */}
           <motion.div
             variants={variants.fadeInUp}
             className="relative w-full aspect-square md:aspect-[21/9] rounded-2xl overflow-hidden shadow-2xl"
           >
             <Image
               src={FinalMeetingImg}
-              alt="Reunião estratégica com Michel Stawicki- Michel Stawicki - Especialista em Estruturação Financeira e Mentoria "
+              alt="Reunião estratégica com Michel Stawicki"
               fill
               className="object-cover object-top hover:scale-105 transition-transform duration-1000"
             />
           </motion.div>
 
-          {/* 3. Seção de Pontos de Clareza */}
           <div className="space-y-12 pt-8">
             <motion.h3
               variants={variants.fadeInUp}
               className="text-2xl md:text-4xl font-bold text-light text-center leading-tight"
             >
-              Durante essa conversa <br /> você terá clareza sobre
+              {t("clarityTitle.part1")} <br /> {t("clarityTitle.part2")}
             </motion.h3>
 
             <motion.div
@@ -101,7 +96,6 @@ export default function FinalCTA() {
             </motion.div>
           </div>
 
-          {/* 4. Botão Final de Conversão */}
           <motion.div
             variants={variants.fadeInUp}
             className="flex justify-center"
@@ -111,7 +105,7 @@ export default function FinalCTA() {
               href={getWhatsAppUrl("sessaoEstrategica")}
               target="_blank"
             >
-              Quero minha Sessão Estratégica Gratuita
+              {t("button")}
             </Button>
           </motion.div>
         </motion.div>

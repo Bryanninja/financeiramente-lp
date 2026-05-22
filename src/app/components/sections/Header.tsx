@@ -7,24 +7,26 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import Container from "../ui/Container";
 import { getWhatsAppUrl } from "@/app/lib/whatsapp";
 import Button from "../ui/Button";
+import { useTranslations, useLocale } from "next-intl";
 
 interface HeaderProps {
   transparent?: boolean;
-  noBackground?: boolean; // Nova variante para colocar em outros lugares
+  noBackground?: boolean;
 }
 
-const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "O Mapa", href: "/#mapa" },
-  { label: "O Método", href: "/#metodo" },
-  { label: "Sobre", href: "/#sobre" },
-];
-
 const Header = ({ transparent = false, noBackground = false }: HeaderProps) => {
+  const t = useTranslations("Header");
+  const locale = useLocale();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Fecha o menu ao redimensionar para desktop
+  const NAV_LINKS = [
+    { label: t("nav.home"), href: `/${locale}/` },
+    { label: t("nav.map"), href: `/${locale}/#mapa` },
+    { label: t("nav.method"), href: `/${locale}/#metodo` },
+    { label: t("nav.about"), href: `/${locale}/#sobre` },
+  ];
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) setIsOpen(false);
@@ -33,22 +35,19 @@ const Header = ({ transparent = false, noBackground = false }: HeaderProps) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Trava o scroll da página no mobile quando o menu está aberto
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
   }, [isOpen]);
 
-  // Detecta scroll para mudar o estilo do header
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lógica de classes de fundo simplificada
   const getHeaderStyle = () => {
     if (noBackground) return "bg-transparent py-6";
-    if (isOpen) return "bg-dark py-6"; // Menu mobile aberto sempre tem fundo
+    if (isOpen) return "bg-dark py-6";
     if (transparent && !isScrolled) return "bg-transparent py-6";
     return "bg-dark/96 backdrop-blur-md border-b border-white/5 py-6 shadow-xl";
   };
@@ -58,9 +57,8 @@ const Header = ({ transparent = false, noBackground = false }: HeaderProps) => {
       className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${getHeaderStyle()}`}
     >
       <Container className="flex items-center justify-between">
-        {/* Logo */}
         <Link
-          href="/"
+          href={`/${locale}/`}
           onClick={() => setIsOpen(false)}
           className="relative z-[110] block"
         >
@@ -71,7 +69,6 @@ const Header = ({ transparent = false, noBackground = false }: HeaderProps) => {
           />
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           <ul className="flex items-center gap-8">
             {NAV_LINKS.map((link) => (
@@ -87,7 +84,6 @@ const Header = ({ transparent = false, noBackground = false }: HeaderProps) => {
           </ul>
         </nav>
 
-        {/* Botão Hambúrguer (Mobile) */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Menu"
@@ -97,7 +93,6 @@ const Header = ({ transparent = false, noBackground = false }: HeaderProps) => {
         </button>
       </Container>
 
-      {/* Menu Mobile Fullscreen */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -108,7 +103,6 @@ const Header = ({ transparent = false, noBackground = false }: HeaderProps) => {
             className="fixed inset-0 bg-dark z-[105] md:hidden"
           >
             <div className="flex flex-col h-full w-full pt-32 pb-12 px-8">
-              {/* Links Principais */}
               <nav className="flex-1">
                 <ul className="flex flex-col gap-6">
                   {NAV_LINKS.map((link, i) => (
@@ -130,7 +124,6 @@ const Header = ({ transparent = false, noBackground = false }: HeaderProps) => {
                 </ul>
               </nav>
 
-              {/* Rodapé do Menu Mobile (Botões) */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -142,15 +135,15 @@ const Header = ({ transparent = false, noBackground = false }: HeaderProps) => {
                   target="_blank"
                   className="w-full py-4 text-base flex justify-center items-center gap-2"
                 >
-                  Quero minha sessão estratégica gratuita
+                  {t("ctaSession")}
                 </Button>
 
                 <Link
-                  href="/diagnostic"
+                  href={`/${locale}/diagnostic`}
                   onClick={() => setIsOpen(false)}
                   className="flex items-center justify-center gap-2 w-full py-4 text-light/50 border border-white/10 rounded-xl font-medium hover:bg-white/5 active:bg-white/10 transition-all"
                 >
-                  Fazer Diagnóstico Financeiro
+                  {t("ctaDiagnostic")}
                   <ArrowRight size={16} />
                 </Link>
               </motion.div>

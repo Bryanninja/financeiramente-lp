@@ -1,18 +1,34 @@
+import { getTranslations } from "next-intl/server";
 import LegalPage from "@/app/components/ui/LegalPage";
 
-export const metadata = {
-  title: "Termos de Uso",
-  description:
-    "Termos e condições de uso da plataforma FinanceiraMente e da consultoria estratégica de Michel Stawicki.",
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata.TermsOfService" });
 
-export default function TermsOfService() {
+  return {
+    title: t("title"),
+    description: t("description"),
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
+export default async function TermsOfService({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "TermsOfServicePage" });
+
   return (
-    <LegalPage title="Termos de Serviço" lastUpdated="07 de Maio de 2026">
+    <LegalPage title={t("title")} lastUpdated="07 de Maio de 2026">
       <p>
         Ao acessar o site da <strong>FinanceiraMente</strong>, você concorda em
         cumprir estes termos de serviço e todas as leis e regulamentos

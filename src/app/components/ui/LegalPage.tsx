@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { variants } from "@/app/lib/animations";
+import { useTranslations } from "next-intl";
 
 interface LegalPageProps {
   title: string;
@@ -18,6 +19,7 @@ export default function LegalPage({
   children,
 }: LegalPageProps) {
   const router = useRouter();
+  const t = useTranslations("LegalPage");
 
   return (
     <section className="bg-light min-h-screen py-16 md:py-24">
@@ -36,7 +38,7 @@ export default function LegalPage({
             <div className="p-2 rounded-full border border-dark/10 group-hover:border-dark/20 transition-colors">
               <ArrowLeft size={16} />
             </div>
-            <span className="text-sm font-medium">Voltar</span>
+            <span className="text-sm font-medium">{t("back")}</span>
           </motion.button>
 
           <div className="space-y-12">
@@ -48,7 +50,7 @@ export default function LegalPage({
                 {title}
               </h1>
               <p className="text-dark/40 text-sm font-medium uppercase tracking-widest">
-                Última atualização: {lastUpdated}
+                {t("lastUpdated")}: {lastUpdated}
               </p>
             </motion.header>
 

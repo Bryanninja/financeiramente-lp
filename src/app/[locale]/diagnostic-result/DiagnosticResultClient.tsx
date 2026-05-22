@@ -2,13 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import ResultHero from "../components/sections/ResultHero";
-import ResultAnalysis from "../components/sections/ResultAnalysis";
-import ResultNextSteps from "../components/sections/FinalCTARes";
-import Footer from "../components/sections/Footer";
+import ResultHero from "../../components/sections/ResultHero";
+import ResultAnalysis from "../../components/sections/ResultAnalysis";
+import ResultNextSteps from "../../components/sections/FinalCTARes";
+import Footer from "../../components/sections/Footer";
+
+import { useLocale } from "next-intl";
 
 export default function DiagnosticResultClient() {
   const router = useRouter();
+  const locale = useLocale();
   const [phase, setPhase] = useState(2);
   const [score, setScore] = useState(24);
   const [pilarScores, setPilarScores] = useState([7, 8, 10, 7]);
@@ -24,7 +27,7 @@ export default function DiagnosticResultClient() {
         setPilarScores(data.pilarScores ?? [7, 8, 10, 7]);
         setLoaded(true);
       } else {
-        router.push("/diagnostic");
+        router.push(`/${locale}/diagnostic`);
       }
     };
     localStorageFunc();

@@ -1,34 +1,34 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link"; // Importação essencial
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "../ui/Container";
 import { variants, viewportConfig } from "@/app/lib/animations";
 import { Mail } from "lucide-react";
-
-const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "O Mapa", href: "/#mapa" },
-  { name: "O Método", href: "/#metodo" },
-  { name: "Sobre", href: "/#sobre" },
-];
-
-const legalLinks = [
-  { name: "Política de privacidade", href: "/politica-de-privacidade" },
-  { name: "Termos de serviço", href: "/termos-de-servico" },
-  { name: "Configurações de cookies", href: "/cookies" },
-];
+import { useLocale, useTranslations } from "next-intl";
 
 export default function Footer() {
+  const t = useTranslations("Footer");
+  const locale = useLocale();
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
   useEffect(() => {
-    const setYear = async () => {
-      setCurrentYear(new Date().getFullYear());
-    };
-    setYear();
+    setCurrentYear(new Date().getFullYear());
   }, []);
+
+  const navLinks = [
+    { name: t("nav.home"), href: `/${locale}/` },
+    { name: t("nav.map"), href: "/#mapa" },
+    { name: t("nav.method"), href: "/#metodo" },
+    { name: t("nav.about"), href: "/#sobre" },
+  ];
+
+  const legalLinks = [
+    { name: t("legal.privacy"), href: `/${locale}/politica-de-privacidade` },
+    { name: t("legal.terms"), href: `/${locale}/termos-de-servico` },
+    { name: t("legal.cookies"), href: `/${locale}/cookies` },
+  ];
 
   return (
     <footer className="bg-dark pt-16 pb-8 border-t border-white/5 overflow-hidden">
@@ -41,7 +41,6 @@ export default function Footer() {
           className="space-y-12"
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4">
-            {/* Logo */}
             <motion.div variants={variants.fadeInUp}>
               <Link href="/" className="hover:opacity-80 transition-opacity">
                 <img
@@ -52,7 +51,6 @@ export default function Footer() {
               </Link>
             </motion.div>
 
-            {/* Navegação Central - AGORA COM <Link> */}
             <motion.nav variants={variants.fadeInUp} className="flex gap-8">
               {navLinks.map((link) => (
                 <Link
@@ -65,7 +63,6 @@ export default function Footer() {
               ))}
             </motion.nav>
 
-            {/* Ícones Sociais - MANTEMOS <a> POIS SÃO EXTERNOS */}
             <motion.div
               variants={variants.fadeInUp}
               className="flex gap-6 items-center"
@@ -108,7 +105,7 @@ export default function Footer() {
             className="flex flex-col md:flex-row justify-between items-center gap-6"
           >
             <p className="text-xs text-light/40 font-medium">
-              © {currentYear} FinanceiraMente. Todos os direitos reservados.
+              © {currentYear} FinanceiraMente. {t("rights")}
             </p>
 
             <div className="flex flex-wrap justify-center gap-6 md:gap-8">
@@ -129,7 +126,6 @@ export default function Footer() {
   );
 }
 
-// Componentes de ícone isolados para limpar o código (opcional)
 const InstagramIcon = () => (
   <svg
     width="20"

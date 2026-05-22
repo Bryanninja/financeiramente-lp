@@ -28,8 +28,8 @@ import Fase1Img from "../../assets/img/fase-1.webp";
 import Fase2Img from "../../assets/img/fase-2.webp";
 import Fase3Img from "../../assets/img/fase-3.webp";
 import Fase4Img from "../../assets/img/fase-4.webp";
+import { useTranslations } from "next-intl";
 
-// 1. Importação dinâmica do Radar para evitar problemas de SSR e remover a necessidade do useEffect/mounted
 const Radar = dynamic(
   () => import("react-chartjs-2").then((mod) => mod.Radar),
   {
@@ -51,7 +51,6 @@ const phaseImages: Record<number, StaticImageData> = {
   4: Fase4Img,
 };
 
-// Tipagem explícita para evitar o erro de 'any'
 const pillarIcons: LucideIcon[] = [PieChart, BarChart3, Wallet, TrendingUp];
 
 interface RadarChartProps {
@@ -111,23 +110,19 @@ export default function ResultAnalysis({
   score = 24,
   pilarScores = [7, 8, 10, 7],
 }: ResultAnalysisProps) {
-  const content = phaseContent[phase];
+  const t = useTranslations("ResultAnalysis");
+  const tPhase = useTranslations(`Phases.${phase}`);
   const phaseImage = phaseImages[phase] ?? Fase2Img;
 
   const pillarData = [
-    { label: "Rentabilidade", score: pilarScores[0] ?? 7, max: 12 },
-    { label: "Resultado", score: pilarScores[1] ?? 8, max: 12 },
-    { label: "Caixa", score: pilarScores[2] ?? 10, max: 12 },
-    {
-      label: "Retorno sobre investimento",
-      score: pilarScores[3] ?? 7,
-      max: 12,
-    },
+    { label: t("pillarsData.0"), score: pilarScores[0] ?? 7, max: 12 },
+    { label: t("pillarsData.1"), score: pilarScores[1] ?? 8, max: 12 },
+    { label: t("pillarsData.2"), score: pilarScores[2] ?? 10, max: 12 },
+    { label: t("pillarsData.3"), score: pilarScores[3] ?? 7, max: 12 },
   ];
 
   return (
     <section className="bg-light space-y-0">
-      {/* ─── Banner de Identificação ─── */}
       <Container className=" pt-20">
         <motion.div
           variants={variants.fadeInUp}
@@ -137,15 +132,14 @@ export default function ResultAnalysis({
           className="bg-[#E3E2DE] rounded-lg border border-primary-vibrant/40 py-14 px-8 text-center border-b border-dark/5"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-dark leading-tight mb-2">
-            Identificação do Perfil <br /> Financeiro do negócio
+            {t("bannerTitle.part1")} <br /> {t("bannerTitle.part2")}
           </h2>
           <p className="text-dark/70 text-base ">
-            Seu desempenho em resumo abaixo.
+            {t("bannerSubtitle")}
           </p>
         </motion.div>
       </Container>
 
-      {/* ─── Perfil e Score ─── */}
       <Container className="py-20">
         <motion.div
           variants={variants.staggerContainer}
@@ -156,10 +150,10 @@ export default function ResultAnalysis({
         >
           <motion.div variants={variants.fadeInUp}>
             <span className=" text-2xl md:text-4xl font-bold text-dark ">
-              Perfil Financeiro do negócio
+              {t("profileTitle")}
             </span>
             <p className="text-lg md:text-xl mt-2 text-dark/70">
-              Fase: {content.title}
+              {t("phaseLabel")}: {tPhase("title")}
             </p>
           </motion.div>
 
@@ -168,10 +162,10 @@ export default function ResultAnalysis({
             className="flex flex-col border border-primary-vibrant rounded-lg p-4 items-center gap-1"
           >
             <span className="text-sm text-dark/70 ">
-              Pontuação do diagnóstico
+              {t("scoreLabel")}
             </span>
             <div className=" text-dark rounded text-2xl font-semibold">
-              {score}/48 pontos
+              {score}/48 {t("pointsLabel")}
             </div>
           </motion.div>
         </motion.div>
@@ -188,17 +182,17 @@ export default function ResultAnalysis({
               <div className="inline-flex items-center gap-2 px-3 py-1 w-fit rounded-full border border-dark/60 bg-transparent mb-4">
                 <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
                 <span className="text-sm tracking-wider text-dark font-semibold">
-                  Fase
+                  {t("phaseBadge")}
                 </span>
               </div>
               <h3 className="text-4xl font-bold text-dark mb-4">
-                {content.title}
+                {tPhase("title")}
               </h3>
               <p className="text-dark leading-relaxed font-medium mb-4 text-base">
-                Negócio em {content.title}
+                {t("businessIn")} {tPhase("title")}
               </p>
               <p className="text-dark/90 whitespace-pre-line leading-relaxed text-sm md:text-base">
-                {content.description}
+                {tPhase("description")}
               </p>
             </motion.div>
           </motion.div>
@@ -222,7 +216,7 @@ export default function ResultAnalysis({
             >
               <Image
                 src={phaseImage}
-                alt="Análise de perfil"
+                alt={t("imageAlt")}
                 fill
                 className="object-cover"
               />
@@ -251,17 +245,13 @@ export default function ResultAnalysis({
             variants={variants.fadeInUp}
             className="text-3xl md:text-4xl leading-[1.15] font-bold text-dark"
           >
-            Avaliação dos <br /> pilares financeiros
+            {t("pillarsEvaluationTitle.part1")} <br /> {t("pillarsEvaluationTitle.part2")}
           </motion.h3>
           <motion.p
             variants={variants.fadeInUp}
             className="text-dark/70 max-w-xl mx-auto text-sm md:text-base leading-relaxed"
           >
-            O diagnóstico também analisa o nível de desenvolvimento dos quatro
-            pilares financeiros que sustentam a gestão financeira do negócio.
-            Esses pilares representam os principais elementos que influenciam a
-            capacidade da empresa de compreender seus números e tomar decisões
-            financeiras com mais clareza.
+            {t("pillarsEvaluationDesc")}
           </motion.p>
         </motion.div>
 
@@ -278,9 +268,9 @@ export default function ResultAnalysis({
               className="text-left z-10 md:absolute md:top-8 md:left-8 mb-8 md:mb-0"
             >
               <h4 className="text-lg md:text-xl font-medium text-dark">
-                Avaliação dos Pilares Financeiros
+                {t("radarTitle")}
               </h4>
-              <p className="text-sm text-dark/50 mt-2">Pontuações</p>
+              <p className="text-sm text-dark/50 mt-2">{t("radarSubtitle")}</p>
             </motion.div>
 
             <div className="flex justify-center items-center w-full max-w-2xl mx-auto py-4 md:py-16">
@@ -291,13 +281,12 @@ export default function ResultAnalysis({
               variants={variants.fadeInUp}
               className="text-right z-10 md:absolute md:bottom-8 md:right-8 mt-4 md:mt-0"
             >
-              <p className="text-sm text-dark/50">Pilares Financeiro</p>
+              <p className="text-sm text-dark/50">{t("radarFooter")}</p>
             </motion.div>
           </div>
         </motion.div>
       </Container>
 
-      {/* ─── Grid de Pilares (fundo escuro) ─── */}
       <div className="bg-dark py-24 md:py-32">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -311,7 +300,7 @@ export default function ResultAnalysis({
                 variants={variants.fadeInUp}
                 className="text-3xl md:text-5xl text-center md:text-left font-bold text-light leading-tight"
               >
-                Avaliação dos <br /> Pilares Financeiros
+                {t("darkSectionTitle.part1")} <br /> {t("darkSectionTitle.part2")}
               </motion.h3>
             </motion.div>
 

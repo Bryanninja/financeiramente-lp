@@ -8,8 +8,11 @@ import { variants } from "@/app/lib/animations";
 import bgReport from "@/app/assets/img/bg-result.webp";
 import Image from "next/image";
 import Header from "./Header";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function ResultHero() {
+  const t = useTranslations("ResultHero");
+  const locale = useLocale();
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [shareSuccess, setShareSuccess] = useState(false);
@@ -30,6 +33,7 @@ export default function ResultHero() {
           phase: result.phase ?? 2,
           score: result.totalScore ?? 24,
           pilarScores: result.pilarScores ?? [7, 8, 10, 7],
+          locale: locale,
         }),
       });
       setSent(true);
@@ -44,8 +48,8 @@ export default function ResultHero() {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: "Meu Relatório de Maturidade Financeira — FinanceiraMente",
-          text: "Fiz o diagnóstico de maturidade financeira do meu negócio. Confira o método FinanceiraMente!",
+          title: t("shareTitle"),
+          text: t("shareText"),
           url: window.location.href,
         });
       } catch {
@@ -66,7 +70,7 @@ export default function ResultHero() {
           fill
           className="object-cover"
           src={bgReport}
-          alt="Fundo bg relatorio"
+          alt={t("bgAlt")}
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-dark/80 via-dark/60 to-dark/80" />
@@ -84,17 +88,15 @@ export default function ResultHero() {
               variants={variants.fadeInUp}
               className="text-3xl md:text-5xl pt-32 font-bold text-white leading-tight tracking-tight"
             >
-              Relatório de Maturidade <br className="hidden md:block" />{" "}
-              Financeira - FinanceiraMente
+              {t("title.part1")} <br className="hidden md:block" />{" "}
+              {t("title.part2")}
             </motion.h1>
 
             <motion.p
               variants={variants.fadeInUp}
               className="text-sm md:text-lg text-pretty text-white/80 max-w-2xl mx-auto leading-relaxed"
             >
-              Este relatório apresenta uma leitura inicial da estrutura
-              financeira do seu negócio com base nas respostas fornecidas no
-              diagnóstico.
+              {t("subtitle")}
             </motion.p>
           </div>
 
@@ -106,7 +108,7 @@ export default function ResultHero() {
               onClick={handleShare}
               className="w-full md:w-[220px] px-8 py-4 cursor-pointer rounded-md border border-white text-white font-medium hover:bg-white/10 transition-all duration-300 active:scale-95"
             >
-              {shareSuccess ? "Link copiado!" : "Compartilhar"}
+              {shareSuccess ? t("buttonShareSuccess") : t("buttonShare")}
             </button>
 
             <button
@@ -115,10 +117,10 @@ export default function ResultHero() {
               className="w-full md:w-[220px] px-8 py-4 cursor-pointer rounded-md bg-white text-dark font-bold hover:bg-neutral-100 transition-all duration-300 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {sent
-                ? "E-mail enviado!"
+                ? t("buttonEmailSuccess")
                 : sending
-                  ? "Enviando..."
-                  : "Enviar para o E-mail"}
+                  ? t("buttonEmailSending")
+                  : t("buttonEmail")}
             </button>
           </motion.div>
 

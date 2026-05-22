@@ -6,37 +6,39 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Container from "../ui/Container";
 import { variants, viewportConfig } from "@/app/lib/animations";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import MichelExperienceImg from "../../assets/img/michel-experience.webp";
 import MichelExperienceImg2 from "../../assets/img/michel-experience2.webp";
 
-const results = [
-  {
-    value: "+45%",
-    label: "De EBITDA por unidade produzida em três anos.",
-  },
-  {
-    value: "-55%",
-    label: "No prazo médio de recebimento.",
-  },
-  {
-    value: "+24%",
-    label: "No prazo médio de pagamento.",
-  },
-  {
-    value: "40%",
-    label: "Do EBITDA anual gerado por reestruturação operacional.",
-  },
-  {
-    value: "50M",
-    label: "USD 50M enviados à controladora sob restrição cambial.",
-  },
-];
-
 export default function Experience() {
+  const t = useTranslations("Experience");
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const results = [
+    {
+      value: "+45%",
+      label: t("results.0"),
+    },
+    {
+      value: "-55%",
+      label: t("results.1"),
+    },
+    {
+      value: "+24%",
+      label: t("results.2"),
+    },
+    {
+      value: "40%",
+      label: t("results.3"),
+    },
+    {
+      value: "50M",
+      label: t("results.4"),
+    },
+  ];
 
   const checkScroll = () => {
     if (scrollRef.current) {
@@ -63,7 +65,6 @@ export default function Experience() {
   return (
     <section id="sobre" className="bg-light py-8 md:pb-32 overflow-hidden">
       <Container className="space-y-20">
-        {/* Cabeçalho Unificado */}
         <motion.div
           variants={variants.staggerContainer}
           initial="initial"
@@ -78,14 +79,14 @@ export default function Experience() {
             >
               <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
               <span className="text-sm tracking-wider text-dark font-semibold">
-                Experiência
+                {t("badge")}
               </span>
             </motion.div>
             <motion.h2
               variants={variants.fadeInUp}
               className="text-3xl md:text-5xl text-balance font-bold text-dark leading-tight"
             >
-              O Método FinanceiraMente nasce da prática
+              {t("title")}
             </motion.h2>
           </div>
 
@@ -93,22 +94,11 @@ export default function Experience() {
             variants={variants.fadeInUp}
             className="space-y-6 text-dark/80 text-lg leading-relaxed"
           >
-            <p>
-              Ao longo de mais de 30 anos de atuação em finanças, gestão e
-              liderança empresarial, Michel Stawicki participou de projetos
-              financeiros em organizações de grande porte no Brasil e no
-              exterior.
-            </p>
-            <p>
-              Essa experiência prática em ambientes corporativos complexos foi a
-              base para o desenvolvimento do Método FinanceiraMente, que traduz
-              princípios de gestão financeira utilizados em grandes organizações
-              para a realidade de pequenos negócios.
-            </p>
+            <p>{t("desc1")}</p>
+            <p>{t("desc2")}</p>
           </motion.div>
         </motion.div>
 
-        {/* Bloco Michel 30+ */}
         <motion.div
           variants={variants.fadeInUp}
           initial="initial"
@@ -119,7 +109,7 @@ export default function Experience() {
           <div className="hidden md:block">
             <Image
               src={MichelExperienceImg}
-              alt="Michel Stawicki - Especialista em Estruturação Financeira e Mentoria"
+              alt="Michel Stawicki"
               fill
               className="object-cover opacity-95"
             />
@@ -127,7 +117,7 @@ export default function Experience() {
           <div className="md:hidden">
             <Image
               src={MichelExperienceImg2}
-              alt="Michel Stawicki - Especialista em Estruturação Financeira e Mentoria"
+              alt="Michel Stawicki"
               fill
               className="object-cover object-top opacity-95"
             />
@@ -138,11 +128,7 @@ export default function Experience() {
               variants={variants.fadeInUp}
               className="text-light/90 text-base md:text-lg leading-relaxed font-light"
             >
-              Michel Stawicki atua há mais de 30 anos em finanças, gestão e
-              liderança empresarial. Ao longo de sua carreira ocupou posições
-              executivas em grandes organizações no Brasil e no exterior,
-              liderando áreas financeiras responsáveis por operações complexas,
-              projetos de transformação e decisões estratégicas de negócio.
+              {t("michelBio")}
             </motion.p>
 
             <motion.div variants={variants.fadeIn}>
@@ -162,7 +148,6 @@ export default function Experience() {
           </div>
         </motion.div>
 
-        {/* Seção de Resultados */}
         <motion.div
           variants={variants.staggerContainer}
           initial="initial"
@@ -175,13 +160,10 @@ export default function Experience() {
               variants={variants.fadeInUp}
               className="text-2xl md:text-3xl font-bold text-dark mb-4"
             >
-              Os resultados falam por si.
+              {t("resultsTitle")}
             </motion.h3>
             <motion.p variants={variants.fadeInUp} className="text-dark/80">
-              Hoje Michel aplica essa visão para ajudar empresários a estruturar
-              financeiramente seus negócios e tomar decisões com mais clareza.
-              Incluindo também liderança de projetos de integração e
-              padronização financeira em operações internacionais.
+              {t("resultsDesc")}
             </motion.p>
           </div>
 

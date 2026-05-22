@@ -1,4 +1,4 @@
-import DiagnosticQuiz from "../components/sections/DiagnosticQuiz";
+import DiagnosticQuiz from "../../components/sections/DiagnosticQuiz";
 
 const Questions = () => {
   return <DiagnosticQuiz />;
