@@ -97,7 +97,7 @@ export default function MaturityMap() {
             <motion.div
               key={phase.number}
               variants={variants.fadeInUp}
-              className="group bg-[#1A1A1A] rounded-xl overflow-hidden border border-white/5 hover:border-primary-vibrant/30 transition-all duration-500"
+              className="group bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/5 hover:border-primary-vibrant/30 transition-all duration-500"
             >
               <div className="relative h-64 w-full">
                 <Image

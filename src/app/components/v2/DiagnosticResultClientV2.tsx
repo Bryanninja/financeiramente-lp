@@ -228,7 +228,7 @@ export default function DiagnosticResultClientV2() {
   const removeBold = (text: string) => text.replace(/\*\*/g, "");
 
   return (
-    <main className="min-h-screen bg-[#faf9f6] font-sans overflow-x-hidden pb-32">
+    <main className="min-h-screen bg-light font-sans overflow-x-hidden pb-32">
       {/* Top Banner (Logo + Email Notification) */}
       <div className="w-full bg-dark py-4  border-b border-white/10 ">
         <Container className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -268,7 +268,7 @@ export default function DiagnosticResultClientV2() {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.6 }}
               className="text-4xl md:text-5xl font-bold text-dark tracking-tight leading-tight max-w-2xl text-balance"
             >
               {tResult("bannerTitle.part1")} {tResult("bannerTitle.part2")}
@@ -276,7 +276,7 @@ export default function DiagnosticResultClientV2() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               className="text-dark/70 mt-4 text-lg"
             >
               {tResult("bannerSubtitle")}
@@ -284,9 +284,9 @@ export default function DiagnosticResultClientV2() {
           </div>
 
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
+            initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="bg-[#E3E2DE] border border-primary-deep/20 p-8 lg:p-12 rounded-[2.5rem] backdrop-blur-md w-full relative overflow-hidden group"
           >
             {/* Subtle glow */}
@@ -333,9 +333,9 @@ export default function DiagnosticResultClientV2() {
 
               <div className="w-full md:w-[45%] relative aspect-9/8 rounded-2xl overflow-hidden shadow-2xl">
                 <motion.div
-                  initial={{ scale: 1.1, opacity: 0 }}
+                  initial={{ scale: 1.02, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.2 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
                   className="absolute inset-0 w-full h-full"
                 >
                   <Image
@@ -393,7 +393,7 @@ export default function DiagnosticResultClientV2() {
             id="full-report"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
             className="overflow-hidden"
           >
             <div className="max-w-5xl mx-auto px-6 pt-20 pb-12 space-y-24">
@@ -407,11 +407,11 @@ export default function DiagnosticResultClientV2() {
 
                 <div className="inline-flex items-center gap-2 px-3 py-1 w-fit rounded-full border border-gray-300 bg-transparent mb-4">
                   <div className="w-2 h-2 rounded-full bg-primary-vibrant" />
-                  <span className="text-sm tracking-wider text-[#121212] font-bold ">
+                  <span className="text-sm tracking-wider text-dark font-bold ">
                     {tResult("phaseBadge")}
                   </span>
                 </div>
-                <h3 className="text-4xl md:text-5xl font-bold text-[#121212] tracking-tight">
+                <h3 className="text-4xl md:text-5xl font-bold text-dark tracking-tight">
                   {tResult("businessIn")} {tPhase("title")}
                 </h3>
                 <p className="text-xl max-w-3xl text-dark/70 leading-relaxed text-pretty  whitespace-pre-line">
@@ -424,7 +424,7 @@ export default function DiagnosticResultClientV2() {
                 <div className="flex flex-col gap-12 items-center">
                   {/* Spider Chart - Full Width Row */}
                   <div className="w-full bg-white border border-gray-200 rounded-3xl p-8 shadow-sm flex flex-col items-center">
-                    <h4 className="text-2xl font-bold text-[#121212] mb-2 text-center">
+                    <h4 className="text-2xl font-bold text-dark mb-2 text-center">
                       {tResult("radarTitle")}
                     </h4>
                     <p className="text-dark/70 text-lg mb-8 text-center">
@@ -436,7 +436,7 @@ export default function DiagnosticResultClientV2() {
                   </div>
 
                   <div className="text-center space-y-4 max-w-3xl mx-auto">
-                    <h3 className="text-3xl md:text-4xl font-bold text-[#121212] tracking-tight">
+                    <h3 className="text-3xl md:text-4xl font-bold text-dark tracking-tight">
                       {tResult("pillarsEvaluationTitle.part1")}{" "}
                       {tResult("pillarsEvaluationTitle.part2")}
                     </h3>
@@ -460,7 +460,7 @@ export default function DiagnosticResultClientV2() {
                           transition={{ delay: idx * 0.1 + 0.3 }}
                           className="bg-[#E3E2DE] p-5 rounded-xl  border border-primary-deep/10 flex flex-col justify-between h-full"
                         >
-                          <h3 className="text-sm font-medium text-[#121212] mb-4">
+                          <h3 className="text-sm font-medium text-dark mb-4">
                             {pillarTitles[idx]}
                           </h3>
                           <div>
@@ -469,14 +469,14 @@ export default function DiagnosticResultClientV2() {
                                 initial={{ width: 0 }}
                                 animate={{ width: `${percentage}%` }}
                                 transition={{
-                                  duration: 1,
+                                  duration: 0.6,
                                   delay: 0.5 + idx * 0.1,
                                   ease: "easeOut",
                                 }}
-                                className="h-full rounded-full bg-[#25448C]"
+                                className="h-full rounded-full bg-primary-deep"
                               />
                             </div>
-                            <div className="text-right text-sm font-bold text-[#25448C]">
+                            <div className="text-right text-sm font-bold text-primary-deep">
                               {score}/{pilarMax}
                             </div>
                           </div>
@@ -500,7 +500,7 @@ export default function DiagnosticResultClientV2() {
                   </div>
                   <div className="w-full flex-1 flex flex-col">
                     <div className="flex items-center gap-3 mb-6">
-                      <BookOpen size={80} className=" text-[#25448C]" />
+                      <BookOpen size={80} className=" text-primary-deep" />
                       <h3 className="text-2xl font-semibold text-light uppercase tracking-widest">
                         {tCTA("interpretationTitle")}
                       </h3>
@@ -525,8 +525,8 @@ export default function DiagnosticResultClientV2() {
                 {/* Next Steps Block */}
                 <div className="bg-[#E3E2DE] p-6 md:p-8 rounded-[2rem] border border-primary-deep/10 shadow-sm flex flex-col">
                   <div className="flex items-center gap-3 mb-6">
-                    <Compass className="w-6 h-6 text-[#25448C]" />
-                    <h3 className="text-lg font-semibold text-[#121212] uppercase tracking-widest">
+                    <Compass className="w-6 h-6 text-primary-deep" />
+                    <h3 className="text-lg font-semibold text-dark uppercase tracking-widest">
                       {tCTA("nextStepTitle.part1")}{" "}
                       {tCTA("nextStepTitle.part2")}
                     </h3>
@@ -552,13 +552,13 @@ export default function DiagnosticResultClientV2() {
               <div className="pt-12 border-t border-gray-200">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
                   <div className="space-y-6">
-                    <h2 className="text-3xl md:text-5xl font-bold text-[#121212] leading-tight">
+                    <h2 className="text-3xl md:text-5xl font-bold text-dark leading-tight">
                       {tCTA("deepenTitle")}
                     </h2>
                     <p className="text-gray-600 text-lg leading-relaxed">
                       {tCTA("deepenDesc")}
                     </p>
-                    <p className="text-[#121212] text-xl font-bold pt-4">
+                    <p className="text-dark text-xl font-bold pt-4">
                       {tCTA("duringConversation")}
                     </p>
 
@@ -572,7 +572,7 @@ export default function DiagnosticResultClientV2() {
                             className="w-6 h-6 text-primary-vibrant shrink-0"
                             strokeWidth={2}
                           />
-                          <p className="text-sm font-semibold text-[#121212] leading-tight">
+                          <p className="text-sm font-semibold text-dark leading-tight">
                             {item.text}
                           </p>
                         </div>
@@ -599,13 +599,13 @@ export default function DiagnosticResultClientV2() {
       <AnimatePresence>
         {showSticky && (
           <motion.div
-            initial={{ y: 100, opacity: 0 }}
+            initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
+            exit={{ y: 30, opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="fixed bottom-0 left-0 w-full z-50 p-4 md:p-6 pointer-events-none"
           >
-            <div className="max-w-4xl mx-auto bg-[#121212]/90 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4 pointer-events-auto">
+            <div className="max-w-4xl mx-auto bg-dark/90 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4 pointer-events-auto">
               <div className="text-center md:text-left">
                 <p className="text-white font-bold text-lg">
                   {locale === "en"

@@ -58,9 +58,9 @@ export default function DiagnosticHeroV2() {
   };
 
   return (
-    <section className="min-h-screen flex flex-col lg:flex-row w-full bg-[#faf9f6]">
+    <section className="min-h-screen flex flex-col lg:flex-row w-full bg-light">
       {/* Left Side: Dark Theme with Impact Headline */}
-      <div className="relative w-full lg:w-[45%] bg-[#121212] text-[#faf9f6] flex flex-col justify-center px-8 py-20 lg:px-20 overflow-hidden">
+      <div className="relative w-full lg:w-[45%] bg-dark text-light flex flex-col justify-center px-8 py-20 lg:px-20 overflow-hidden">
         {/* Logo */}
         <div className="absolute top-8 left-8 lg:top-12 lg:left-20 z-20">
           <img src="/logo-financeiramente.svg" alt="FinanceiraMente" className="h-6 md:h-8" />
@@ -74,7 +74,7 @@ export default function DiagnosticHeroV2() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="relative z-10 space-y-8"
         >
           {/* Time Indicator & Free Badge */}
@@ -118,16 +118,16 @@ export default function DiagnosticHeroV2() {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
           className="w-full max-w-md"
         >
           <div className="mb-10 text-center lg:text-left">
-            <h2 className="text-3xl font-bold text-[#121212] tracking-tight mb-2">
+            <h2 className="text-3xl font-bold text-dark tracking-tight mb-2">
               {locale === "en"
                 ? "Start your diagnostic"
                 : "Comece seu diagnóstico"}
             </h2>
-            <p className="text-[#121212]/60">
+            <p className="text-dark/60">
               {locale === "en"
                 ? "Fill out the data below to begin."
                 : "Preencha os dados abaixo para iniciar."}
@@ -141,7 +141,7 @@ export default function DiagnosticHeroV2() {
                 type="text"
                 id="name"
                 {...register("name")}
-                className="block w-full px-5 pb-3 pt-7 text-[#121212] bg-white border border-dark/40  rounded-2xl appearance-none focus:outline-none focus:ring-0 focus:border-primary-deep peer transition-all duration-300"
+                className="block w-full px-5 pb-3 pt-7 text-dark bg-white border border-dark/40  rounded-2xl appearance-none focus:outline-none focus:ring-0 focus:border-primary-deep peer transition-all duration-300"
                 placeholder=" "
               />
               <label
@@ -163,7 +163,7 @@ export default function DiagnosticHeroV2() {
                 type="email"
                 id="email"
                 {...register("email")}
-                className="block w-full px-5 pb-3 pt-7 text-[#121212] bg-white border border-dark/40 rounded-2xl appearance-none focus:outline-none focus:ring-0 focus:border-primary-deep peer transition-all duration-300"
+                className="block w-full px-5 pb-3 pt-7 text-dark bg-white border border-dark/40 rounded-2xl appearance-none focus:outline-none focus:ring-0 focus:border-primary-deep peer transition-all duration-300"
                 placeholder=" "
               />
               <label
@@ -198,7 +198,7 @@ export default function DiagnosticHeroV2() {
                       value={field.value}
                       onChange={field.onChange}
                       className="w-full flex items-center"
-                      inputClassName="!w-full !h-auto !border-none !bg-transparent !px-5 !py-4 !text-base !text-[#121212] focus:!outline-none focus:!ring-0 !shadow-none font-medium"
+                      inputClassName="!w-full !h-auto !border-none !bg-transparent !px-5 !py-4 !text-base !text-dark focus:!outline-none focus:!ring-0 !shadow-none font-medium"
                       countrySelectorStyleProps={{
                         buttonClassName:
                           "!h-auto  !py-4 !border-none !bg-transparent !pl-5 !pr-2 !shadow-none hover:!bg-transparent",
@@ -220,7 +220,7 @@ export default function DiagnosticHeroV2() {
                 type="text"
                 id="company"
                 {...register("company")}
-                className="block w-full px-5 pb-3 pt-7 text-[#121212] bg-white border border-dark/40 rounded-2xl appearance-none focus:outline-none focus:ring-0 focus:border-primary-deep peer transition-all duration-300"
+                className="block w-full px-5 pb-3 pt-7 text-dark bg-white border border-dark/40 rounded-2xl appearance-none focus:outline-none focus:ring-0 focus:border-primary-deep peer transition-all duration-300"
                 placeholder=" "
               />
               <label
@@ -241,15 +241,15 @@ export default function DiagnosticHeroV2() {
               <button
                 type="submit"
                 disabled={loading}
-                className="relative w-full py-4 px-8 cursor-pointer bg-[#121212] hover:bg-black text-[#faf9f6] rounded-2xl font-semibold text-lg transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.12)] disabled:opacity-80 disabled:cursor-not-allowed flex items-center justify-center overflow-hidden group"
+                className="relative w-full py-4 px-8 cursor-pointer bg-dark hover:bg-black text-light rounded-2xl font-semibold text-lg transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.12)] disabled:opacity-80 disabled:cursor-not-allowed flex items-center justify-center overflow-hidden group"
               >
                 <AnimatePresence mode="wait">
                   {loading ? (
                     <motion.div
                       key="loading"
-                      initial={{ opacity: 0, scale: 0.8 }}
+                      initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.8 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
                       className="flex items-center gap-2"
                     >
                       <Loader2 className="w-6 h-6 animate-spin" />
@@ -281,7 +281,7 @@ export default function DiagnosticHeroV2() {
               <div className="bg-primary-deep p-1.5 rounded-lg">
                 <ShieldCheck className="w-5 h-5 text-white" />
               </div>
-              <p className="text-sm font-semibold text-[#121212]/80">
+              <p className="text-sm font-semibold text-dark/80">
                 {locale === "en"
                   ? "FinanceiraMente Exclusive Methodology"
                   : "Metodologia Exclusiva FinanceiraMente"}
@@ -316,7 +316,7 @@ export default function DiagnosticHeroV2() {
 
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-[#121212] tracking-tight mb-3">
+                  <h3 className="text-2xl md:text-3xl font-bold text-dark tracking-tight mb-3">
                     {locale === "en" ? "Methodology" : "Metodologia"}
                   </h3>
                   <p className="text-gray-600 font-medium">
@@ -407,7 +407,7 @@ export default function DiagnosticHeroV2() {
                         key={idx}
                         className="bg-blue-50/50 p-4 rounded-xl border border-dark/20"
                       >
-                        <h4 className="font-bold text-[#121212] mb-1">
+                        <h4 className="font-bold text-dark mb-1">
                           {locale === "en" ? pilar.enTitle : pilar.ptTitle}
                         </h4>
                         <p className="text-gray-600 text-sm leading-relaxed">

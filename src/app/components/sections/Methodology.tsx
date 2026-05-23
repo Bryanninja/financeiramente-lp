@@ -74,7 +74,7 @@ export default function Methodology() {
                 <motion.div
                   key={index}
                   variants={variants.fadeInUp}
-                  className="bg-[#1A1A1A] p-8 flex flex-col justify-center rounded-lg border border-white/5 hover:border-primary-vibrant/20 hover:bg-light/5 transition-all group"
+                  className="bg-[#1a1a1a] p-8 flex flex-col justify-center rounded-lg border border-white/5 hover:border-primary-vibrant/20 hover:bg-light/5 transition-all group"
                 >
                   <h3 className="text-light text-xl font-semibold mb-3 group-hover:text-primary-vibrant transition-colors">
                     {pillar.title}

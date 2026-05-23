@@ -144,9 +144,9 @@ export default function DiagnosticQuizV2() {
 
   if (isFinishing) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#faf9f6]">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-light">
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           className="flex flex-col items-center gap-8"
         >
@@ -173,7 +173,7 @@ export default function DiagnosticQuizV2() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="text-xl font-medium tracking-tight text-[#121212]"
+                className="text-xl font-medium tracking-tight text-dark"
               >
                 {loadingTexts[loadingTextIndex]}
               </motion.p>
@@ -187,9 +187,9 @@ export default function DiagnosticQuizV2() {
   if (!currentData) return null;
 
   return (
-    <section className="min-h-screen flex flex-col bg-[#faf9f6]">
+    <section className="min-h-screen flex flex-col bg-light">
       {/* Top Header & Progress */}
-      <div className="w-full bg-[#121212] shadow-sm sticky top-0 z-50">
+      <div className="w-full bg-dark shadow-sm sticky top-0 z-50">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
@@ -220,9 +220,9 @@ export default function DiagnosticQuizV2() {
         <AnimatePresence mode="wait">
           <motion.div
             key={`step-${currentStep}`}
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
+            exit={{ opacity: 0, x: -30 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className="w-full max-w-3xl flex flex-col items-center"
           >
@@ -230,7 +230,7 @@ export default function DiagnosticQuizV2() {
               <span className="inline-block px-4 py-1.5 rounded-full bg-blue-50 border border-dark/60 text-primary-deep text-xs font-bold tracking-widest uppercase mb-4">
                 {currentData.pilar}
               </span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#121212] leading-[1.2] tracking-tight text-balance">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-dark leading-[1.2] tracking-tight text-balance">
                 {currentData.question}
               </h2>
             </div>
@@ -248,7 +248,7 @@ export default function DiagnosticQuizV2() {
                   <div className="w-12 h-12 shrink-0 rounded-full bg-gray-200 flex items-center justify-center font-bold text-gray-700 group-hover:bg-primary-deep group-hover:text-white transition-colors">
                     {option.id}
                   </div>
-                  <span className="text-lg md:text-xl font-medium text-gray-700 group-hover:text-[#121212] transition-colors leading-relaxed">
+                  <span className="text-lg md:text-xl font-medium text-gray-700 group-hover:text-dark transition-colors leading-relaxed">
                     {option.text}
                   </span>
                 </motion.button>

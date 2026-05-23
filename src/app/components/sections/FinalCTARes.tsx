@@ -195,7 +195,7 @@ export default function ResultNextSteps({ phase = 2 }) {
                 <motion.div
                   key={i}
                   variants={variants.fadeInUp}
-                  className="bg-[#1A1A1A] p-8 rounded-xl border border-white/5 space-y-6 hover:border-primary-vibrant/20 transition-all group"
+                  className="bg-[#1a1a1a] p-8 rounded-xl border border-white/5 space-y-6 hover:border-primary-vibrant/20 transition-all group"
                 >
                   <item.icon
                     className="text-light group-hover:text-primary-vibrant transition-colors duration-300"
