@@ -24,7 +24,7 @@ export default function Button({
   const variants = {
     primary: "bg-primary-deep hover:bg-blue-950 text-light",
     black:
-      "bg-dark hover:bg-black text-white rounded-md font-bold text-base transition-all w-full md:w-fit",
+      "bg-dark hover:bg-black text-white rounded-lg font-bold text-base transition-all w-full md:w-fit",
     white: "bg-white hover:bg-neutral-100 text-dark",
     outline: "border-2 border-dark hover:bg-dark hover:text-light shadow-none",
     accent: "bg-accent-bronze hover:bg-amber-700 text-light",

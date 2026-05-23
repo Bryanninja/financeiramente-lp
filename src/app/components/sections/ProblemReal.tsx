@@ -198,7 +198,7 @@ export default function ProblemReal() {
               <motion.div
                 key={i}
                 variants={variants.fadeInUp}
-                className="bg-[#E3E2DE] p-8 rounded-xl border border-[#70706E]/20 flex flex-col justify-center gap-6 transition-all duration-300 hover:brightness-95 hover:shadow-md cursor-default"
+                className="bg-[#E3E2DE] p-8 rounded-2xl border border-[#70706E]/20 flex flex-col justify-center gap-6 transition-all duration-300 hover:brightness-95 hover:shadow-md cursor-default"
               >
                 <card.icon size={28} className="text-dark" />
                 <p className="text-dark font-bold text-xl leading-snug">

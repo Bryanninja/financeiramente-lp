@@ -141,7 +141,7 @@ const Header = ({ transparent = false, noBackground = false }: HeaderProps) => {
                 <Link
                   href={`/${locale}/diagnostic`}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full py-4 text-light/50 border border-white/10 rounded-xl font-medium hover:bg-white/5 active:bg-white/10 transition-all"
+                  className="flex items-center justify-center gap-2 w-full py-4 text-light/50 border border-white/10 rounded-2xl font-medium hover:bg-white/5 active:bg-white/10 transition-all"
                 >
                   {t("ctaDiagnostic")}
                   <ArrowRight size={16} />

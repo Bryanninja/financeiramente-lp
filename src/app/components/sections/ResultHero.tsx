@@ -106,7 +106,7 @@ export default function ResultHero() {
           >
             <button
               onClick={handleShare}
-              className="w-full md:w-[220px] px-8 py-4 cursor-pointer rounded-md border border-white text-white font-medium hover:bg-white/10 transition-all duration-300 active:scale-95"
+              className="w-full md:w-[220px] px-8 py-4 cursor-pointer rounded-lg border border-white text-white font-medium hover:bg-white/10 transition-all duration-300 active:scale-95"
             >
               {shareSuccess ? t("buttonShareSuccess") : t("buttonShare")}
             </button>
@@ -114,7 +114,7 @@ export default function ResultHero() {
             <button
               onClick={handleSendEmail}
               disabled={sending || sent}
-              className="w-full md:w-[220px] px-8 py-4 cursor-pointer rounded-md bg-white text-dark font-bold hover:bg-neutral-100 transition-all duration-300 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full md:w-[220px] px-8 py-4 cursor-pointer rounded-lg bg-white text-dark font-bold hover:bg-neutral-100 transition-all duration-300 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {sent
                 ? t("buttonEmailSuccess")

@@ -83,7 +83,7 @@ export default function FinalCTA() {
                 <motion.div
                   key={index}
                   variants={variants.fadeInUp}
-                  className="bg-[#1a1a1a] p-8 rounded-xl border border-white/5 space-y-6 hover:border-primary-vibrant/20 transition-all group"
+                  className="bg-[#1a1a1a] p-8 rounded-2xl border border-white/5 space-y-6 hover:border-primary-vibrant/20 transition-all group"
                 >
                   <div className="text-light group-hover:text-primary-vibrant transition-colors">
                     {point.icon}

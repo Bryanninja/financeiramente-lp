@@ -69,7 +69,7 @@ export default function ProblemSection() {
 
             <motion.div
               variants={variants.fadeIn}
-              className="relative aspect-video rounded-xl overflow-hidden shadow-2xl border border-white/5"
+              className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/5"
             >
               <Image
                 src={StressImg}
@@ -114,7 +114,7 @@ export default function ProblemSection() {
               <motion.div
                 key={index}
                 variants={variants.fadeInUp}
-                className="group bg-[#1a1a1a] p-8 rounded-xl border border-white/5 hover:border-primary-vibrant/30 transition-all shadow-lg"
+                className="group bg-[#1a1a1a] p-8 rounded-2xl border border-white/5 hover:border-primary-vibrant/30 transition-all shadow-lg"
               >
                 <div className="flex flex-col gap-4">
                   <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-primary-deep transition-colors text-light">

@@ -277,7 +277,7 @@ export default function DiagnosticHeroV2() {
 
           {/* Institutional Authority / Shield */}
           <div className="mt-8 flex flex-col items-center justify-center">
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-gray-100/50 border border-gray-200/50">
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-2xl bg-gray-100/50 border border-gray-200/50">
               <div className="bg-primary-deep p-1.5 rounded-lg">
                 <ShieldCheck className="w-5 h-5 text-white" />
               </div>
@@ -351,7 +351,7 @@ export default function DiagnosticHeroV2() {
                   ].map((fase) => (
                     <div
                       key={fase.id}
-                      className="flex items-center gap-4 bg-primary-vibrant/10 p-4 rounded-xl border border-dark/10"
+                      className="flex items-center gap-4 bg-primary-vibrant/10 p-4 rounded-2xl border border-dark/10"
                     >
                       <div className="w-8 h-8 flex items-center justify-center rounded-full bg-dark text-light font-bold shrink-0">
                         {fase.id}
@@ -405,7 +405,7 @@ export default function DiagnosticHeroV2() {
                     ].map((pilar, idx) => (
                       <div
                         key={idx}
-                        className="bg-blue-50/50 p-4 rounded-xl border border-dark/20"
+                        className="bg-blue-50/50 p-4 rounded-2xl border border-dark/20"
                       >
                         <h4 className="font-bold text-dark mb-1">
                           {locale === "en" ? pilar.enTitle : pilar.ptTitle}

@@ -90,7 +90,7 @@ export default function Hero() {
       {/* Card de Insight - Agora entra por último na sequência */}
       <motion.div
         variants={variants.fadeInRight}
-        className="hidden md:flex absolute bottom-10 right-6 md:right-12 z-30 bg-[#1a1a1a]/85 backdrop-blur-sm p-4 pr-8 rounded-md border border-white/5 items-center gap-5 shadow-2xl max-w-[380px]"
+        className="hidden md:flex absolute bottom-10 right-6 md:right-12 z-30 bg-[#1a1a1a]/85 backdrop-blur-sm p-4 pr-8 rounded-lg border border-white/5 items-center gap-5 shadow-2xl max-w-[380px]"
       >
         <div className="bg-primary-deep/60 p-3 rounded flex items-center justify-center">
           <TrendingUp className="text-light w-6 h-6" />

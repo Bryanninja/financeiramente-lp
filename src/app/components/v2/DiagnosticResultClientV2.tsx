@@ -287,7 +287,7 @@ export default function DiagnosticResultClientV2() {
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="bg-[#E3E2DE] border border-primary-deep/20 p-8 lg:p-12 rounded-[2.5rem] backdrop-blur-md w-full relative overflow-hidden group"
+            className="bg-[#E3E2DE] border border-primary-deep/20 p-8 lg:p-12 rounded-[2rem] backdrop-blur-md w-full relative overflow-hidden group"
           >
             {/* Subtle glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary-deep/6 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-600 pointer-events-none" />
@@ -458,7 +458,7 @@ export default function DiagnosticResultClientV2() {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: idx * 0.1 + 0.3 }}
-                          className="bg-[#E3E2DE] p-5 rounded-xl  border border-primary-deep/10 flex flex-col justify-between h-full"
+                          className="bg-[#E3E2DE] p-5 rounded-2xl  border border-primary-deep/10 flex flex-col justify-between h-full"
                         >
                           <h3 className="text-sm font-medium text-dark mb-4">
                             {pillarTitles[idx]}
@@ -566,7 +566,7 @@ export default function DiagnosticResultClientV2() {
                       {ctaItems.map((item, i) => (
                         <div
                           key={i}
-                          className="flex items-center gap-4 p-4 rounded-xl bg-[#E3E2DE] border border-gray-100"
+                          className="flex items-center gap-4 p-4 rounded-2xl bg-[#E3E2DE] border border-gray-100"
                         >
                           <item.icon
                             className="w-6 h-6 text-primary-vibrant shrink-0"
@@ -622,7 +622,7 @@ export default function DiagnosticResultClientV2() {
                 href={getWhatsAppUrl("sessaoEstrategica")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full md:w-auto px-8 py-3 bg-primary-deep hover:bg-primary-vibrant text-white rounded-xl font-bold transition-all shadow-[0_0_20px_rgba(37,99,235,0.2)] flex items-center justify-center gap-2"
+                className="w-full md:w-auto px-8 py-3 bg-primary-deep hover:bg-primary-vibrant text-white rounded-2xl font-bold transition-all shadow-[0_0_20px_rgba(37,99,235,0.2)] flex items-center justify-center gap-2"
               >
                 <Calendar className="w-5 h-5" />
                 {tCTA("button")}
