@@ -118,7 +118,7 @@ export default function ResultAnalysis({
     { label: t("pillarsData.0"), score: pilarScores[0] ?? 7, max: 12 },
     { label: t("pillarsData.1"), score: pilarScores[1] ?? 8, max: 12 },
     { label: t("pillarsData.2"), score: pilarScores[2] ?? 10, max: 12 },
-    { label: t("pillarsData.3"), score: pilarScores[3] ?? 7, max: 12 },
+    { label: "ROI", score: pilarScores[3] ?? 7, max: 12 },
   ];
 
   return (
