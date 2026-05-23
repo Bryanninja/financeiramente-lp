@@ -56,7 +56,9 @@ export default function Experience() {
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
-      const scrollAmount = direction === "left" ? -400 : 400;
+      const firstCard = scrollRef.current.children[0] as HTMLElement;
+      const cardWidth = firstCard ? firstCard.offsetWidth + 24 : 400; // 24 is gap-6
+      const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
       setTimeout(checkScroll, 400);
     }
@@ -181,7 +183,7 @@ export default function Experience() {
               ref={scrollRef}
               onScroll={checkScroll}
               variants={variants.staggerContainer}
-              className="flex gap-6 overflow-hidden pb-4 snap-x snap-mandatory"
+              className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
             >
               {results.map((item, i) => (
                 <motion.div
