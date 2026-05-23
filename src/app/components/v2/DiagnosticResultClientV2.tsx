@@ -153,31 +153,12 @@ export default function DiagnosticResultClientV2() {
 
   useEffect(() => {
     const raw = localStorage.getItem("fm_result");
-    const rawUser = localStorage.getItem("fm_user");
     if (raw) {
       const data = JSON.parse(raw);
       setPhase(data.phase ?? 2);
       setScore(data.totalScore ?? 24);
       setPilarScores(data.pilarScores ?? [7, 8, 10, 7]);
       setLoaded(true);
-
-      // Trigger email dispatch in background
-      if (rawUser) {
-        const user = JSON.parse(rawUser);
-        fetch("/enviar.php", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: user.name ?? "Usuário",
-            email: user.email ?? "",
-            company: user.company ?? "",
-            phase: data.phase ?? 2,
-            score: data.totalScore ?? 24,
-            pilarScores: data.pilarScores ?? [7, 8, 10, 7],
-            locale: locale,
-          }),
-        }).catch(() => {});
-      }
     } else {
       router.push(`/${locale}/v2/diagnostic`);
     }
@@ -194,13 +175,13 @@ export default function DiagnosticResultClientV2() {
     }
   }, [loaded, score, count]);
 
-  // Show sticky CTA after 3 seconds
+  // Show sticky CTA only after the user starts reading the full report
   useEffect(() => {
-    if (loaded) {
+    if (isRevealed) {
       const timer = setTimeout(() => setShowSticky(true), 3000);
       return () => clearTimeout(timer);
     }
-  }, [loaded]);
+  }, [isRevealed]);
 
   if (!loaded) return null;
 

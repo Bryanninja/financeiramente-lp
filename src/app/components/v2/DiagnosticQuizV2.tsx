@@ -117,6 +117,25 @@ export default function DiagnosticQuizV2() {
       }),
     );
 
+    const rawUser = localStorage.getItem("fm_user");
+    if (rawUser) {
+      const user = JSON.parse(rawUser);
+      fetch("/enviar.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: user.name ?? "Usuário",
+          email: user.email ?? "",
+          company: user.company ?? "",
+          phone: user.phone ?? "",
+          phase: phase,
+          score: totalScore,
+          pilarScores: pilarScores,
+          locale: locale,
+        }),
+      }).catch(() => {});
+    }
+
     // Fake loading screen for 4 seconds
     setTimeout(() => {
       router.push(`/${locale}/v2/diagnostic-result`);
