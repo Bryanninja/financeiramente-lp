@@ -19,9 +19,9 @@ export default function Footer() {
 
   const navLinks = [
     { name: t("nav.home"), href: `/${locale}/` },
-    { name: t("nav.map"), href: "/#mapa" },
-    { name: t("nav.method"), href: "/#metodo" },
-    { name: t("nav.about"), href: "/#sobre" },
+    { name: t("nav.map"), href: `/${locale}/#mapa` },
+    { name: t("nav.method"), href: `/${locale}/#metodo` },
+    { name: t("nav.about"), href: `/${locale}/#sobre` },
   ];
 
   const legalLinks = [
@@ -42,7 +42,7 @@ export default function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4">
             <motion.div variants={variants.fadeInUp}>
-              <Link href="/" className="hover:opacity-80 transition-opacity">
+              <Link href={`/${locale}/`} className="hover:opacity-80 transition-opacity">
                 <img
                   src="/logo-financeiramente.svg"
                   className="w-48"
