@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Container from "../ui/Container";
 import { variants, viewportConfig } from "@/app/lib/animations";
 import Image, { StaticImageData } from "next/image";
-import { phaseContent } from "@/app/data/resultContent";
+
 import {
   LucideIcon,
   PieChart,

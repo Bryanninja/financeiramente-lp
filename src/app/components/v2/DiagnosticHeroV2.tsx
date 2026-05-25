@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock, Loader2, ShieldCheck, X, BookOpen } from "lucide-react";
+import { Watch, X, Loader2 } from "lucide-react";
+import Container from "../ui/Container";
+import { variants } from "@/app/lib/animations";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -58,90 +60,70 @@ export default function DiagnosticHeroV2() {
   };
 
   return (
-    <section className="min-h-screen flex flex-col lg:flex-row w-full bg-light">
-      {/* Left Side: Dark Theme with Impact Headline */}
-      <div className="relative w-full lg:w-[45%] bg-dark text-light flex flex-col justify-center px-8 py-20 lg:px-20 overflow-hidden">
-        {/* Logo */}
-        <div className="absolute top-8 left-8 lg:top-12 lg:left-20 z-20">
-          <img src="/logo-financeiramente.svg" alt="FinanceiraMente" className="h-6 md:h-8" />
-        </div>
-        
-        {/* Subtle Graphical Background Element */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute -top-[20%] -left-[20%] w-[70%] h-[70%] rounded-full bg-primary-deep/10 blur-[120px]" />
-        </div>
-
+    <section id="diagnostic" className="bg-light min-h-screen flex justify-center items-center pt-36 pb-20 2xl:pt-40">
+      <Container>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="relative z-10 space-y-8"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start"
+          variants={variants.staggerContainer}
+          initial="initial"
+          animate="animate"
         >
-          {/* Time Indicator & Free Badge */}
-          <div className="flex flex-wrap items-center gap-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-light/10 bg-light/5 backdrop-blur-sm">
-              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-xs font-bold tracking-widest text-emerald-400 uppercase">
-                {locale === "en" ? "Free" : "Gratuito"}
-              </span>
-            </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-light/5 backdrop-blur-sm">
-              <Clock className="w-4 h-4 text-blue-400" />
-              <span className="text-sm font-medium tracking-wide text-white/80">
+          {/* Left Column: Headlines (Identical to V1) */}
+          <motion.div
+            variants={variants.staggerContainer}
+            className="space-y-8"
+          >
+            <motion.div
+              variants={variants.fadeInUp}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-lg border border-primary-vibrant/70"
+            >
+              <Watch className="text-dark/70" />
+              <span className="text-sm font-semibold text-dark/70 tracking-wider">
                 {t("timeLabel")}
               </span>
-            </div>
-          </div>
+            </motion.div>
 
-          <h1 className="text-4xl md:text-4xl lg:text-[3.2rem] font-bold tracking-tight leading-[1.1] text-balance">
-            {t("title")}
-          </h1>
+            <motion.h1
+              variants={variants.fadeInUp}
+              className="text-4xl md:text-5xl text-balance font-bold text-dark leading-[1.1] tracking-tight"
+            >
+              {t("title")}
+            </motion.h1>
 
-          <p className="text-lg md:text-xl text-white/60 leading-relaxed max-w-lg">
-            {t("subtitle1")} {t("subtitle2")}
-          </p>
+            <motion.p
+              variants={variants.fadeInUp}
+              className="text-lg text-dark/70 max-w-lg leading-relaxed"
+            >
+              {t("subtitle1")} {t("subtitle2")}
+            </motion.p>
 
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="inline-flex  items-center cursor-pointer gap-2 px-6 py-3 rounded-full border border-white/20 bg-transparent hover:bg-white/10 transition-colors text-white text-sm font-semibold tracking-wide"
+            {/* Methodology Outline Button (Left Column) */}
+            <motion.div variants={variants.fadeInUp} className="pt-4">
+              <button
+                type="button"
+                onClick={() => setIsModalOpen(true)}
+                className="inline-flex items-center cursor-pointer gap-2 px-6 py-3 rounded-2xl border border-dark/20 hover:border-primary-deep hover:bg-primary-deep/5 transition-all text-dark text-sm font-semibold tracking-wide"
+              >
+                {locale === "en" ? "Learn the Methodology" : "Conheça a Metodologia"}
+              </button>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Column: Form (V2 Floating Labels) */}
+          <motion.form
+            variants={variants.fadeInUp}
+            onSubmit={handleSubmit(onSubmit)}
+            className="rounded-2xl space-y-6"
           >
-            <BookOpen className="w-4 h-4" />
-            {locale === "en"
-              ? "Learn the Methodology"
-              : "Conheça a Metodologia"}
-          </button>
-        </motion.div>
-      </div>
-
-      {/* Right Side: Form (Light Theme) */}
-      <div className="w-full lg:w-[55%] flex flex-col items-center justify-center px-6 py-20 lg:p-20 relative">
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-          className="w-full max-w-md"
-        >
-          <div className="mb-10 text-center lg:text-left">
-            <h2 className="text-3xl font-bold text-dark tracking-tight mb-2">
-              {locale === "en"
-                ? "Start your diagnostic"
-                : "Comece seu diagnóstico"}
-            </h2>
-            <p className="text-dark/60">
-              {locale === "en"
-                ? "Fill out the data below to begin."
-                : "Preencha os dados abaixo para iniciar."}
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {/* Name Field (Floating Label) */}
             <div className="relative group">
               <input
                 type="text"
                 id="name"
                 {...register("name")}
-                className="block w-full px-5 pb-3 pt-7 text-dark bg-white border border-dark/40  rounded-2xl appearance-none focus:outline-none focus:ring-0 focus:border-primary-deep peer transition-all duration-300"
+                className={`block w-full px-5 pb-3 pt-7 text-dark bg-white border rounded-2xl appearance-none focus:outline-none focus:ring-0 focus:border-primary-deep peer transition-all duration-300 ${
+                  errors.name ? "border-red-500" : "border-dark/40"
+                }`}
                 placeholder=" "
               />
               <label
@@ -163,7 +145,9 @@ export default function DiagnosticHeroV2() {
                 type="email"
                 id="email"
                 {...register("email")}
-                className="block w-full px-5 pb-3 pt-7 text-dark bg-white border border-dark/40 rounded-2xl appearance-none focus:outline-none focus:ring-0 focus:border-primary-deep peer transition-all duration-300"
+                className={`block w-full px-5 pb-3 pt-7 text-dark bg-white border rounded-2xl appearance-none focus:outline-none focus:ring-0 focus:border-primary-deep peer transition-all duration-300 ${
+                  errors.email ? "border-red-500" : "border-dark/40"
+                }`}
                 placeholder=" "
               />
               <label
@@ -179,7 +163,7 @@ export default function DiagnosticHeroV2() {
               )}
             </div>
 
-            {/* Phone Field */}
+            {/* Phone Field (Floating Label Style) */}
             <div className="relative group">
               <label className="block text-xs font-medium text-gray-500 ml-1 mb-1">
                 {t("form.whatsapp")}
@@ -198,10 +182,10 @@ export default function DiagnosticHeroV2() {
                       value={field.value}
                       onChange={field.onChange}
                       className="w-full flex items-center"
-                      inputClassName="!w-full !h-auto !border-none !bg-transparent !px-5 !py-4 !text-base !text-dark focus:!outline-none focus:!ring-0 !shadow-none font-medium"
+                      inputClassName="!w-full !h-auto !border-none !bg-transparent !px-5 !py-[20px] !text-base !text-dark focus:!outline-none focus:!ring-0 !shadow-none font-medium"
                       countrySelectorStyleProps={{
                         buttonClassName:
-                          "!h-auto  !py-4 !border-none !bg-transparent !pl-5 !pr-2 !shadow-none hover:!bg-transparent",
+                          "!h-auto !py-[20px] !border-none !bg-transparent !pl-5 !pr-2 !shadow-none hover:!bg-transparent",
                       }}
                     />
                   </div>
@@ -220,7 +204,9 @@ export default function DiagnosticHeroV2() {
                 type="text"
                 id="company"
                 {...register("company")}
-                className="block w-full px-5 pb-3 pt-7 text-dark bg-white border border-dark/40 rounded-2xl appearance-none focus:outline-none focus:ring-0 focus:border-primary-deep peer transition-all duration-300"
+                className={`block w-full px-5 pb-3 pt-7 text-dark bg-white border rounded-2xl appearance-none focus:outline-none focus:ring-0 focus:border-primary-deep peer transition-all duration-300 ${
+                  errors.company ? "border-red-500" : "border-dark/40"
+                }`}
                 placeholder=" "
               />
               <label
@@ -236,8 +222,7 @@ export default function DiagnosticHeroV2() {
               )}
             </div>
 
-            {/* Submit Button */}
-            <div className="pt-4">
+            <div className="pt-2">
               <button
                 type="submit"
                 disabled={loading}
@@ -266,30 +251,22 @@ export default function DiagnosticHeroV2() {
                   )}
                 </AnimatePresence>
               </button>
-
+              
               {submitError && (
                 <p className="text-red-500 text-sm mt-4 text-center font-medium">
                   {submitError}
                 </p>
               )}
             </div>
-          </form>
-
-          {/* Institutional Authority / Shield */}
-          <div className="mt-8 flex flex-col items-center justify-center">
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-2xl bg-gray-100/50 border border-gray-200/50">
-              <div className="bg-primary-deep p-1.5 rounded-lg">
-                <ShieldCheck className="w-5 h-5 text-white" />
-              </div>
-              <p className="text-sm font-semibold text-dark/80">
-                {locale === "en"
-                  ? "FinanceiraMente Exclusive Methodology"
-                  : "Metodologia Exclusiva FinanceiraMente"}
+              
+            {submitError && (
+              <p className="text-red-500 text-sm mt-4 text-center font-medium">
+                {submitError}
               </p>
-            </div>
-          </div>
+            )}
+          </motion.form>
         </motion.div>
-      </div>
+      </Container>
 
       {/* Methodology Modal */}
       <AnimatePresence>
@@ -298,23 +275,27 @@ export default function DiagnosticHeroV2() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
           >
             <motion.div
               initial={{ scale: 0.95, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl p-6 md:p-10 max-h-[90vh] overflow-y-auto"
+              className="relative w-full max-w-xl bg-white rounded-3xl shadow-2xl max-h-[90vh] flex flex-col overflow-hidden"
             >
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="absolute  cursor-pointer top-6 right-6 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors text-gray-500"
-              >
-                <X className="w-5 h-5" />
-              </button>
+              {/* Sticky Top Bar for Close Button */}
+              <div className="flex justify-end p-4 md:px-6 md:pt-6 pb-2 shrink-0 bg-white z-10">
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="cursor-pointer p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors text-gray-500"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
 
-              <div className="space-y-8">
+              {/* Scrollable Content Body */}
+              <div className="overflow-y-auto px-6 pb-6 md:px-10 md:pb-10 space-y-8">
                 <div>
                   <h3 className="text-2xl md:text-3xl font-bold text-dark tracking-tight mb-3">
                     {locale === "en" ? "Methodology" : "Metodologia"}
@@ -328,26 +309,10 @@ export default function DiagnosticHeroV2() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    {
-                      id: 1,
-                      pt: "Negócio no Escuro",
-                      en: "Business in the Dark",
-                    },
-                    {
-                      id: 2,
-                      pt: "Consciência Financeira",
-                      en: "Financial Awareness",
-                    },
-                    {
-                      id: 3,
-                      pt: "Estrutura Financeira",
-                      en: "Financial Structure",
-                    },
-                    {
-                      id: 4,
-                      pt: "Inteligência Financeira",
-                      en: "Financial Intelligence",
-                    },
+                    { id: 1, pt: "Negócio no Escuro", en: "Business in the Dark" },
+                    { id: 2, pt: "Consciência Financeira", en: "Financial Awareness" },
+                    { id: 3, pt: "Estrutura Financeira", en: "Financial Structure" },
+                    { id: 4, pt: "Inteligência Financeira", en: "Financial Intelligence" },
                   ].map((fase) => (
                     <div
                       key={fase.id}
@@ -374,19 +339,15 @@ export default function DiagnosticHeroV2() {
                     {[
                       {
                         ptTitle: "Rentabilidade",
-                        ptDesc:
-                          "Entender onde o negócio realmente ganha dinheiro.",
+                        ptDesc: "Entender onde o negócio realmente ganha dinheiro.",
                         enTitle: "Profitability",
-                        enDesc:
-                          "Understand where the business actually makes money.",
+                        enDesc: "Understand where the business actually makes money.",
                       },
                       {
                         ptTitle: "Resultado",
-                        ptDesc:
-                          "Ter clareza sobre o desempenho financeiro da empresa.",
+                        ptDesc: "Ter clareza sobre o desempenho financeiro da empresa.",
                         enTitle: "Result",
-                        enDesc:
-                          "Have clarity about the company's financial performance.",
+                        enDesc: "Have clarity about the company's financial performance.",
                       },
                       {
                         ptTitle: "Caixa",
@@ -396,11 +357,9 @@ export default function DiagnosticHeroV2() {
                       },
                       {
                         ptTitle: "Retorno sobre investimento",
-                        ptDesc:
-                          "Avaliar se as decisões financeiras estão gerando valor.",
+                        ptDesc: "Avaliar se as decisões financeiras estão gerando valor.",
                         enTitle: "Return on investment",
-                        enDesc:
-                          "Evaluate if financial decisions are generating value.",
+                        enDesc: "Evaluate if financial decisions are generating value.",
                       },
                     ].map((pilar, idx) => (
                       <div
