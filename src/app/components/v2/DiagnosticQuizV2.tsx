@@ -49,7 +49,7 @@ export default function DiagnosticQuizV2() {
     const checkGuard = async () => {
       const user = localStorage.getItem("fm_user");
       if (!user) {
-        router.push(`/${locale}/v2/diagnostic`);
+        router.push(`/${locale}/diagnostic`);
       } else {
         setIsAuthorized(true);
       }
@@ -138,7 +138,7 @@ export default function DiagnosticQuizV2() {
 
     // Fake loading screen for 4 seconds
     setTimeout(() => {
-      router.push(`/${locale}/v2/diagnostic-result`);
+      router.push(`/${locale}/diagnostic-result`);
     }, 4500);
   };
 

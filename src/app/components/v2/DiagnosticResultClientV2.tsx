@@ -160,7 +160,7 @@ export default function DiagnosticResultClientV2() {
       setPilarScores(data.pilarScores ?? [7, 8, 10, 7]);
       setLoaded(true);
     } else {
-      router.push(`/${locale}/v2/diagnostic`);
+      router.push(`/${locale}/diagnostic`);
     }
   }, [router, locale]);
 
@@ -287,7 +287,7 @@ export default function DiagnosticResultClientV2() {
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="bg-[#E3E2DE] border border-primary-deep/20 p-8 lg:p-12 rounded-[2rem] backdrop-blur-md w-full relative overflow-hidden group"
+            className="bg-[#E3E2DE] border border-primary-deep/20 p-8 lg:p-12 rounded-[2rem] w-full relative overflow-hidden group"
           >
             {/* Subtle glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary-deep/6 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-600 pointer-events-none" />
@@ -440,7 +440,7 @@ export default function DiagnosticResultClientV2() {
                       {tResult("pillarsEvaluationTitle.part1")}{" "}
                       {tResult("pillarsEvaluationTitle.part2")}
                     </h3>
-                    <p className="text-xl text-dark/70  leading-relaxed text-pretty">
+                    <p className="text-xl text-dark/70 leading-relaxed text-pretty whitespace-pre-line">
                       {tResult("pillarsEvaluationDesc")}
                     </p>
                   </div>
@@ -555,7 +555,7 @@ export default function DiagnosticResultClientV2() {
                     <h2 className="text-3xl md:text-5xl font-bold text-dark leading-tight">
                       {tCTA("deepenTitle")}
                     </h2>
-                    <p className="text-gray-600 text-lg leading-relaxed">
+                    <p className="text-gray-600 text-lg leading-relaxed whitespace-pre-line">
                       {tCTA("deepenDesc")}
                     </p>
                     <p className="text-dark text-xl font-bold pt-4">
@@ -614,8 +614,8 @@ export default function DiagnosticResultClientV2() {
                 </p>
                 <p className="text-white/60 text-sm max-w-sm">
                   {locale === "en"
-                    ? "Schedule your free strategic session and let's deepen the analysis of your business."
-                    : "Agende sua sessão estratégica gratuita e vamos aprofundar a análise do seu negócio."}
+                    ? "This session aims to help you transform the diagnostic information into practical insights for your business."
+                    : "Essa sessão tem como objetivo ajudar você a transformar as informações do diagnóstico em insights práticos para o seu negócio."}
                 </p>
               </div>
               <a

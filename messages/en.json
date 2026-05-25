@@ -41,7 +41,7 @@
     "button": "I want my free strategic session",
     "nextStepAlt": "Next steps - Michel Stawicki - Financial Structuring and Mentoring Expert",
     "deepenTitle": "Deepen your business analysis",
-    "deepenDesc": "The completed diagnosis offers an initial view of your business's financial structure. Each company has particularities that require a more in-depth analysis to understand its financial challenges and opportunities. If you want to explore the results of this diagnosis in more depth, you can schedule a free Strategic Session.",
+    "deepenDesc": "The completed diagnosis offers an initial view of your business's financial structure. Each company has particularities that require a more in-depth analysis to understand its financial challenges and opportunities.\n\nIf you want to explore the results of this diagnosis in more depth, you can schedule a free Strategic Session.",
     "duringConversation": "During this conversation we will:",
     "ctaItems": [
       "Analyze your business's financial structure in more depth.",
@@ -534,7 +534,7 @@
     "title": "The Path of the FinanceiraMente Method in your business",
     "description": "Depending on the business's financial maturity phase, different products and services from FinanceiraMente can help the company's financial evolution.",
     "productsTitle": "Products and Solutions",
-    "freeSessionBadge": "Free Session",
+    "freeSessionBadge": "Free",
     "ctaDescription": "Schedule a free FinanceiraMente Strategic Session and discover which path can help your business evolve financially with more clarity.",
     "ctaButton": "I want my free strategic session",
     "imageAlt": "Michel Stawicki with client - Specialist in Financial Structuring and Mentoring"
@@ -545,21 +545,13 @@
       "part2": "small entrepreneur"
     },
     "subtitle": "Most entrepreneurs learn to:",
-    "skills": [
-      "Sell",
-      "Serve Clients",
-      "Make the business run"
-    ],
+    "skills": ["Sell", "Serve Clients", "Make the business run"],
     "butRarelyLearns": "But rarely learn to financially structure the company.",
     "ctaButton": "I want my free strategic session",
     "paymentImageAlt": "Card payment",
     "calcImageAlt": "Financial calculations",
     "growthTitle": "As the business grows, so do:",
-    "growthConsequences": [
-      "Expenses",
-      "Complexity",
-      "Financial decisions"
-    ],
+    "growthConsequences": ["Expenses", "Complexity", "Financial decisions"],
     "darkTitle": "Without a clear financial management structure, the entrepreneur ends up managing the business in the dark.",
     "darkSubtitle": "Money comes in, but it remains unclear:",
     "darkCards": [
@@ -570,12 +562,7 @@
     ]
   },
   "ResultAnalysis": {
-    "pillarsData": [
-      "Profitability",
-      "Result",
-      "Cash",
-      "Return on investment"
-    ],
+    "pillarsData": ["Profitability", "Result", "Cash", "Return on investment"],
     "bannerTitle": {
       "part1": "Identification of the Business's",
       "part2": "Financial Profile"
@@ -590,9 +577,9 @@
     "imageAlt": "Profile analysis",
     "pillarsEvaluationTitle": {
       "part1": "Evaluation of the",
-      "part2": "financial pillars"
+      "part2": "Financial Pillars"
     },
-    "pillarsEvaluationDesc": "The diagnostic also analyzes the development level of the four financial pillars that support the business's financial management. These pillars represent the main elements that influence the company's ability to understand its numbers and make clearer financial decisions.",
+    "pillarsEvaluationDesc": "The diagnostic also analyzes the development level of the four financial pillars that support the business's financial management.\n\nThese pillars represent the main elements that influence the company's ability to understand its numbers and make clearer financial decisions.",
     "radarTitle": "Evaluation of Financial Pillars",
     "radarSubtitle": "Scores",
     "radarFooter": "Financial Pillars",
@@ -645,28 +632,28 @@
     "1": {
       "title": "Business in the Dark",
       "description": "Your business still has low visibility on essential financial aspects of the operation.\n\nCompanies in this phase usually operate with little clarity about profitability, results, and cash flow behavior.",
-      "interpretation": "The diagnosis indicates that the business still has low visibility on essential financial elements of the operation. At this stage, it is common for the entrepreneur to have difficulty clearly identifying the real profit of the business, predicting cash flow behavior, or evaluating the financial impact of day-to-day decisions.\n\nThis does not necessarily mean that the business is in trouble. Many companies go through this stage during their development.\n\nHowever, the lack of a clear financial structure can make management more reactive, with decisions being made as problems arise.",
+      "interpretation": "The diagnosis indicates that the business still has low visibility on essential financial elements of the operation.\n\nAt this stage, it is common for the entrepreneur to have difficulty clearly identifying the real profit of the business, predicting cash flow behavior, or evaluating the financial impact of day-to-day decisions.\n\nThis does not necessarily mean that the business is in trouble. Many companies go through this stage during their development.\n\nHowever, the lack of a clear financial structure can make management more reactive, with decisions being made as problems arise.",
       "nextStep": "The first evolutionary step consists of building basic financial clarity about how the business operates.",
       "nextStepDetails": "This includes developing visibility on fundamental elements such as profitability, financial results, and cash flow behavior.\n\nOrganizing this information allows the entrepreneur to better understand the performance of the business and start making decisions with greater security.\n\nFrom this initial base, it becomes possible to gradually structure more consistent financial management."
     },
     "2": {
       "title": "Financial Awareness",
       "description": "Your business already shows some attention to financial numbers and is starting to develop greater clarity about the company's performance.\n\nHowever, an integrated financial structure that allows these data to be transformed into more consistent decisions may still be lacking.",
-      "interpretation": "The diagnosis indicates that the business already has some level of attention to financial numbers and is beginning to develop greater awareness of the company's performance. At this stage, the entrepreneur usually monitors revenue, expenses, or results, but there may still be a lack of an integrated financial structure that allows this information to be transformed into clearer and more consistent decisions.\n\nThis stage represents an important transition between a more intuitive financial management and structured financial management.\n\nStrengthening the financial pillars of the business helps to transform numbers into real tools for management and decision support.",
+      "interpretation": "The diagnosis indicates that the business already has some level of attention to financial numbers and is beginning to develop greater awareness of the company's performance.\n\nAt this stage, the entrepreneur usually monitors revenue, expenses, or results, but there may still be a lack of an integrated financial structure that allows this information to be transformed into clearer and more consistent decisions.\n\nThis stage represents an important transition between a more intuitive financial management and structured financial management.\n\nStrengthening the financial pillars of the business helps to transform numbers into real tools for management and decision support.",
       "nextStep": "The next step is to organize the financial pillars of the business in a more structured way.",
       "nextStepDetails": "This means transforming scattered financial information into a clearer management system, allowing a better understanding of profitability, monitoring financial results, and improving cash predictability.\n\nWhen these elements begin to work in an integrated manner, the numbers cease to be mere records and begin to support important business decisions."
     },
     "3": {
       "title": "Financial Structure",
       "description": "Your business already has an organized foundation of financial management and greater clarity about the operation's numbers.\n\nThis indicates that financial management is beginning to support relevant business decisions.",
-      "interpretation": "The diagnosis indicates that the business already has an organized financial management foundation and greater clarity about the operation's numbers. Companies at this stage generally already have processes or tools that allow them to track results, analyze financial performance, and have greater predictability over cash behavior.\n\nThis represents a relevant level of financial maturity.\n\nThe next step is to use this structure increasingly strategically, allowing financial information to support business growth, investment, and expansion decisions.",
+      "interpretation": "The diagnosis indicates that the business already has an organized financial management foundation and greater clarity about the operation's numbers.\n\nCompanies at this stage generally already have processes or tools that allow them to track results, analyze financial performance, and have greater predictability over cash behavior.\n\nThis represents a relevant level of financial maturity.\n\nThe next step is to use this structure increasingly strategically, allowing financial information to support business growth, investment, and expansion decisions.",
       "nextStep": "The focus now shifts to using the existing financial structure increasingly strategically.",
       "nextStepDetails": "This involves deepening the analysis of profitability, evaluating investments more clearly, and integrating financial information into business growth decisions.\n\nAt this stage, financial management ceases to be just control and acts as an instrument to support the company's strategy."
     },
     "4": {
       "title": "Financial Intelligence",
       "description": "Your business demonstrates a high level of financial maturity.\n\nThe numbers are already used as a management tool and to support the company's strategic decisions.",
-      "interpretation": "The diagnosis indicates that the business has a high level of financial maturity. At this stage, numbers are already part of how the business is managed and financial information is used as support for strategic decisions.\n\nCompanies in this phase usually have greater clarity about profitability, financial predictability, and the ability to evaluate the impact of business decisions.\n\nFinancial management acts not only as control but as a support system for the strategy and growth of the company.",
+      "interpretation": "The diagnosis indicates that the business has a high level of financial maturity.\n\nAt this stage, numbers are already part of how the business is managed and financial information is used as support for strategic decisions.\n\nCompanies in this phase usually have greater clarity about profitability, financial predictability, and the ability to evaluate the impact of business decisions.\n\nFinancial management acts not only as control but as a support system for the strategy and growth of the company.",
       "nextStep": "The next step is to use the existing financial structure to support long-term strategic decisions.",
       "nextStepDetails": "This can include evaluating new investments, planning growth, expanding the operation, and continuously improving the business's financial efficiency.\n\nAt this stage, financial management works as a support system for the company's strategic decisions."
     }

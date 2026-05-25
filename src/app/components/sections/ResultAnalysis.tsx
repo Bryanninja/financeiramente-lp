@@ -249,7 +249,7 @@ export default function ResultAnalysis({
           </motion.h3>
           <motion.p
             variants={variants.fadeInUp}
-            className="text-dark/70 max-w-xl mx-auto text-sm md:text-base leading-relaxed"
+            className="text-dark/70 max-w-xl mx-auto text-sm md:text-base leading-relaxed whitespace-pre-line"
           >
             {t("pillarsEvaluationDesc")}
           </motion.p>

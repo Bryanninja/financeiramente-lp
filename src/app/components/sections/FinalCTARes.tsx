@@ -175,7 +175,7 @@ export default function ResultNextSteps({ phase = 2 }) {
               </motion.h2>
               <motion.p
                 variants={variants.fadeInUp}
-                className="text-light/55 text-sm md:text-base leading-relaxed"
+                className="text-light/55 text-sm md:text-base leading-relaxed whitespace-pre-line"
               >
                 {t("deepenDesc")}
               </motion.p>

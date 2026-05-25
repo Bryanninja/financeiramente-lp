@@ -1,7 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import DiagnosticHero from "../../components/sections/DiagnosticHero";
-import DiagnosticInfo from "../../components/sections/DiagnosticInfo";
-import Footer from "../../components/sections/Footer";
+import DiagnosticHeroV2 from "../../components/v2/DiagnosticHeroV2";
 import Header from "../../components/sections/Header";
 
 export async function generateMetadata({
@@ -34,11 +32,9 @@ export default async function DiagnosticPage({
   setRequestLocale(locale);
 
   return (
-    <main className="bg-light">
+    <main>
       <Header />
-      <DiagnosticHero />
-      <DiagnosticInfo />
-      <Footer />
+      <DiagnosticHeroV2 />
     </main>
   );
 }

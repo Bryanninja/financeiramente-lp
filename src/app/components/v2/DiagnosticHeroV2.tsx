@@ -51,7 +51,7 @@ export default function DiagnosticHeroV2() {
       });
       if (!res.ok) throw new Error();
       localStorage.setItem("fm_user", JSON.stringify(data));
-      router.push(`/${locale}/v2/questions`);
+      router.push(`/${locale}/questions`);
     } catch {
       setSubmitError(t("form.submitError"));
     } finally {
@@ -60,7 +60,10 @@ export default function DiagnosticHeroV2() {
   };
 
   return (
-    <section id="diagnostic" className="bg-light min-h-screen flex justify-center items-center pt-36 pb-20 2xl:pt-40">
+    <section
+      id="diagnostic"
+      className="bg-light min-h-screen flex justify-center items-center pt-36 pb-20 2xl:pt-40"
+    >
       <Container>
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start"
@@ -104,7 +107,9 @@ export default function DiagnosticHeroV2() {
                 onClick={() => setIsModalOpen(true)}
                 className="inline-flex items-center cursor-pointer gap-2 px-6 py-3 rounded-2xl border border-dark/20 hover:border-primary-deep hover:bg-primary-deep/5 transition-all text-dark text-sm font-semibold tracking-wide"
               >
-                {locale === "en" ? "Learn the Methodology" : "Conheça a Metodologia"}
+                {locale === "en"
+                  ? "Learn the Methodology"
+                  : "Conheça a Metodologia"}
               </button>
             </motion.div>
           </motion.div>
@@ -251,14 +256,14 @@ export default function DiagnosticHeroV2() {
                   )}
                 </AnimatePresence>
               </button>
-              
+
               {submitError && (
                 <p className="text-red-500 text-sm mt-4 text-center font-medium">
                   {submitError}
                 </p>
               )}
             </div>
-              
+
             {submitError && (
               <p className="text-red-500 text-sm mt-4 text-center font-medium">
                 {submitError}
@@ -302,17 +307,33 @@ export default function DiagnosticHeroV2() {
                   </h3>
                   <p className="text-gray-600 font-medium">
                     {locale === "en"
-                      ? "The analysis is based on the Financial Maturity Map, which organizes the financial evolution of companies into four phases."
-                      : "A análise é baseada no Mapa de Maturidade Financeira - FinanceiraMente. Que organiza a evolução financeira das empresas em quatro fases."}
+                      ? "The analysis is based on the Financial Maturity Map from FinanceiraMente, which organizes the financial evolution of companies into four phases."
+                      : "A análise é baseada no Mapa de Maturidade Financeira da FinanceiraMente. Que organiza a evolução financeira das empresas em quatro fases."}
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    { id: 1, pt: "Negócio no Escuro", en: "Business in the Dark" },
-                    { id: 2, pt: "Consciência Financeira", en: "Financial Awareness" },
-                    { id: 3, pt: "Estrutura Financeira", en: "Financial Structure" },
-                    { id: 4, pt: "Inteligência Financeira", en: "Financial Intelligence" },
+                    {
+                      id: 1,
+                      pt: "Negócio no Escuro",
+                      en: "Business in the Dark",
+                    },
+                    {
+                      id: 2,
+                      pt: "Consciência Financeira",
+                      en: "Financial Awareness",
+                    },
+                    {
+                      id: 3,
+                      pt: "Estrutura Financeira",
+                      en: "Financial Structure",
+                    },
+                    {
+                      id: 4,
+                      pt: "Inteligência Financeira",
+                      en: "Financial Intelligence",
+                    },
                   ].map((fase) => (
                     <div
                       key={fase.id}
@@ -339,15 +360,19 @@ export default function DiagnosticHeroV2() {
                     {[
                       {
                         ptTitle: "Rentabilidade",
-                        ptDesc: "Entender onde o negócio realmente ganha dinheiro.",
+                        ptDesc:
+                          "Entender onde o negócio realmente ganha dinheiro.",
                         enTitle: "Profitability",
-                        enDesc: "Understand where the business actually makes money.",
+                        enDesc:
+                          "Understand where the business actually makes money.",
                       },
                       {
                         ptTitle: "Resultado",
-                        ptDesc: "Ter clareza sobre o desempenho financeiro da empresa.",
+                        ptDesc:
+                          "Ter clareza sobre o desempenho financeiro da empresa.",
                         enTitle: "Result",
-                        enDesc: "Have clarity about the company's financial performance.",
+                        enDesc:
+                          "Have clarity about the company's financial performance.",
                       },
                       {
                         ptTitle: "Caixa",
@@ -357,9 +382,11 @@ export default function DiagnosticHeroV2() {
                       },
                       {
                         ptTitle: "Retorno sobre investimento",
-                        ptDesc: "Avaliar se as decisões financeiras estão gerando valor.",
+                        ptDesc:
+                          "Avaliar se as decisões financeiras estão gerando valor.",
                         enTitle: "Return on investment",
-                        enDesc: "Evaluate if financial decisions are generating value.",
+                        enDesc:
+                          "Evaluate if financial decisions are generating value.",
                       },
                     ].map((pilar, idx) => (
                       <div

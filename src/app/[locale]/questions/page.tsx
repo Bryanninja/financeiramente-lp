@@ -1,7 +1,7 @@
-import DiagnosticQuiz from "../../components/sections/DiagnosticQuiz";
+import DiagnosticQuizV2 from "../../components/v2/DiagnosticQuizV2";
 
 const Questions = () => {
-  return <DiagnosticQuiz />;
+  return <DiagnosticQuizV2 />;
 };
 
 export default Questions;

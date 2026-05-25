@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Metadata } from "next";
-import DiagnosticResultClient from "./DiagnosticResultClient";
+import DiagnosticResultClientV2 from "../../components/v2/DiagnosticResultClientV2";
 
 // O Next.js lê isso no servidor (SEO MONSTRO)
 export async function generateMetadata({
@@ -22,5 +22,5 @@ export async function generateMetadata({
 }
 
 export default function Page() {
-  return <DiagnosticResultClient />;
+  return <DiagnosticResultClientV2 />;
 }
