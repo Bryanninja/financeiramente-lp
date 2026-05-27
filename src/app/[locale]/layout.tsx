@@ -5,6 +5,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import LanguageDetector from "../components/ui/LanguageDetector";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 
 export function generateStaticParams() {
   return [{ locale: "pt" }, { locale: "en" }];
@@ -117,6 +119,8 @@ export default async function RootLayout({
           <ScrollToTop />
           {children}
         </NextIntlClientProvider>
+
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || "G-C6LVTYZ5ES"} />
       </body>
     </html>
   );
