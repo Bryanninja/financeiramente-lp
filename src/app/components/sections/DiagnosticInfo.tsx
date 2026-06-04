@@ -86,7 +86,7 @@ export default function DiagnosticInfo() {
         />
 
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center"
+          className="grid grid-cols-1 lg:col-2 gap-20 items-center"
           variants={variants.staggerContainer}
           initial="initial"
           whileInView="animate"

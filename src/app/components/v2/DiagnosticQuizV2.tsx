@@ -120,6 +120,12 @@ export default function DiagnosticQuizV2() {
     const rawUser = localStorage.getItem("fm_user");
     if (rawUser) {
       const user = JSON.parse(rawUser);
+
+      // Dispara o evento de Lead do Meta Pixel
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "Lead");
+      }
+
       fetch("/enviar.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
