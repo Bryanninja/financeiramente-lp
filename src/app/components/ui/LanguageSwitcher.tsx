@@ -20,6 +20,9 @@ export default function LanguageSwitcher({
     router.push(newPathname === "" ? `/${newLocale}` : newPathname);
   };
 
+  // Do not show language switcher on /lp (video is Portuguese-only, keep zero distraction)
+  if (pathname.includes("/lp")) return null;
+
   return (
     <div className="fixed bottom-6 right-6 z-50 flex items-center bg-dark/90 backdrop-blur-md shadow-lg rounded-full p-1 border border-white/10">
       <button
