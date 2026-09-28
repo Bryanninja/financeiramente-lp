@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Play, ArrowRight, ShieldCheck, FileChartColumn } from "lucide-react";
+import { ArrowRight, ShieldCheck, FileChartColumn } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import HeroThumb from "../../assets/img/hero2.webp";
 
@@ -15,7 +15,6 @@ interface LPVideoViewProps {
 export default function LPVideoView({ vimeoUrlOrId }: LPVideoViewProps) {
   const t = useTranslations("LPVideo");
   const locale = useLocale();
-  const [isPlaying, setIsPlaying] = useState(false);
 
   // Determine Vimeo embed details from prop or environment variable
   const rawVideoSource =
@@ -58,7 +57,7 @@ export default function LPVideoView({ vimeoUrlOrId }: LPVideoViewProps) {
 
   const getVimeoEmbedUrl = () => {
     if (!vimeoData) return "";
-    const base = `https://player.vimeo.com/video/${vimeoData.id}?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479&color=2563eb&title=0&byline=0&portrait=0`;
+    const base = `https://player.vimeo.com/video/${vimeoData.id}?badge=0&autopause=0&player_id=0&app_id=58479&color=2563eb&title=0&byline=0&portrait=0&playsinline=1&dnt=1`;
     return vimeoData.hash ? `${base}&h=${vimeoData.hash}` : base;
   };
 
@@ -127,8 +126,8 @@ export default function LPVideoView({ vimeoUrlOrId }: LPVideoViewProps) {
           {/* Subtle Ambient Glow */}
           <div className="absolute -inset-1.5 bg-gradient-to-r from-primary-deep/20 via-primary-vibrant/25 to-primary-deep/20 rounded-[2rem] blur-xl opacity-75 -z-10" />
 
-          <div className="relative w-full aspect-video rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-dark/10 bg-[#121212] group">
-            {isPlaying && vimeoData ? (
+          <div className="relative w-full aspect-video rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-dark/10 bg-[#121212]">
+            {vimeoData ? (
               <iframe
                 src={getVimeoEmbedUrl()}
                 className="w-full h-full border-0 absolute inset-0"
@@ -137,47 +136,14 @@ export default function LPVideoView({ vimeoUrlOrId }: LPVideoViewProps) {
                 title="FinanceiraMente - Diagnóstico"
               />
             ) : (
-              <div
-                onClick={() => {
-                  if (vimeoData) {
-                    setIsPlaying(true);
-                  }
-                }}
-                className={`w-full h-full relative flex items-center justify-center ${
-                  vimeoData ? "cursor-pointer" : "cursor-default"
-                }`}
-              >
-                {/* Poster Image */}
+              <div className="w-full h-full relative flex items-center justify-center">
                 <Image
                   src={HeroThumb}
                   alt="Michel Stawicki - FinanceiraMente"
                   fill
                   priority
-                  className="object-cover object-top opacity-70 group-hover:scale-105 transition-transform duration-700"
+                  className="object-cover object-top opacity-70"
                 />
-
-                {/* Dark Vignette Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-dark/50" />
-
-                {/* Play Button or Info Overlay */}
-                <div className="relative z-10 flex flex-col items-center gap-3">
-                  <div className="relative flex items-center justify-center">
-                    {/* Animated Pulsing Ring */}
-                    <div className="absolute w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-primary-vibrant/30 animate-ping" />
-
-                    <button
-                      type="button"
-                      aria-label={t("playVideo")}
-                      className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary-vibrant hover:bg-primary-deep text-white flex items-center justify-center shadow-xl group-hover:scale-110 active:scale-95 transition-all duration-300"
-                    >
-                      <Play className="w-7 h-7 sm:w-8 sm:h-8 fill-white translate-x-0.5" />
-                    </button>
-                  </div>
-
-                  <span className="text-white/90 text-xs sm:text-sm font-semibold tracking-wider uppercase drop-shadow-md">
-                    {t("videoCaption")}
-                  </span>
-                </div>
               </div>
             )}
           </div>
