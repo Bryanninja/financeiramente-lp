@@ -138,6 +138,12 @@
     "loading": "Loading diagnostic...",
     "chooseBestOption": "Choose the best option below.",
     "question": "Question {current} of {total}",
+    "finalStep": "Final Step",
+    "leadBadge": "12 of 12 Questions Answered",
+    "leadTitle": "Your diagnostic has been completed successfully!",
+    "leadSubtitle": "Enter your business details below where we should send your executive report with the 4 pillars score.",
+    "leadButton": "Generate Report & View Results",
+    "leadPrivacy": "Your information is secure. We never send spam.",
     "questions": [
       {
         "pilar": "Pillar 1 — Profitability",
@@ -618,6 +624,10 @@
     "TermsOfService": {
       "title": "Terms of Use",
       "description": "Terms and conditions of use for the FinanceiraMente platform and Michel Stawicki's strategic consulting."
+    },
+    "LP": {
+      "title": "Financial Maturity Diagnostic | FinanceiraMente",
+      "description": "Transform your effort into results, profit, and growth. Take the free diagnostic and receive your business report."
     }
   },
   "TermsOfServicePage": {
@@ -657,5 +667,17 @@
       "nextStep": "The next step is to use the existing financial structure to support long-term strategic decisions.",
       "nextStepDetails": "This can include evaluating new investments, planning growth, expanding the operation, and continuously improving the business's financial efficiency.\n\nAt this stage, financial management works as a support system for the company's strategic decisions."
     }
+  },
+  "LPVideo": {
+    "badge": "Free Diagnostic · Under 3 minutes",
+    "headline": "Transform your effort into results, profit, and growth.",
+    "subtitle": "Discover which financial stage your company is in and what to do to evolve.",
+    "ctaButton": "Take the Free Diagnostic",
+    "socialProof": "Diagnostic developed based on corporate management principles applied to small businesses.",
+    "videoCaption": "Watch the overview video with Michel Stawicki",
+    "playVideo": "Watch video",
+    "footerText": "© FinanceiraMente — All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use"
   }
 }

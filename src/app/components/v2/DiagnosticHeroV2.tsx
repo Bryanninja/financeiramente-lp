@@ -66,7 +66,7 @@ export default function DiagnosticHeroV2() {
     >
       <Container>
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start"
           variants={variants.staggerContainer}
           initial="initial"
           animate="animate"
@@ -74,7 +74,7 @@ export default function DiagnosticHeroV2() {
           {/* Left Column: Headlines (Identical to V1) */}
           <motion.div
             variants={variants.staggerContainer}
-            className="space-y-8"
+            className="space-y-6 md:space-y-8"
           >
             <motion.div
               variants={variants.fadeInUp}
@@ -100,18 +100,20 @@ export default function DiagnosticHeroV2() {
               {t("subtitle1")} {t("subtitle2")}
             </motion.p>
 
-            {/* Methodology Outline Button (Left Column) */}
-            <motion.div variants={variants.fadeInUp} className="pt-4">
-              <button
-                type="button"
-                onClick={() => setIsModalOpen(true)}
-                className="inline-flex items-center cursor-pointer gap-2 px-6 py-3 rounded-2xl border border-dark/20 hover:border-primary-deep hover:bg-primary-deep/5 transition-all text-dark text-sm font-semibold tracking-wide"
-              >
-                {locale === "en"
-                  ? "Learn the Methodology"
-                  : "Conheça a Metodologia"}
-              </button>
-            </motion.div>
+            {/* Methodology Outline Button (Left Column) - Hidden on mobile to keep lead focused */}
+            <div className="hidden md:block">
+              <motion.div variants={variants.fadeInUp} className="pt-2">
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(true)}
+                  className="inline-flex items-center cursor-pointer gap-2 px-6 py-3 rounded-2xl border border-dark/20 hover:border-primary-deep hover:bg-primary-deep/5 transition-all text-dark text-sm font-semibold tracking-wide"
+                >
+                  {locale === "en"
+                    ? "Learn the Methodology"
+                    : "Conheça a Metodologia"}
+                </button>
+              </motion.div>
+            </div>
           </motion.div>
 
           {/* Right Column: Form (V2 Floating Labels) */}

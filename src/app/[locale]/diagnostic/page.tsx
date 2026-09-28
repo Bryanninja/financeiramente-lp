@@ -21,6 +21,7 @@ export async function generateMetadata({
   };
 }
 
+import { redirect } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 
 export default async function DiagnosticPage({
@@ -31,10 +32,5 @@ export default async function DiagnosticPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return (
-    <main>
-      <Header />
-      <DiagnosticHeroV2 />
-    </main>
-  );
+  redirect(`/${locale}/questions`);
 }

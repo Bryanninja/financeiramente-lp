@@ -138,6 +138,12 @@
     "loading": "Carregando diagnóstico...",
     "chooseBestOption": "Escolha a melhor opção abaixo.",
     "question": "Questão {current} de {total}",
+    "finalStep": "Etapa Final",
+    "leadBadge": "12 de 12 Perguntas Respondidas",
+    "leadTitle": "Seu diagnóstico foi concluído com sucesso!",
+    "leadSubtitle": "Informe seus dados abaixo para onde devemos enviar o seu relatório executivo completo com a pontuação dos 4 pilares.",
+    "leadButton": "Gerar Relatório e Ver Meu Resultado",
+    "leadPrivacy": "Seus dados estão protegidos. Não enviamos spam.",
     "questions": [
       {
         "pilar": "Pilar 1 — Rentabilidade",
@@ -623,6 +629,10 @@
     "TermsOfService": {
       "title": "Termos de Uso",
       "description": "Termos e condições de uso da plataforma FinanceiraMente e da consultoria estratégica de Michel Stawicki."
+    },
+    "LP": {
+      "title": "Diagnóstico de Maturidade Financeira | FinanceiraMente",
+      "description": "Transforme seu esforço em resultado, lucro e crescimento. Faça o diagnóstico gratuito e receba o relatório da sua empresa."
     }
   },
   "TermsOfServicePage": {
@@ -662,5 +672,17 @@
       "nextStep": "O próximo passo consiste em utilizar a estrutura financeira já existente para apoiar decisões estratégicas de longo prazo.",
       "nextStepDetails": "Isso pode incluir avaliação de novos investimentos, planejamento de crescimento, expansão da operação e melhoria contínua da eficiência financeira do negócio.\n\nNesse estágio, a gestão financeira funciona como um sistema de suporte às decisões estratégicas da empresa."
     }
+  },
+  "LPVideo": {
+    "badge": "Diagnóstico Gratuito · Menos de 3 minutos",
+    "headline": "Transforme seu esforço em resultado, lucro e crescimento.",
+    "subtitle": "Descubra em qual estágio financeiro sua empresa está e o que fazer para evoluir.",
+    "ctaButton": "Fazer o Diagnóstico Gratuito",
+    "socialProof": "Diagnóstico desenvolvido com base em gestão de grandes empresas aplicada a pequenos negócios.",
+    "videoCaption": "Assista ao vídeo explicativo com Michel Stawicki",
+    "playVideo": "Assistir ao vídeo",
+    "footerText": "© FinanceiraMente — Todos os direitos reservados.",
+    "privacy": "Política de Privacidade",
+    "terms": "Termos de Uso"
   }
 }
