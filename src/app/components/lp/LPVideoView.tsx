@@ -80,9 +80,9 @@ export default function LPVideoView({ vimeoUrlOrId }: LPVideoViewProps) {
   };
 
   return (
-    <section className="relative w-full min-h-screen bg-[#F8F7F5] pt-24 pb-20 px-4 sm:px-6 flex flex-col justify-center items-center overflow-hidden">
+    <section className="relative w-full min-h-screen bg-dark pt-28 pb-20 px-4 sm:px-6 flex flex-col justify-center items-center overflow-hidden">
       {/* Background ambient light */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-deep/5 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-vibrant/10 rounded-full blur-[120px] pointer-events-none -z-10" />
 
       <div className="max-w-4xl mx-auto w-full flex flex-col items-center text-center">
         {/* Top Badge */}
@@ -90,7 +90,7 @@ export default function LPVideoView({ vimeoUrlOrId }: LPVideoViewProps) {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary-vibrant/40 text-primary-deep font-semibold text-xs sm:text-sm tracking-wide shadow-xs"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary-vibrant/40 bg-primary-deep/20 text-blue-400 font-semibold text-xs sm:text-sm tracking-wide shadow-xs backdrop-blur-sm"
         >
           <FileChartColumn className="w-3.5 h-3.5 text-primary-vibrant" />
           <span>{t("badge")}</span>
@@ -101,7 +101,7 @@ export default function LPVideoView({ vimeoUrlOrId }: LPVideoViewProps) {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-dark tracking-tight leading-[1.15] max-w-3xl mt-6 text-balance"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-light tracking-tight leading-[1.15] max-w-3xl mt-6 text-balance"
         >
           {t("headline")}
         </motion.h1>
@@ -111,7 +111,7 @@ export default function LPVideoView({ vimeoUrlOrId }: LPVideoViewProps) {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base sm:text-lg md:text-xl sm:max-w-3xl text-pretty text-dark/70 max-w-xl mt-4 leading-relaxed font-normal"
+          className="text-base sm:text-lg md:text-xl sm:max-w-3xl text-pretty text-light/70 max-w-xl mt-4 leading-relaxed font-normal"
         >
           {t("subtitle")}
         </motion.p>
@@ -124,9 +124,9 @@ export default function LPVideoView({ vimeoUrlOrId }: LPVideoViewProps) {
           className="w-full max-w-3xl mx-auto mt-8 sm:mt-10 relative"
         >
           {/* Subtle Ambient Glow */}
-          <div className="absolute -inset-1.5 bg-gradient-to-r from-primary-deep/20 via-primary-vibrant/25 to-primary-deep/20 rounded-[2rem] blur-xl opacity-75 -z-10" />
+          <div className="absolute -inset-1.5 bg-gradient-to-r from-primary-deep/30 via-primary-vibrant/40 to-primary-deep/30 rounded-[2rem] blur-xl opacity-75 -z-10" />
 
-          <div className="relative w-full aspect-video rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-dark/10 bg-[#121212]">
+          <div className="relative w-full aspect-video rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-[#0a0a0a]">
             {vimeoData ? (
               <iframe
                 src={getVimeoEmbedUrl()}
@@ -159,16 +159,16 @@ export default function LPVideoView({ vimeoUrlOrId }: LPVideoViewProps) {
           <Link
             href={`/${locale}/questions`}
             onClick={handleCtaClick}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-primary-vibrant hover:bg-primary-deep text-white font-bold text-lg sm:text-xl rounded-2xl shadow-[0_10px_30px_rgba(37,99,235,0.3)] hover:shadow-[0_15px_40px_rgba(30,58,138,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-primary-vibrant hover:bg-blue-600 text-white font-bold text-lg sm:text-xl rounded-2xl shadow-[0_10px_30px_rgba(37,99,235,0.4)] hover:shadow-[0_15px_40px_rgba(37,99,235,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group"
           >
             <span>{t("ctaButton")}</span>
             <ArrowRight className="w-6 h-6 group-hover:translate-x-1.5 transition-transform duration-300" />
           </Link>
 
           {/* Social Proof Line */}
-          <div className="flex flex-col items-center justify-center gap-2 mt-4 text-xs sm:text-sm text-dark/65 max-w-md text-center font-medium">
+          <div className="flex flex-col items-center justify-center gap-2 mt-4 text-xs sm:text-sm text-light/60 max-w-md text-center font-medium">
             <span>{t("socialProof")}</span>
-            <ShieldCheck className="w-4 h-4 text-primary-deep shrink-0" />
+            <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
           </div>
         </motion.div>
       </div>

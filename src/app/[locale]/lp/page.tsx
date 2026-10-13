@@ -35,7 +35,7 @@ export default async function LPPage({
   setRequestLocale(locale);
 
   return (
-    <main className="bg-[#F8F7F5] min-h-screen flex flex-col justify-between">
+    <main className="bg-dark min-h-screen flex flex-col justify-between">
       <LPHeader />
       <LPVideoView />
       <LPFooter />
