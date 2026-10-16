@@ -24,6 +24,7 @@ export async function generateMetadata({
 }
 
 import { setRequestLocale } from "next-intl/server";
+import Header from "../components/sections/Header";
 
 export default async function Home({
   params,
@@ -35,6 +36,7 @@ export default async function Home({
 
   return (
     <main>
+      <Header />
       <Hero2 />
       <ProblemSection />
       <ProblemReal />

@@ -21,28 +21,34 @@ export default function Hero() {
       animate="animate"
       className="relative w-full h-auto md:h-screen md:min-h-[700px] flex flex-col overflow-hidden bg-dark"
     >
-      <motion.div
+      {/* <motion.div
         variants={variants.fadeIn}
         className="z-30 w-full bg-primary-deep/60 backdrop-blur-xl py-3 text-center"
       >
         <span className="text-sm md:text-base tracking-[0.1em] text-light">
           {t("topBar")}
         </span>
-      </motion.div>
+      </motion.div> */}
 
-      <div className="flex flex-col md:block flex-1 relative">
+      <div className="flex mt-10 flex-col md:block md:mt-20 flex-1 relative">
         <motion.div
           variants={variants.staggerContainer}
           className="relative z-20 order-first flex flex-col justify-center pt-20 pb-16 md:pt-0 md:pb-0 md:absolute md:inset-0 md:flex-1"
         >
           <Container>
             <div className="max-w-[750px] md:w-[60%] space-y-6">
-              <motion.div variants={variants.fadeInUp}>
+              {/* <motion.div variants={variants.fadeInUp}>
                 <img
                   src="/logo-financeiramente.svg"
                   alt="logo Financeiramente"
                   className="h-8 md:h-10"
                 />
+              </motion.div> */}
+
+              <motion.div variants={variants.fadeIn}>
+                <span className="text-sm md:text-base font-semibold text-light">
+                  {t("topBar")}
+                </span>
               </motion.div>
 
               <motion.h1
